@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="MPAPortalSuiteService" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="MPAPortalSuiteService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="MPAPortalSuiteService/Imports">
+      <xsd:import schemaLocation="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd0" namespace="MPAPortalSuiteService" />
+      <xsd:import schemaLocation="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd3" namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" />
+      <xsd:import schemaLocation="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd5" namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" />
+      <xsd:import schemaLocation="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd2" />
+      <xsd:import schemaLocation="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.AX.Framework.Services" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="MPAPortalSuiteValidateRequest">
+    <wsdl:part name="parameters" element="tns:MPAPortalSuiteValidateRequest" />
+  </wsdl:message>
+  <wsdl:message name="MPAPortalSuiteValidateRequest_Headers">
+    <wsdl:part xmlns:q1="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q1:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="MPAPortalSuiteValidateResponse">
+    <wsdl:part name="parameters" element="tns:MPAPortalSuiteValidateResponse" />
+  </wsdl:message>
+  <wsdl:message name="MPAPortalSuite_validate_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q2:AifFault" />
+  </wsdl:message>
+  <wsdl:message name="MPAPortalSuiteProcessRequest">
+    <wsdl:part name="parameters" element="tns:MPAPortalSuiteProcessRequest" />
+  </wsdl:message>
+  <wsdl:message name="MPAPortalSuiteProcessRequest_Headers">
+    <wsdl:part xmlns:q3="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q3:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="MPAPortalSuiteProcessResponse">
+    <wsdl:part name="parameters" element="tns:MPAPortalSuiteProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="MPAPortalSuite_process_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q4:AifFault" />
+  </wsdl:message>
+  <wsdl:message name="MPAPortalSuiteImportPortalRequest">
+    <wsdl:part name="parameters" element="tns:MPAPortalSuiteImportPortalRequest" />
+  </wsdl:message>
+  <wsdl:message name="MPAPortalSuiteImportPortalRequest_Headers">
+    <wsdl:part xmlns:q5="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q5:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="MPAPortalSuiteImportPortalResponse">
+    <wsdl:part name="parameters" element="tns:MPAPortalSuiteImportPortalResponse" />
+  </wsdl:message>
+  <wsdl:message name="MPAPortalSuite_importPortal_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q6:AifFault" />
+  </wsdl:message>
+  <wsdl:portType name="MPAPortalSuite">
+    <wsdl:operation name="validate">
+      <wsdl:input wsaw:Action="MPAPortalSuiteService/MPAPortalSuite/validate" name="MPAPortalSuiteValidateRequest" message="tns:MPAPortalSuiteValidateRequest" />
+      <wsdl:output wsaw:Action="MPAPortalSuiteService/MPAPortalSuite/validateResponse" name="MPAPortalSuiteValidateResponse" message="tns:MPAPortalSuiteValidateResponse" />
+      <wsdl:fault wsaw:Action="MPAPortalSuiteService/MPAPortalSuite/validateAifFaultFault" name="AifFaultFault" message="tns:MPAPortalSuite_validate_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="process">
+      <wsdl:input wsaw:Action="MPAPortalSuiteService/MPAPortalSuite/process" name="MPAPortalSuiteProcessRequest" message="tns:MPAPortalSuiteProcessRequest" />
+      <wsdl:output wsaw:Action="MPAPortalSuiteService/MPAPortalSuite/processResponse" name="MPAPortalSuiteProcessResponse" message="tns:MPAPortalSuiteProcessResponse" />
+      <wsdl:fault wsaw:Action="MPAPortalSuiteService/MPAPortalSuite/processAifFaultFault" name="AifFaultFault" message="tns:MPAPortalSuite_process_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="importPortal">
+      <wsdl:input wsaw:Action="MPAPortalSuiteService/MPAPortalSuite/importPortal" name="MPAPortalSuiteImportPortalRequest" message="tns:MPAPortalSuiteImportPortalRequest" />
+      <wsdl:output wsaw:Action="MPAPortalSuiteService/MPAPortalSuite/importPortalResponse" name="MPAPortalSuiteImportPortalResponse" message="tns:MPAPortalSuiteImportPortalResponse" />
+      <wsdl:fault wsaw:Action="MPAPortalSuiteService/MPAPortalSuite/importPortalAifFaultFault" name="AifFaultFault" message="tns:MPAPortalSuite_importPortal_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

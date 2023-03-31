@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc?xsd=xsd2" namespace="http://tempuri.org" />
+      <xsd:import schemaLocation="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc?xsd=xsd3" namespace="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" />
+      <xsd:import schemaLocation="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="PANGEA_import_v2">
+    <wsdl:part name="parameters" element="tns:PANGEA_import_v2" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_import_v2_Headers">
+    <wsdl:part xmlns:q1="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="callContext" element="q1:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_import_v2Response">
+    <wsdl:part name="parameters" element="tns:PANGEA_import_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_import_v2Response_Headers">
+    <wsdl:part xmlns:q2="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="infolog" element="q2:Infolog" />
+  </wsdl:message>
+  <wsdl:message name="ImportSuiteData_PANGEA_import_v2_SoapServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="detail" element="q3:Fault" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_validate_v2">
+    <wsdl:part name="parameters" element="tns:PANGEA_validate_v2" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_validate_v2_Headers">
+    <wsdl:part xmlns:q4="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="callContext" element="q4:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_validate_v2Response">
+    <wsdl:part name="parameters" element="tns:PANGEA_validate_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_validate_v2Response_Headers">
+    <wsdl:part xmlns:q5="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="infolog" element="q5:Infolog" />
+  </wsdl:message>
+  <wsdl:message name="ImportSuiteData_PANGEA_validate_v2_SoapServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="detail" element="q6:Fault" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_process_v2">
+    <wsdl:part name="parameters" element="tns:PANGEA_process_v2" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_process_v2_Headers">
+    <wsdl:part xmlns:q7="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="callContext" element="q7:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_process_v2Response">
+    <wsdl:part name="parameters" element="tns:PANGEA_process_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_process_v2Response_Headers">
+    <wsdl:part xmlns:q8="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="infolog" element="q8:Infolog" />
+  </wsdl:message>
+  <wsdl:message name="ImportSuiteData_PANGEA_process_v2_SoapServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="detail" element="q9:Fault" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_showrecords_v2">
+    <wsdl:part name="parameters" element="tns:PANGEA_showrecords_v2" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_showrecords_v2_Headers">
+    <wsdl:part xmlns:q10="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="callContext" element="q10:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_showrecords_v2Response">
+    <wsdl:part name="parameters" element="tns:PANGEA_showrecords_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_showrecords_v2Response_Headers">
+    <wsdl:part xmlns:q11="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="infolog" element="q11:Infolog" />
+  </wsdl:message>
+  <wsdl:message name="ImportSuiteData_PANGEA_showrecords_v2_SoapServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.microsoft.com/dynamics/2013/01/datacontracts" name="detail" element="q12:Fault" />
+  </wsdl:message>
+  <wsdl:portType name="ImportSuiteData">
+    <wsdl:operation name="PANGEA_import_v2">
+      <wsdl:input wsam:Action="http://tempuri.org/ImportSuiteData/PANGEA_import_v2" name="PANGEA_import_v2" message="tns:PANGEA_import_v2" />
+      <wsdl:output wsam:Action="http://tempuri.org/ImportSuiteData/PANGEA_import_v2Response" name="PANGEA_import_v2Response" message="tns:PANGEA_import_v2Response" />
+      <wsdl:fault wsam:Action="http://tempuri.org/ImportSuiteData/Fault" name="SoapServiceFaultFault" message="tns:ImportSuiteData_PANGEA_import_v2_SoapServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PANGEA_validate_v2">
+      <wsdl:input wsam:Action="http://tempuri.org/ImportSuiteData/PANGEA_validate_v2" name="PANGEA_validate_v2" message="tns:PANGEA_validate_v2" />
+      <wsdl:output wsam:Action="http://tempuri.org/ImportSuiteData/PANGEA_validate_v2Response" name="PANGEA_validate_v2Response" message="tns:PANGEA_validate_v2Response" />
+      <wsdl:fault wsam:Action="http://tempuri.org/ImportSuiteData/Fault" name="SoapServiceFaultFault" message="tns:ImportSuiteData_PANGEA_validate_v2_SoapServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PANGEA_process_v2">
+      <wsdl:input wsam:Action="http://tempuri.org/ImportSuiteData/PANGEA_process_v2" name="PANGEA_process_v2" message="tns:PANGEA_process_v2" />
+      <wsdl:output wsam:Action="http://tempuri.org/ImportSuiteData/PANGEA_process_v2Response" name="PANGEA_process_v2Response" message="tns:PANGEA_process_v2Response" />
+      <wsdl:fault wsam:Action="http://tempuri.org/ImportSuiteData/Fault" name="SoapServiceFaultFault" message="tns:ImportSuiteData_PANGEA_process_v2_SoapServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PANGEA_showrecords_v2">
+      <wsdl:input wsam:Action="http://tempuri.org/ImportSuiteData/PANGEA_showrecords_v2" name="PANGEA_showrecords_v2" message="tns:PANGEA_showrecords_v2" />
+      <wsdl:output wsam:Action="http://tempuri.org/ImportSuiteData/PANGEA_showrecords_v2Response" name="PANGEA_showrecords_v2Response" message="tns:PANGEA_showrecords_v2Response" />
+      <wsdl:fault wsam:Action="http://tempuri.org/ImportSuiteData/Fault" name="SoapServiceFaultFault" message="tns:ImportSuiteData_PANGEA_showrecords_v2_SoapServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,219 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+@{
+    Layout = null;
+}
+<style>
+    .table {
+        width: auto !important;
+    }
+
+     .Redborder {
+        border-color: red;
+    }
+
+       .Greenborder {
+        border-color: green;
+    }
+</style>
+
+<script type="text/javascript" src="https://cdn.datatables.net/scroller/1.5.1/js/dataTables.scroller.min.js"></script>
+
+
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@ViewBag.Title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive" style="height:480px;overflow-y:auto;">
+                    <table id="TblPedShow" class="table table-bordered table-condensed table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>* Facility</th>
+                                <th>Date</th>
+                                <th>Batch</th>
+                                <th>Amount</th>
+                                <th>Auth Code</th>
+                                <th>Credit Card</th>
+                                <th>Invoice</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int i = 1; }
+                            @foreach (DataRow row in Model.Rows)
+                            {
+
+    
+                                <tr>
+                                    <td>@i.ToString()</td>
+                                    <td width="100" style="min-width:120px !important">
+                                        <input type="text" maxlength="5" class="form-control onchange" data-rid="@row["Id"]"   id="p_@row["Id"]"  value="@row["facilityTemp"]">
+                                    </td>
+                                    <td>@row["Transaction Date"] </td>
+
+                                    <td>@row["Batch Number"] </td>
+
+                                    <td>@row["Processed Transaction Amount"] </td>
+
+                                    <td>@row["Authorization Code"] </td>
+
+                                    <td>
+
+                                    @if (row["Card Type"].ToString().Length > 2)
+                                    {
+                                        @row["Card Type"].ToString().Substring(0, 2) 
+                                    }
+
+                                    @if (row["Cardholder Number"].ToString().Length > 5) {
+
+                                       <text>***</text>@row["Cardholder Number"].ToString().Substring(row["Cardholder Number"].ToString().Length - 4);    
+                                                                  
+                                    }
+
+                                    </td>
+
+
+                                    <td>@row["Invoice Number"] </td>
+                                </tr>
+
+                                i++;
+                            }
+                        </tbody>
+                    </table>
+
+                  </div>
+
+                <br />
+                <button class="btn btn-default close" data-dismiss="modal">&nbsp;Close</button>
+                &nbsp;
+                <button class="btn btn-primary" onclick="CloseAndReview();">&nbsp;Confirm & Reconcile</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $("#myModal").modal()                       // initialized with defaults
+    $("#myModal").modal({
+        backdrop: 'static',
+        keyboard: false,
+        width: '800px'
+    })   // initialized with no keyboard
+
+    $("#myModal").modal('show');
+    $(".select2").select2();
+
+
+    $(".onchange").keypress(function (e) {
+        if (e.which == 13) {
+            console.log($(this))
+            saveData($(this));
+        }
+    });
+
+    $(".onchange").change(function () {
+
+        saveData($(this));
+
+    });
+
+
+    function CloseAndReview() {
+
+        //Debe reprocesar antes y luego ir al batch
+        CompleteReconcile();
+    }
+
+
+    function CompleteReconcile() {
+
+        if (!confirm("This action will reconcile this bach. Please confirm to continue."))
+            return;
+
+
+
+        $.ajax({
+
+            type: 'POST',
+
+            url: '/MPA/UPDATE_BANKRECONCIL_PROCESSPENDING',
+
+            data: {
+                rid: '@Request["rid"].ToString()',
+                batchNo: '@Request["batchNo"].ToString()',
+                facility: '',
+                reconcile: 'T'
+            },
+
+            success: function (r) {
+                //ModalProcesandoHiden();
+                if (r.success) {
+
+                    window.location.href = '/MPA/BANKRECONCIL_PROCESSPANEL?TYPE_PROCESS=OPEN';  //&BATCHNO=' + '@Request["batchNo"].ToString()
+
+                } else {
+
+                     Mensajes(r.error, 'error', '');
+                }
+
+            }, error: function (result) {
+
+                // ModalProcesandoHiden();
+                $(this).addClass("bordered");
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+
+    }
+
+
+    function saveData(element) {
+
+        var updateFacility = $(element).val();
+
+        var rid = $(element).data("rid");
+
+      //  var element = $(this);
+        $.ajax({
+
+            type: 'POST',
+
+            url: '/MPA/UPDATE_BANKRECONCIL_PROCESSPENDING',
+
+            data: {
+
+                rid: rid,
+                facility: updateFacility,
+                reconcile: 'F',
+                batchNo: ''
+            },
+
+            success: function (r) {
+                //ModalProcesandoHiden();
+                if (r.success) {
+                    element.addClass("Greenborder");
+                } else {
+                    element.addClass("Redborder");
+                    //  Mensajes(r.error, 'error', '');
+                }
+
+            }, error: function (result) {
+
+                // ModalProcesandoHiden();
+                $(this).addClass("bordered");
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+
+    }
+
+</script>

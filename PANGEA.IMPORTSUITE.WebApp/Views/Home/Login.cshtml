@@ -1,0 +1,428 @@
+﻿@model PANGEA.IMPORTSUITE.WebApp.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@Session["APPLICATION_NAME"]</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/core.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/components.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/colors.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    @*<script type="text/javascript" src="~/Content/assets/js/plugins/loaders/pace.min.js"></script>*@
+    <script type="text/javascript" src="~/Content/assets/js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/core/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/loaders/blockui.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/ui/nicescroll.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/ui/drilldown.js"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="~/Content/assets/js/plugins/forms/styling/uniform.min.js"></script>
+
+    <script type="text/javascript" src="~/Content/assets/js/core/app.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/pages/login.js"></script>
+
+    <script>
+        function getChromeVersion() {
+            var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+            return raw ? parseInt(raw[2], 10) : false;
+        }
+
+        if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+            if (getChromeVersion() < 48)
+                alert('Please update your browser to a newer version.');
+        }
+    </script>
+
+    <style>
+        .validation-summary-errors {
+            color: red;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+            .clearfix:before,
+            .clearfix:after {
+                display: table;
+                content: "";
+                line-height: 0;
+            }
+
+            .clearfix:after {
+                clear: both;
+            }
+
+        .login {
+            background-color: #f9f9f9;
+            padding-top: 60px;
+            /* Helper */
+        }
+
+            .login .logo,
+            .login .single-sign-on,
+            .login .footer {
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .login .logo {
+                padding: 15px;
+                font-size: 23px;
+            }
+
+            .login .box {
+                background-color: #fff;
+                width: 350px;
+                margin: 0 auto;
+                border: 1px solid #d9d9d9;
+                border-top: 5px solid #4d7496;
+                /* * * * * * * * * * * *
+            * Inner Box
+            * * * * * * * * * * * */
+            }
+
+                .login .box .content {
+                    padding: 30px;
+                    padding-top: 10px;
+                    padding-bottom: 15px;
+                }
+
+                .login .box form {
+                    padding: 0;
+                    margin: 0;
+                }
+
+                .login .box .form-title {
+                    text-align: center;
+                    font-weight: 300;
+                    margin-bottom: 25px;
+                }
+
+                .login .box .form-group {
+                    margin: 0;
+                    padding: 0;
+                    margin-bottom: 15px;
+                }
+
+                .login .box .form-actions {
+                    background-color: #fff;
+                    border-top: none;
+                    padding: 10px 0;
+                    margin: 0;
+                }
+
+                .login .box .input-icon input {
+                    border-left: 2px solid #4d7496;
+                }
+
+                .login .box .has-error .input-icon input {
+                    border-left-color: #b94a48;
+                }
+
+                .login .box .has-success .input-icon input {
+                    border-left-color: #468847;
+                }
+
+                .login .box .checkbox {
+                    margin-top: 7px;
+                }
+
+                .login .box .inner-box {
+                    background-color: #f9f9f9;
+                    border-top: 1px solid #c0c0c0;
+                    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+                    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+                    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+                }
+
+                    .login .box .inner-box .content {
+                        padding: 12px 30px;
+                        text-align: center;
+                    }
+
+                    .login .box .inner-box a {
+                        color: #555555;
+                        font-size: 12px;
+                        font-weight: 600;
+                    }
+
+                        .login .box .inner-box a:hover {
+                            text-decoration: none;
+                            color: #4d7496;
+                        }
+
+                    .login .box .inner-box .close {
+                        font-size: 12px;
+                        margin-top: -3px;
+                        margin-right: -20px;
+                    }
+
+                        .login .box .inner-box .close.hide-default {
+                            display: none;
+                        }
+
+                    .login .box .inner-box form {
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                    }
+
+                    .login .box .inner-box a + form {
+                        margin-top: 20px;
+                    }
+
+                    .login .box .inner-box .form-group {
+                        margin-bottom: 10px;
+                    }
+
+                    .login .box .inner-box .forgot-password-done {
+                        padding: 10px 0;
+                    }
+
+                        .login .box .inner-box .forgot-password-done .success-icon,
+                        .login .box .inner-box .forgot-password-done .danger-icon {
+                            display: block;
+                            font-size: 30px;
+                            padding: 15px;
+                            padding-top: 0;
+                        }
+
+                        .login .box .inner-box .forgot-password-done .success-icon {
+                            color: #94b86e;
+                        }
+
+                        .login .box .inner-box .forgot-password-done .danger-icon {
+                            color: #e25856;
+                        }
+
+                        .login .box .inner-box .forgot-password-done span {
+                            font-weight: 600;
+                        }
+
+            .login .single-sign-on {
+                width: 350px;
+                padding: 15px 0;
+                opacity: 0.5;
+                -webkit-transition: opacity 200ms ease-out;
+                -moz-transition: opacity 200ms ease-out;
+                -o-transition: opacity 200ms ease-out;
+                transition: opacity 200ms ease-out;
+            }
+
+                .login .single-sign-on:hover {
+                    opacity: 1;
+                }
+
+                .login .single-sign-on span {
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                    display: block;
+                    color: #888888;
+                }
+
+                .login .single-sign-on .btn i {
+                    padding-right: 5px;
+                }
+
+            .login .footer {
+                width: 350px;
+                padding-top: 30px;
+            }
+
+                .login .footer a {
+                    font-size: 13px;
+                    color: #6f6f6f;
+                }
+
+                    .login .footer a:hover {
+                        text-decoration: none;
+                        color: #4d7496;
+                    }
+
+            .login .spacing-top {
+                padding-top: 7px !important;
+            }
+
+
+
+        .login_panel {
+            background: #fff;
+            position: fixed;
+            right: 0;
+            float: right;
+            height: 100%;
+            width: 500px;
+            margin: 0;
+            padding: 50px;
+            z-index: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+
+        #carousel-example-generic {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: -98;
+            /*background: url('/Imagenes/logo.png') 50% 90% no-repeat rgb(0,0,0);*/
+            opacity: 0.5;
+        }
+
+        .carousel {
+            z-index: -99;
+        }
+            /* keeps this behind all content */
+            .carousel .item {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                -webkit-transition: opacity 1s;
+                -moz-transition: opacity 1s;
+                -ms-transition: opacity 1s;
+                -o-transition: opacity 1s;
+                transition: opacity 1s;
+            }
+
+            .carousel .one {
+                background: url('/Imagenes/slide1.jpg');
+                background-size: cover;
+                -moz-background-size: cover;
+            }
+
+            .carousel .two {
+                background: url('/Imagenes/slide2.jpg');
+                background-size: cover;
+                -moz-background-size: cover;
+            }
+
+            .carousel .three {
+                background: url('/Imagenes/slide3.jpg');
+                background-size: cover;
+                -moz-background-size: cover;
+            }
+
+            .carousel .four {
+                background: url('/Imagenes/slide4.jpg');
+                background-size: cover;
+                -moz-background-size: cover;
+            }
+
+            .carousel .active.left {
+                left: 0;
+                opacity: 0;
+                z-index: 2;
+            }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px; /* Height of the footer */
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+
+            $('.carousel').carousel({
+                interval: 5000
+            });
+
+        });
+    </script>
+</head>
+
+<body style="overflow-x: hidden;">
+
+    <div class="col-md-8">
+        <div id="carousel-example-generic"></div>
+        <div class="carousel slide" data-ride="carousel" id="carousel">
+            <div class="carousel-inner">
+                <div class="active item one"></div>
+                <div class="item two"></div>
+                <div class="item three"></div>
+                <div class="item four"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="login_panel">
+
+        <!-- Logo -->
+        <div class="logo" style="margin: 30px 0 10px 10px;text-align: left;">
+            <img src="~/Imagenes/logo.png" alt="logo" />
+            @*  <br />
+                <strong>@Session["APPLICATION_NAME"]</strong>
+            *@
+        </div>
+        <!-- /Logo -->
+        <!-- Login Box -->
+        <div>
+            <div class="box-body">
+                <!-- Login Formular -->
+                @using (Html.BeginForm(new { @class = "form-vertical login-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false)
+
+                    @*<h3 class="form-title">Sign In to your Account</h3>*@
+
+				    <!-- Error Message -->
+                    <div class="alert fade in alert-danger" style="display: none;">
+                        <i class="icon-remove close" data-dismiss="alert"></i>
+                        Enter any username and password.
+                    </div>
+
+                    <!-- Input Fields -->
+                    <div class="form-group has-feedback">
+                        <div class="form-group has-feedback">
+                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @readonly = "readonly", Value = ViewBag.USER_LOGGED })
+                            <span class="fa fa-user form-control-feedback"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Enter <i class="icon-circle-right2 position-right"></i></button>
+                    </div>
+
+                    <div class="form-group alert-danger" >
+                        @ViewBag.EnvMessage
+                    </div>
+
+
+                    <footer>
+                        <div class="pull-left text-left" >
+                           <strong><a href="http://grouppangea.com" target="_blank">Pangea Group, Inc</a>.</strong> 
+                            <br />  Copyright &copy; @DateTime.Today.Year.ToString(), All rights reserved.
+                        </div>
+                        <div class="clearfix"></div>
+                    </footer>
+                }
+            </div><!-- /.login-box-body -->
+        </div>
+    </div>
+</body>
+
+</html>

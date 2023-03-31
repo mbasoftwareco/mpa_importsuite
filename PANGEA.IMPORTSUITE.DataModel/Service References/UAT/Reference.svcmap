@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="68c13759-976f-4c88-83e1-0bec2971247e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="tempuri.org.wsdl" MetadataType="Wsdl" ID="4e9f8f2f-c679-44ec-8741-e9afc7ff2f58" SourceId="1" SourceUrl="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="fe09bc68-d842-4b52-9064-f6797ebad811" SourceId="1" SourceUrl="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="ec8d0840-5e43-4c8d-974e-1083899859b8" SourceId="1" SourceUrl="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="b6b2a59d-6ca0-43dc-be91-1b6f8cb3d73a" SourceId="1" SourceUrl="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" />
+    <MetadataFile FileName="tempuri.org.xsd" MetadataType="Schema" ID="c8490b75-a51d-46e0-8df3-f3d2c686c742" SourceId="1" SourceUrl="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" />
+    <MetadataFile FileName="datacontracts.xsd" MetadataType="Schema" ID="18129d5c-0b3b-4d1c-978c-fde2d0774071" SourceId="1" SourceUrl="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c18747c5-bf33-4891-8fb4-69ed6ffa956c" SourceId="1" SourceUrl="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" />
+    <MetadataFile FileName="tempuri.org1.wsdl" MetadataType="Wsdl" ID="d5f83929-6bc3-4594-b993-4e7d33630be5" SourceId="1" SourceUrl="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" />
+    <MetadataFile FileName="Arrays1.xsd" MetadataType="Schema" ID="7547b99d-e1fe-4898-abdd-a1ee5d528849" SourceId="1" SourceUrl="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" />
+    <MetadataFile FileName="datacontracts1.xsd" MetadataType="Schema" ID="0382b8ac-ebcd-4481-9c5f-cc5ba4f74ddc" SourceId="1" SourceUrl="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" />
+    <MetadataFile FileName="tempuri.org1.xsd" MetadataType="Schema" ID="2fc6005c-41b1-4b21-ae33-678b82afd500" SourceId="1" SourceUrl="https://mtp-uat.sandbox.operations.dynamics.com/soap/services/PangeaServiceGroup/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

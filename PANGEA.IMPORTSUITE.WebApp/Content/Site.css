@@ -1,0 +1,189 @@
+﻿
+
+.page-header {
+    background: url("/Imagenes/background_header.png") repeat-x top right;
+    min-height: 90px !important;
+    width: 100%;
+    /*border-bottom: 1px solid #999999;*/
+    box-sizing: border-box;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+
+.dropdown-menu {
+    background: url("/Imagenes/background_header.png") repeat-x top right;
+}
+
+body {
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+.menu-list li > a:hover, .menu-list li > a:focus {
+    background-color: none !important;
+}
+
+/*.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background: url("/Imagenes/background_header.png") repeat-x top right;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background: url("/Imagenes/background_header.png") repeat-x top right;
+}*/
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #012548 !important;
+    background-color: white;
+}
+
+* {
+    font-family: Segoe UI, tahoma, verdana, arial;
+    font-size: 12px;
+}
+
+html, body {
+    height: auto !important;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+    border-left: 0px;
+    border-right: 0px;
+    cursor: default !important;
+    table-layout: fixed !important;
+    width: auto !important;
+    border-collapse: collapse !important;
+}
+
+    table thead tr {
+        height: 24px;
+        background-color: #FFFFFF;
+        border-left: 0px;
+        border-right: 0px;
+    }
+
+    table tbody {
+        font-size: 1em !important;
+    }
+
+        table tbody tr {
+            height: 19px;
+            background-color: #FFFFFF;
+            border: 1px #FFFFFF solid;
+            border-left: 0px;
+            border-right: 0px;
+            overflow: hidden;
+            vertical-align: top;
+        }
+
+    table > thead > tr > th:first-child {
+        border-left: 0px;
+    }
+
+
+    table th, table td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    table tbody td {
+        font-family: Segoe UI, tahoma, verdana, arial;
+        font-size: 11px;
+    }
+
+    table tbody td {
+        white-space: nowrap;
+        padding-top: 3px;
+        padding-bottom: 2px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+
+    table tr:hover {
+        background-color: #f0fafd;
+    }
+
+.table thead tr:hover {
+    background-color: #F9F9F9;
+}
+
+.dynGridViewSelectedRowTr {
+    margin: 0px;
+    border: 0px;
+    border-top: 1px solid #68B3FC !important;
+    border-bottom: 1px solid #68B3FC !important;
+    background-color: #BCE0FE !important;
+}
+
+.panel-title {
+    letter-spacing: -0.015em;
+    color: #118F00 !important;
+    font-weight: bold;
+}
+
+
+/*#navbar-first {
+    border-bottom: 1px solid #014688 !important;
+}*/
+.navbar-inverse {
+    background: #000 !important;
+}
+
+.panel {
+    background: #eaeaea;
+}
+
+.panel-heading {
+    padding: 2px 20px !important;
+    background: #cacaca;
+}
+
+.panel-body {
+    padding: 10px !important;
+}
+
+.form-control {
+    height: 30px !important;
+    padding: 5px 12px !important;
+    font-size: 12px !important;
+}
+
+
+.uploader input[type=file] {
+    height: 30px !important;
+}
+
+.uploader .filename {
+    height: 30px !important;
+    padding: 5px 12px !important;
+}
+
+.uploader .action {
+    height: 30px !important;
+}
+
+.select2-selection--single {
+    height: 30px !important;
+    padding: 5px 0 !important;
+}
+
+.btn {
+    white-space: nowrap;
+    padding: 4px 12px !important;
+    font-size: 12px !important;
+}
+
+.panel-primary > .panel-heading > .panel-title {
+    color: #fff !important;
+}
+
+.blockUI {
+    z-index: 9999999999999 !important;
+}

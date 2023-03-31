@@ -1,0 +1,49 @@
+﻿@using PANGEA.IMPORTSUITE.DataModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .panel-body {
+        /*background: white;*/
+    }
+
+    hr {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+</style>
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                @foreach (S_MENU opcion in ((List<S_MENU>)HttpContext.Current.Session["curUser_Menu"]).Where(f => f.S_MENU1 != null).Select(f=>f.S_MENU1).Distinct().OrderBy(f => f.SEQ))
+                {
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="#" style="font-size:15px;font-weight:bold;" data-toggle="tooltip" data-placement="bottom" title="@opcion.DESCRIPTION">@*<i class="@opcion.ICON position-left"></i>*@&nbsp;@opcion.NAME&nbsp;</a>
+                            <hr />
+                            <ul class="nav navbar-nav">
+                                @foreach (S_MENU subOpcion in ((List<S_MENU>)HttpContext.Current.Session["curUser_Menu"]).Where(f => f.S_MENU1 != null && f.PARENTOPTION == opcion.ROWID).Distinct().OrderBy(f => f.SEQ))
+                                {
+                                    if (subOpcion.URL.Contains("?"))
+                                    {
+                                        <li class=""><a style="font-size:13px;" href="@subOpcion.URL&nm=@HttpUtility.UrlEncode(subOpcion.NAME)&rhi=@subOpcion.ROWID" data-toggle="tooltip" data-placement="bottom" title="@subOpcion.DESCRIPTION"><i class="@subOpcion.ICON position-left"></i>&nbsp;@subOpcion.NAME&nbsp;</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class=""><a style="font-size:13px;" href="@subOpcion.URL?nm=@HttpUtility.UrlEncode(subOpcion.NAME)&rhi=@subOpcion.ROWID" data-toggle="tooltip" data-placement="bottom" title="@subOpcion.DESCRIPTION"><i class="@subOpcion.ICON position-left"></i>&nbsp;@subOpcion.NAME&nbsp;</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <br />
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

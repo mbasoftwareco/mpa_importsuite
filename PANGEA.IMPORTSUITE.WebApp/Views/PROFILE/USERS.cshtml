@@ -1,0 +1,183 @@
+﻿@model IEnumerable<PANGEA.IMPORTSUITE.DataModel.S_USER>
+
+<div class="panel panel-white">
+    <div class="panel-heading">
+        <h5 class="panel-title">Authorized Users</h5>
+        <div class="heading-elements">
+            <ul class="icons-list">
+                <li><a data-action="reload"></a></li>
+            </ul>
+        </div>
+        <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+
+            @if (Model.ToList().Count > 0)
+            {
+
+                <div class="col-sm-12">
+
+                    <div class="card-box table-responsive">
+
+                        <font color=brown>Please check / uncheck the granted column to activate / inactivate user.</font><br><br>
+
+        
+                            <button type="button" onclick="NEW_USER('')" class="btn btn-primary">ADD USER</button>
+               
+
+
+                        <table id="TblUsers" class="table table-striped table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>Role</th>
+                                    <th>Granted</th>
+                                    <th>Active</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @{ int i = 1; }
+                                @foreach (var row in Model.ToList())
+                                {
+                                    <tr>
+                                        <td class="text-bold">@row.USERNAME</td>
+                                        <td>@row.M_ROL.NAME</td>
+                                        <td>
+
+                                            @if (row.M_ROL.FULL_CONTROL == true)
+                                            {
+                                                <i class="icon-checkmark" style="color:green;font-size:18px"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="icon-x" style="color:red;font-size:18px"></i>
+                                            }
+
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" class="styled" data-rowid="@row.ROWID" @if (row.ACTIVE == true) { <text> checked="checked" </text>            } />
+                                        </td>
+                                        <td>
+                                            <a href="javascript:USER_MENU('@row.USERNAME')">
+                                                <i class="icon-lock" style="font-size:18px;"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:NEW_USER('@row.ROWID')">
+                                                <i class="icon-pencil" style="font-size:18px;"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    i++;
+                                }
+                            </tbody>
+                        </table>
+                                        
+                    </div>
+
+
+
+                    </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-sm-12 text-danger">
+                                            No record found.
+                                        </div>
+                                    }
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+    function USER_MENU(USERNAME) {
+        location.href = '/PROFILE/USER_MENU?USERNAME=' + USERNAME;
+    }
+
+
+    function NEW_USER(ROWID) {
+
+        ModalProcesandoShow();
+
+        $("#DivLoadingPage").html('');
+
+        $.ajax({
+            type: 'GET',
+            url: '/PROFILE/NEW_USER',
+            data: { ROWID: ROWID }, //params,
+            success: function (r) {
+
+                ModalProcesandoHiden();
+
+                $("#DivLoadingPage").html(r);
+
+            }
+        });
+    }
+
+    $(document).ready(function () {
+
+
+        $('input[type="checkbox"]').change(function () {
+
+            var chk = $(this);
+
+            ModalProcesandoShow();
+
+            $.ajax({
+                dataType: "json",
+                type: 'post',
+                url: '/PROFILE/SYS_USER_ACTIVE',
+                data: {
+                    ROWID: $(chk).data('rowid')
+                },
+                success: function (data) {
+
+                    ModalProcesandoHiden();
+                    Mensajes('Process Completed.', 'success', '');
+
+                },
+                error: function (request) {
+
+                    if ($(chk).prop("checked") == true)
+                        $(chk).prop("checked", false);
+                    else
+                        $(chk).prop("checked", true);
+
+                    ModalProcesandoHiden();
+                    Mensajes(request.statusText, 'error', '');
+                }
+            });
+
+        });
+
+        $('#TblUsers').DataTable({
+            "processing": true,
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            //"ordering": true,
+            "order": [],
+            "info": true,
+            "autoWidth": true,
+            "bDestroy": true,
+            aLengthMenu: [
+                [10, 50, 100, 150, 250, 350, -1],
+                [10, 50, 100, 150, 250, 350, "All"]
+            ],
+            "iDisplayLength": -1
+        });
+
+
+    });
+
+</script>

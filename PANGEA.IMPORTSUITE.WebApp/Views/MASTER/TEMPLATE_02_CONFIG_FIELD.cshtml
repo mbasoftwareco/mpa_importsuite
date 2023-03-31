@@ -1,0 +1,172 @@
+﻿@model IEnumerable<PANGEA.IMPORTSUITE.DataModel.T_TEMPLATE_FIELD>
+
+<script>
+    
+    $(document).ready(function () {
+
+        // Checkboxes, radios
+        $(".styled").uniform({ radioClass: 'choice' });
+
+        /*  $(".FIELD_DEST").on('blur', function () {
+
+              ModalProcesandoShow();
+
+              $.ajax({
+                  type: 'POST',
+                  url: '/MASTER/TEMPLATE_02_CONFIG_FIELD_VALUE',
+                  data: {
+                      ROWID_TEMPLATE_FIELD: $(this).data('rowid'),
+                      TYPE: $(this).data('type'),
+                      VALUE: $(this).val()
+                  },
+                  success: function (r) {
+
+                      ModalProcesandoHiden();
+
+                      Mensajes('Change process successfully.', 'success', '');
+
+                  }, error: function (result) {
+                  ModalProcesandoHiden();
+                      Mensajes(result.statusText, 'error', '');
+                  }
+              });
+          });*/
+
+
+        @if(Model.Count() > 0)
+        {
+            <text>
+        $(".UPLOAD_FILE").hide();
+        </text>
+        }
+
+    });
+
+
+    function DELETE_FIELD(ROWID_TEMPLATE_FIELD) {
+
+        if (confirm('Confirm to continue.') == false)
+            return;
+
+        ModalProcesandoShow();
+
+        $.ajax({
+            type: 'POST',
+            url: '/MASTER/TEMPLATE_02_CONFIG_DELETE_FIELD',
+            data: {
+                ROWID_TEMPLATE_FIELD: ROWID_TEMPLATE_FIELD,
+                ROWID_TEMPLATE: '@ViewBag.TEMPLATE.ROWID'
+            },
+            success: function (r) {
+
+                ModalProcesandoHiden();
+
+                Mensajes('Field remove successfully.', 'success', '');
+
+            }, error: function (result) {
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+
+    }
+
+
+    function SAVE_FIELD(ROWID) {
+
+        ModalProcesandoShow();
+
+        $.ajax({
+            type: 'POST',
+            url: '/MASTER/TEMPLATE_02_CONFIG_FIELD_VALUE',
+            data: {
+
+                ROWID: ROWID,
+                FIELD_DEST_NAME: $("#FIELD_DEST_NAME_" + ROWID).val(),
+                VALIDATIONS: $("#VALIDATIONS_" + ROWID).val(),
+                ROWID_EQ: $("#ROWID_EQ_" + ROWID).val(),
+                //REQUIRED: $("#REQUIRED_" + ROWID).val(),
+                ACTIVE: $("#ACTIVE_" + ROWID).val()
+            },
+            success: function (r) {
+
+                ModalProcesandoHiden();
+
+                Mensajes('Change process successfully.', 'success', '');
+
+            }, error: function (result) {
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+    }
+
+</script>
+
+<hr />
+<br />
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        <a href="javascript:DELETE_FIELD('ALL');">
+                            <i class="icon-cross2" style="color:red;"></i>
+                        </a>
+                    </th>
+                    <th>Field Source Name</th>
+                    <th>Field Dest. Name</th>
+                    <th>Validation</th>
+                    <th>Equivalence</th>
+                    @*<th>Required</th>*@
+                    <th>Activo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ToList())
+                {
+                    <tr id="row_@item.ROWID">
+
+                        <td class="text-center">
+                            <input type="hidden" name="ROWID" value="@item.ROWID" />
+                            <a href="javascript:DELETE_FIELD('@item.ROWID');">
+                                @if (item.ACTIVE)
+                                {
+                                    <i class="icon-cross2" style="color:red;"></i>
+                                }
+                                else
+                                {
+                                    <i class="icon-checkmark4" style="color:red;"></i>
+                                }
+                            </a>
+                        </td>
+
+                        <td class="text-bold">@item.FIELD_SOURCE_NAME</td>
+
+                        <td>
+                            <input type="text" class="form-control" id="FIELD_DEST_NAME_@item.ROWID" name="FIELD_DEST_NAME_@item.ROWID" value="@item.FIELD_DEST_NAME" />
+                        </td>
+
+                        <td>
+                            @Html.DropDownListFor(model => item.VALIDATIONS, new SelectList(ViewBag.VALIDATIONS, "CODE", "NAME"), string.Empty, htmlAttributes: new { @class = "form-control", @id = "VALIDATIONS_" + item.ROWID })
+                        </td>
+
+                        <td>
+                            @Html.DropDownListFor(model => item.ROWID_EQ, new SelectList(ViewBag.EQUIVALENCE, "ROWID", "EQ_CODE"), string.Empty, htmlAttributes: new { @class = "form-control FIELD_DEST", @id = "ROWID_EQ_" + item.ROWID })
+                        </td>
+
+                        @*<td>@Html.CheckBoxFor(modelItem => item.REQUIRED, new { @class = "styled FIELD_DEST", @id = "REQUIRED_" + item.ROWID })</td>*@
+
+                        <td>@Html.CheckBoxFor(modelItem => item.ACTIVE, new { @class = "styled FIELD_DEST", @id = "ACTIVE_" + item.ROWID })</td>
+
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="SAVE_FIELD(@item.ROWID)"><i class="icon-floppy-disk"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

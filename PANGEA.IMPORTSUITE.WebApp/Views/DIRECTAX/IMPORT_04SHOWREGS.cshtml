@@ -1,0 +1,146 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+@{
+    Layout = null;
+}
+<style>
+    .table {
+        width: auto !important;
+    }
+</style>
+<script>
+
+    $("#myModal").modal()                       // initialized with defaults
+    $("#myModal").modal({
+        backdrop: 'static',
+        keyboard: false,
+        width: '800px'
+    })   // initialized with no keyboard
+
+    $("#myModal").modal('show');
+
+    /*$('#TblRegs').DataTable({
+
+        "paging": false,
+
+        "fixedColumns": false,
+
+        "searching": false,
+
+        "autoWidth": false
+    });*/
+
+    function EXPORT_REGS() {
+
+        $.ajax({
+
+            type: 'POST',
+
+            url: '/DIRECTAX/EXPORT_IMPORT_04SHOWREGS',
+
+            data: {
+                GUID: '@Request.Params["GUID"]',
+                etype: '@Request.Params["etype"]',
+                TPL: '@Request.Params["TPL"]'
+            },
+
+            success: function (r) {
+
+                window.open(r);
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+    }
+
+
+    function EXPORT_REGS_MPA() {
+
+        $.ajax({
+
+            type: 'POST',
+
+            url: '/MPA/EXPORT_IMPORT_04SHOWREGS',
+
+            data: {
+                GUID: '@Request.Params["GUID"]',
+                RegType: '@Request.Params["RegType"]', 
+            },
+
+            success: function (r) {
+
+                window.open(r);
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+    }
+
+</script>
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                @if (Request["MPA"] == "1")
+                {
+                    <button type="button" onclick="EXPORT_REGS_MPA()"><i class="icon-file-excel"></i></button>
+                }
+                else
+                {
+                    <button type="button" onclick="EXPORT_REGS()"><i class="icon-file-excel"></i></button>
+                }
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@ViewBag.Title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive" style="height:480px;overflow-y:auto;">
+
+                    <table id="TblRegs" class="table table-bordered table-condensed table-striped table-hover">
+                        <thead>
+                            <tr>
+                                
+                                <th>&nbsp;</th>
+
+                                @foreach (DataColumn column in Model.Columns)
+                                {
+                                    <th>@column.ColumnName</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int i = 1; }
+
+
+                            @foreach (DataRow row in Model.Rows)
+                            {
+                                <tr>
+                                    <td align="center">@(i.ToString())</td>
+
+                                    @foreach (DataColumn rCol in Model.Columns)
+                                    {
+                                       if (rCol.ColumnName.ToUpper() == "ERRORMSG") { 
+                                        <td style="color:red; font-weight:bold;">@row[rCol.ColumnName]</td>
+                                       }
+                                       else
+                                       {
+                                        <td>@row[rCol.ColumnName]</td>
+                                       }
+                                    }
+
+                                </tr>
+                                i++;
+                            }
+                        </tbody>
+                    </table>
+     
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,664 @@
+﻿@using System.Data
+<style type="text/css">
+    .scroll_horizontal {
+        width: 100%;
+        overflow: auto;
+    }
+    .texto{
+         
+    text-align: left;
+    vertical-align: top;
+    max-width:350px;
+    white-space:normal;
+    text-wrap:none;
+    text-overflow:unset;
+    }
+</style><div class="panel">
+    <div class="panel-body">
+        <div class="row" style="overflow:hidden;">
+            <div class="col-md-12">
+                <div class="panel-group panel-group-control content-group-lg" id="accordion-control-right">
+
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">
+                                <a class="text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#" style="font-size:15px;">
+                                    <b>AX Posted Invoices &nbsp;</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div class="panel-collapse collapse in scroll_horizontal">
+
+                            <form method="POST" name="mainForm" id="mainForm">
+
+                                <div class="panel-body">
+                                    <div class="row" style="padding-bottom:15px;padding:10px;">
+
+
+                                        <input type="hidden" id="sidx" name="sidx" />
+                                        <input type="hidden" id="sort" name="sort" />
+
+                                        <div class="row">
+
+                                            <div class="col-md-2">
+                                                <label for="KEY" class="text-bold"> Customer, Invoice #</label>
+                                                <br />
+                                                <input class="form-control" id="KEY" name="KEY" type="text" value='@Request.Params["KEY"]' />
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <label for="SITE" class="text-bold">Facility</label>
+                                                <br />
+                                                <input class="form-control" id="SITE" name="SITE" type="text" value='@Request.Params["SITE"]' />
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label for="" class="text-bold">Invoice Date</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input class="form-control" type="date" id="dateFrom" name="dateFrom" value='@Request.Params["dateFrom"]' placeholder="Start" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input class="form-control" type="date" id="dateTo" name="dateTo" value='@Request.Params["dateTo"]' placeholder="End" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style="padding-top:5px;">
+
+                                            <div class="col-md-4">
+                                                <label for="" class="text-bold"> Creation Date</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input class="form-control" type="date" id="creaFrom" name="creaFrom" value='@Request.Params["creaFrom"]' placeholder="Start" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input class="form-control" type="date" id="creaTo" name="creaTo" value='@Request.Params["creaTo"]' placeholder="End" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <label for="FDELIVERY" class="text-bold">Delivery</label>
+                                                <br />
+                                                <select class="form-control" name="FDELIVERY" id="FDELIVERY">
+                                                    <option value="E-Mail" @if (Request.Params["FDELIVERY"] == "E-Mail") { <text> selected</text>}>
+                                                        E-Mail
+                                                    </option>
+
+                                                    <option value="Mail" @if (Request.Params["FDELIVERY"] == "Mail") { <text> selected</text>}>
+                                                        Mail Invoice
+                                                    </option>
+
+                                                    <option value="Do Not Mail" @if (Request.Params["FDELIVERY"] == "Do Not Mail") { <text> selected</text>}>
+                                                        Do Not Mail
+                                                    </option>
+
+                                                    <option value="BLANK" @if (Request.Params["FDELIVERY"] == "BLANK") { <text> selected</text>}>
+                                                        BLANK
+                                                    </option>
+
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-md-2">
+                                                <input type="hidden" name="load" value="1" id="load" />
+                                                <label>&nbsp;</label>
+                                                <br />
+                                                <button class="btn btn-primary" type="submit"><i class="icon-cloud-upload2"></i>&nbsp;Search !</button>
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                    <div class="row" style="padding-bottom:15px;padding:10px;">
+
+                                        @if (ViewBag.InvoiceList != null)
+                                    {
+
+                                        <div class="col-md-12">
+
+                                            <div class="row" style="padding-bottom:3px;padding:3px;">
+
+                                                @*<div class="col-md-2">
+                                <input type="button" class="btn btn-success" id="cmd1" value="Print Selected" />
+                            </div>*@
+
+                                                <div class="col-md-2">
+                                                    <input type="button" class="btn btn-success" id="cmd2" value="Delivery Selected" />
+                                                </div>
+
+                                                @*<div class="col-md-2">
+                                <a href="javascript:ExportExcel()" class="btn btn-success" title="Export to Excel"><img src="~/Imagenes/excel.png" alt="Export to Excel" />&nbsp;Export to Excel</a>
+                            </div>*@
+
+                                                <div class="col-md-2" id="loadingd"></div>
+                                                <div class="col-md-2" id="loadingda"></div>
+
+                                            </div>
+
+                                            <div class="row ">
+                                                <table class="table table-bordered table-striped table-hover">
+                                                    <thead>
+                                                        <tr bgcolor="#cccccc">
+
+                                                            <th class="chk"><input type="checkbox" id="checkAll" name="checkAll" /></th>
+
+                                                            <th>&nbsp;</th>
+
+                                                            @*<th id="Lease" data-sidx="Lease">Lease</th>*@
+
+                                                            <th id="Entity" data-sidx="Entity">Entity</th>
+
+                                                            <th id="Customer" data-sidx="Customer">Customer</th>
+
+                                                            <th id="Site" data-sidx="Site" style="max-width:300px;">Facility</th>
+
+                                                            <th id="Invoice" data-sidx="Invoice">Invoice</th>
+
+                                                            <th id="Date" data-sidx="Date">Date</th>
+
+                                                            <th id="Amount" data-sidx="Amount">Amount</th>
+
+                                                            <th id="CreatedOn" data-sidx="CreatedOn">Created On</th>
+
+                                                            <th id="DeliveryMethod" data-sidx="DeliveryMethod">Delivery Method</th>
+
+                                                            @*<th id="Adquisition" data-sidx="Adquisition">Acquisition</th>*@
+
+                                                            <th>&nbsp;</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @{ int counter = 1; double total = 0;}
+
+                                                        @foreach (DataRow row in ((DataTable)ViewBag.InvoiceList).Rows)
+                                                    {
+                                                        total += double.Parse(row["amount"].ToString());
+
+                                                    <tr bgcolor="#ffffff">
+
+                                                        <td valign="top"><input type="checkbox" id="_@(row["RECID"].ToString())" name="_@(row["RECID"].ToString())" value="1" class="check" /></td>
+
+                                                        <td valign="top">@counter</td>
+
+                                                        @*<td valign="top">@row["lease"].ToString().Split('|')[0]</td>*@
+
+                                                        <td valign="top"><b>@row["LegalEntity"].ToString()</b></td>
+
+                                                        <td valign="top"><b>@row["INVOICEACCOUNT"].ToString()</b> &nbsp;@row["Customer"].ToString()</td>
+
+                                                        <td valign="top" style="overflow:hidden;" class="texto">@row["Site"].ToString()</td>
+
+                                                        <td valign="top">
+                                                            <nobr><b>@row["INVOICEID"].ToString()</b></nobr>
+                                                        </td>
+
+                                                        <td valign="top">@(DateTime.Parse(row["INVOICEDATE"].ToString()).ToString("MM/dd/yyyy"))</td>
+
+                                                        <td align="right" valign="top">@((double.Parse(row["amount"].ToString())).ToString("N2"))</td>
+
+                                                        <td valign="top">@(DateTime.Parse(row["CreDate"].ToString()).ToString("MM/dd/yyyy HH:mm"))</td>
+
+                                                        <td valign="top">@row["EMAIL"].ToString()<br /><small>@row["LOCATOR"].ToString()</small></td>
+
+                                                        @*<td valign="top">@row["ADQUISITION"].ToString()</td>*@
+
+                                                        <td valign="top"><a href="javascript:ShowInvoice('@row["INVOICEID"].ToString()')"><b>View</b></a></td>
+
+
+                                                    </tr>
+
+                                                        counter++;
+                                                    }
+
+
+
+                                                        <tr bgcolor="#ffffaa">
+                                                            <td colspan="7" align="right"></td>
+                                                            <td align="right"><b>@total.ToString("N2")</b></td>
+                                                            <td colspan="3">&nbsp;</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+<style>
+    .ASC {
+        display: block;
+        /*top: 10px;
+        border-top-color: silver;
+        background: url('/Imagenes/sort_asc.png') no-repeat;
+        background-size: 50px 50px;*/
+    }
+
+    .DESC {
+        display: block;
+        /*background: url('/Imagenes/sort_desc.png') 115% 50% no-repeat;*/
+    }
+</style>
+
+<script type="text/javascript">
+
+    var sidx = '@(ViewBag.sidx)';
+    var sort_type = '@(ViewBag.sort)';
+
+    var img_asc = ' <img src="/Imagenes/sort_asc.png" style="height: 30px;margin: -13px;margin-right: 0px;">';
+    var img_desc = ' <img src="/Imagenes/sort_desc.png" style="height: 30px;margin: -8px;margin-right: 0px;">';
+
+
+    $(document).ready(function () {
+
+        $("#sidx").val(sidx);
+        $("#sort").val(sort_type);
+
+        $("#" + sidx).addClass(sort_type);
+
+        if (sort_type == 'ASC')
+            $("#" + sidx).html('<nobr>' + img_asc + sidx + '</nobr>');
+        else if (sort_type == 'DESC')
+            $("#" + sidx).html('<nobr>' + img_desc + sidx + '</nobr>');
+
+
+
+        $("#TableInvoice thead th").click(function () {
+
+            if ($(this).hasClass('chk'))
+                return;
+
+            if (sidx != $(this).data('sidx')) {
+                $('#TableInvoice thead th').removeClass("ASC");
+                $('#TableInvoice thead th').removeClass("DESC");
+            }
+
+            sidx = $(this).data('sidx');
+            $("#sidx").val(sidx);
+
+            $('#TableInvoice thead th').removeClass("sidx");
+            $(this).addClass('sidx');
+
+
+            if ($(this).hasClass('ASC') == true) {
+                $(this).removeClass('ASC');
+                $(this).addClass('DESC');
+
+                sort_type = 'DESC';
+                $("#sort").val('DESC');
+
+                $("#" + sidx).html('<nobr>' + img_asc + sidx + '</nobr>');
+            }
+            else if ($(this).hasClass('DESC') == true) {
+                $(this).removeClass('DESC');
+                $(this).addClass('ASC');
+
+                sort_type = 'ASC';
+                $("#sort").val('ASC');
+
+                $("#" + sidx).html('<nobr>' + img_desc + sidx + '</nobr>');
+            }
+
+            $("#load").val('2');
+            $("#mainForm").submit();
+
+        });
+
+
+        //CHECKBOX IN SELECT
+        //$(".MULTIPLE").multiselect(
+        // /*   {
+        //    selectedList: 4 // 0-based index
+        //    }*/
+        //);
+
+        $('#creaFrom').datepicker();
+        $('#creaTo').datepicker();
+        $('#dateFrom').datepicker();
+        $('#dateTo').datepicker();
+
+
+        var ENTITY = '@Request.Params["ENTITY"]';
+        $("#ENTITY").val(ENTITY.split(','));
+        $("#ENTITY").multiselect("refresh");
+
+        var ADQUISITION = '@Request.Params["ADQUISITION"]';
+        $("#ADQUISITION").val(ADQUISITION.split(','));
+        $("#ADQUISITION").multiselect("refresh");
+
+        var FDELIVERY = '@Request.Params["FDELIVERY"]';
+        $("#FDELIVERY").val(FDELIVERY.split(','));
+        //$("#FDELIVERY").multiselect("refresh");
+
+
+        @*var ENTITY = '@Request.Params["ENTITY"]';
+        $("#ENTITY").val(ENTITY.split(','));
+        $("#ENTITY").multiselect("refresh");
+
+        var ADQUISITION = '@Request.Params["ADQUISITION"]';
+        $("#ADQUISITION").val(ADQUISITION.split(','));
+        $("#ADQUISITION").multiselect("refresh");*@
+
+
+    });
+
+
+    function reloadGrid() {
+        window.location.href = 'Billing_Invoice_FLAT?load=1&KEY=' + $("#KEY").val() + "&SITE=" + $("#SITE").val() + "&dateFrom=" + $("#dateFrom").val() + "&dateTo=" + $("#dateTo").val() + "&creFrom=" + $("#creaFrom").val() + "&creTo=" + $("#creaTo").val();
+    }
+
+    function ShowInvoice(invoice_id) {
+
+        window.open("Invoice_Form?invoice_id=" + invoice_id);
+
+    }
+
+
+    $("#checkAll").click(function (e) {
+        if (this.checked) {
+            $('.check').each(function () {
+                this.checked = true;
+            });
+        } else {
+            $('.check').each(function () {
+                this.checked = false;
+            });
+
+        }
+    });
+
+
+    /*
+    $(function () {
+
+        $("#dateFrom").datepicker({
+            //defaultDate: "+1w",
+            dateFormat: 'mm/dd/yy',
+            maxDate: '180',
+            changeMonth: true,
+            numberOfMonths: 1
+        });
+    });
+
+    $(function () {
+        $("#dateTo").datepicker({
+            //defaultDate: "+1w",
+            dateFormat: 'mm/dd/yy',
+            maxDate: '180',
+            changeMonth: true,
+            numberOfMonths: 1
+        })
+    });
+
+    
+    $(function () {
+
+        $("#creaFrom").datepicker({
+            //defaultDate: "+1w",
+            dateFormat: 'mm/dd/yy',
+            maxDate: '180',
+            changeMonth: true,
+            numberOfMonths: 1
+        });
+    });
+
+    $(function () {
+        //$("#creaTo").datepicker({
+        //    //defaultDate: "+1w",
+        //    dateFormat: 'mm/dd/yy',
+        //    maxDate: '180',
+        //    changeMonth: true,
+        //    numberOfMonths: 1
+        //})
+    });
+    */
+
+    // PRINT - INVOICES
+
+    jQuery("#cmd1").click(function () {
+
+        //Manada a imprimir todos los filtros
+        $("#loadingd").html("<img src='/Imagenes/loading.gif' />");
+
+        $("#cmd1").prop("disabled", true);
+
+        //alert($("#mainForm").serialize());
+
+        $("#load").val("P");
+
+        $.ajax({
+
+            url: "Billing_Invoice_PROCESS_FLAT", //?load=P&KEY=" + $("#KEY").val() + "&SITE=" + $("#SITE").val() + "&dateFrom=" + $("#dateFrom").val() + "&dateTo=" + $("#dateTo").val() + "&creFrom=" + $("#creaFrom").val() + "&creTo=" + $("#creaTo").val(),
+
+            type: "POST",
+
+            data: $("#mainForm").serialize(),
+
+            success: function (r) {
+
+                $("#cmd1").prop("disabled", false);
+
+                if (r.indexOf("ok") >= 0) {
+
+                    var result = r.split('|');
+
+                    if (result[1] != "")
+                        alert(result[1]);
+
+                    $("#loadingd").html("");
+
+                    UncheckAll();
+
+                } else if (r.indexOf("Error") >= 0) {
+
+                    $("#loadingd").html("<span style='color:red'>" + r + "</span>");
+
+                }
+            }
+        });
+
+
+    });
+
+
+    jQuery("#cmd1a").click(function () {
+
+        //Manada a imprimir todos los filtros
+        $("#loadingda").html("<img src='/Imagenes/loading.gif' />");
+
+        $("#cmd1a").prop("disabled", true);
+
+        $("#load").val("P");
+
+        $.ajax({
+
+            url: "Billing_Invoice_PROCESS_FLAT", //?load=P&KEY=" + $("#KEY").val() + "&SITE=" + $("#SITE").val() + "&dateFrom=" + $("#dateFrom").val() + "&dateTo=" + $("#dateTo").val() + "&creFrom=" + $("#creaFrom").val() + "&creTo=" + $("#creaTo").val(),
+
+            type: "POST",
+
+            data: $("#mainForm").serialize(),
+
+            success: function (r) {
+
+                $("#cmd1a").prop("disabled", false);
+
+                if (r.indexOf("ok") >= 0) {
+
+                    var result = r.split('|');
+
+                    if (result[1] != "")
+                        alert(result[1]);
+
+                    $("#loadingda").html("");
+
+                    UncheckAll();
+
+                } else if (r.indexOf("Error") >= 0) {
+
+                    $("#loadingda").html("<span style='color:red'>" + r + "</span>");
+
+                }
+            }
+        });
+
+
+    });
+
+
+
+    // END PRINT
+
+
+    //EMAIL INVOICES
+
+
+    jQuery("#cmd2").click(function () {
+        //Manda a procesar todos los filtros
+
+        $("#loadingd").html("<img src='/Imagenes/loading.gif' />");
+
+        $("#cmd2").prop("disabled", true);
+
+        $("#load").val("E");
+
+        $.ajax({
+
+            url: "Billing_Invoice_PROCESS_FLAT", //?load=E&KEY=" + $("#KEY").val() + "&SITE=" + $("#SITE").val() + "&dateFrom=" + $("#dateFrom").val() + "&dateTo=" + $("#dateTo").val() + "&creFrom=" + $("#creaFrom").val() + "&creTo=" + $("#creaTo").val(),
+
+            type: "POST",
+
+            data: $("#mainForm").serialize(),
+
+            success: function (r) {
+
+                $("#cmd2").prop("disabled", false);
+
+                if (r.indexOf("ok") >= 0) {
+
+                    var result = r.split('|');
+
+                    if (result[1] != "")
+                        alert(result[1]);
+
+                    $("#loadingd").html("");
+
+                    UncheckAll();
+
+                } else if (r.indexOf("Error") >= 0) {
+
+                    $("#loadingd").html("<span style='color:red'>" + r + "</span>");
+
+                }
+            }
+        });
+
+
+    });
+
+
+    jQuery("#cmd2a").click(function () {
+        //Manda a procesar todos los filtros
+
+        $("#loadingda").html("<img src='/Imagenes/loading.gif' />");
+
+        $("#cmd2").prop("disabled", true);
+
+        $("#load").val("E");
+
+        $.ajax({
+
+            url: "Billing_Invoice_PROCESS_FLAT", //?load=E&KEY=" + $("#KEY").val() + "&SITE=" + $("#SITE").val() + "&dateFrom=" + $("#dateFrom").val() + "&dateTo=" + $("#dateTo").val() + "&creFrom=" + $("#creaFrom").val() + "&creTo=" + $("#creaTo").val(),
+
+            type: "POST",
+
+            data: $("#mainForm").serialize(),
+
+            success: function (r) {
+
+                $("#cmd2a").prop("disabled", false);
+
+                if (r.indexOf("ok") >= 0) {
+
+                    var result = r.split('|');
+
+                    if (result[1] != "")
+                        alert(result[1]);
+
+                    $("#loadingda").html("");
+
+                    UncheckAll();
+
+                } else if (r.indexOf("Error") >= 0) {
+
+                    $("#loadingda").html("<span style='color:red'>" + r + "</span>");
+
+                }
+            }
+        });
+
+
+    });
+
+
+    function UncheckAll() {
+
+        $('.check').each(function () {
+            this.checked = false;
+        });
+
+        window.location.href = '/MPA/Billing_Invoice_FLAT';
+    }
+
+
+
+    function ExportExcel(file) {
+
+
+        $("#loadingda").html("<img src='/Imagenes/loading.gif' />");
+        $("#loadingd").html("<img src='/Imagenes/loading.gif' />");
+
+        $.ajax({
+
+            url: '/Home/Billing_Invoice_PROCESS_FLAT_Export',
+
+            type: 'post',
+
+            data: $("#mainForm").serialize(),
+
+            success: function (response) {
+
+                $("#loadingda").html("");
+                $("#loadingd").html("");
+                window.open(response);
+            }
+
+        });
+
+
+    }
+
+
+    //END EMAIL
+</script>
+

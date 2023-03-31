@@ -1,0 +1,209 @@
+﻿<link rel="stylesheet" type="text/css" media="screen" href="~/js/jqgrid/themes/smoothness/jquery-ui-1.10.3.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="~/js/jqgrid/ui.jqgrid.css" />
+<script src="~/js/jqgrid/grid.locale-en.js" type="text/javascript"></script>
+<script src="~/js/jqgrid/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+
+
+<style type="text/css">
+    .ui-jqgrid .ui-jqgrid-htable th {
+        font-size: 1.0em;
+        font-weight: bold;
+    }
+
+    .ui-jqgrid td {
+        font-size: 1.0em;
+    }
+
+    th.ui-th-column div {
+        white-space: normal !important;
+        height: auto !important;
+        padding: 2px;
+    }
+
+    td.ui-td-column div {
+        white-space: normal !important;
+        height: auto !important;
+        padding: 2px;
+    }
+
+    .ui-jqgrid tr.jqgrow td {
+        white-space: normal !important;
+    }
+</style>
+
+<table width="95%" style="margin: 0px 10px 15px 15px;">
+
+
+
+    <tr>
+        <td valign="bottom">
+            <font color="Brown" size="4"><b>Billing Print/Sent&nbsp;</b></font>
+            <br><div id="content_external"></div>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" valign="top">
+
+            <table id="tblBilling"></table>
+            <div id="zpager"></div>
+        </td>
+
+    </tr>
+</table>
+
+<script type="text/javascript">
+
+
+        var lastsel2;
+
+        jQuery("#tblBilling").jqGrid({
+            url: 'Billing_Delivery_Data',
+            width: 'auto',
+            datatype: "json",
+            height: 'auto',
+            scrollOffset: 0,
+            mtype: 'GET',
+            rowNum: 1000,
+            scrolling: false,
+            treeGrid: false,
+            gridview: false,
+            rownumbers: true,
+            footerrow: true,
+            pager: "#zpager",
+            datatype: "json",
+
+
+    /*
+            File
+            Total invoices
+            Invoices to print
+            Invoices to send
+            Invoices with no contact
+            Actual Invoices Printed
+            Actual Invoices Sent
+
+    */
+            colNames: ['File', 'Date', 'Total Invoices', 'Invoices to Print', 'Invoices to Send', 'Invoices with no Contact', 'Actual Invoices Printed', 'Actual Invoices Send', '$ Invoices to Print', '$ Invoices to Send', '$ Invoices with no Contact'],
+
+            colModel: [
+
+
+                {
+                   name: 'file', id: 'file', width: 300
+                },
+
+                { name: 'date', id: 'date', search: true, editable: true, width: 105 , align: 'center'  },
+
+                 {
+                     name: 'r1', id: 'r1', width: 80, align: 'center', formatter: 'number', formatoptions: { decimalSeperator: '.', thousandsSeparator: ",",
+
+decimalPlaces: 0 }
+                 },
+
+                 {
+                     name: 'r2', id: 'r2', width: 80, align: 'center', formatter: 'number', formatoptions: { decimalSeperator: '.', thousandsSeparator: ",",
+
+decimalPlaces: 0 }
+                 },
+
+                 {
+                     name: 'r3', id: 'r3', width: 80, align: 'center', formatter: 'number', formatoptions: { decimalSeperator: '.', thousandsSeparator: ",",
+
+decimalPlaces: 0 }
+                 },
+
+                 {
+                     name: 'r4', id: 'r4', width: 80, align: 'center', formatter: 'number', formatoptions: { decimalSeperator: '.', thousandsSeparator: ",",
+
+decimalPlaces: 0 }
+                 },
+                 {
+                     name: 'r5', id: 'r5', width: 80, align: 'center', formatter: 'number', formatoptions: { decimalSeperator: '.', thousandsSeparator: ",",
+
+decimalPlaces: 0 }
+                 },
+
+                 {
+                     name: 'r6', id: 'r6', width: 80, align: 'center', formatter: 'number', formatoptions: { decimalSeperator: '.', thousandsSeparator: ",",
+
+decimalPlaces: 0 }
+                 },
+
+                {
+                       name: 'r7', id: 'r7', width: 80, align: 'center', formatter: 'number', formatoptions: { decimalSeperator: '.', thousandsSeparator: ",",
+
+decimalPlaces: 0 }
+                },
+                {
+                    name: 'r8', id: 'r8', width: 80, align: 'center', formatter: 'number', formatoptions: { decimalSeperator: '.', thousandsSeparator: ",",
+
+decimalPlaces: 0 }
+                },
+                {
+                    name: 'r9', id: 'r9', width: 80, align: 'center', formatter: 'number', formatoptions: { decimalSeperator: '.', thousandsSeparator: ",",
+
+decimalPlaces: 0 }
+                }
+
+
+            ],
+
+            gridComplete: function () {
+
+                var grid = $("#tblBilling");
+
+                var ids = jQuery("#tblBilling").jqGrid('getDataIDs');
+
+                var curExport = '';
+
+                for (var i = 0; i < ids.length; i++) {
+
+                    var currenItem = ids[i];
+
+                    rowid = $('#tblBilling').jqGrid('getCell', currenItem, 'file');
+
+                    curExport = "<a href=\"javascript:ExportExcel('" + rowid + "')\">" + rowid  + "</a>";
+
+                    jQuery("#tblBilling").jqGrid('setRowData', currenItem, { file: '<nobr>' + curExport + '</nobr>' });
+
+                }
+            }
+
+        });
+
+
+        function reloadGrid() {
+
+            $('#tblBilling').setGridParam({ url: 'Billing_Delivery_Data' });
+
+            $('#tblBilling').trigger("reloadGrid");
+
+        }
+
+
+        function ExportExcel(file) {
+
+            //alert('HOLA');
+            $("#content_external").html('<img src="/Images/loading.gif" />');
+
+            $.ajax({
+                url: '/Home/Export_Billing_Delivery',
+                type: 'post',
+                data: {
+                    curFile: file
+                },
+                success: function (response) {
+                    $("#content_external").html('');
+                    window.open(response);
+                }
+
+            });
+
+
+            //$("#content_external").html('');
+
+        }
+
+
+</script>

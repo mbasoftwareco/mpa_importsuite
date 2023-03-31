@@ -1,0 +1,248 @@
+﻿@using PANGEA.IMPORTSUITE.DataModel.Util
+@model File_Info
+
+@{
+    Layout = null;
+}
+<style>
+    .error {
+        color: red;
+    }
+</style>
+<script>
+
+    $("#myModal").modal()                       // initialized with defaults
+    $("#myModal").modal({
+        backdrop: 'static',
+        keyboard: false,
+        width: '800px',
+        heigth:'500px'
+    })   // initialized with no keyboard
+
+    $("#myModal").modal('show');
+
+
+    function SAVE_FILEINFO_NEWDATA() {
+        if ($('#form-file').valid()) {
+
+            ModalProcesandoShow();
+
+            $.ajax({
+                type: 'POST',
+                url: '/MPA/FILEINFO_NEWDATA',
+                data: $('#form-file').serialize(),
+                success: function (r) {
+                    console.log(r);
+                    alert('SAVE SUCCESS');
+                    window.location.href = window.location.href;
+
+                }, error: function (request) {
+
+                    ModalProcesandoHiden();
+                    Mensajes(request.statusText, 'error', '');
+                }
+            });
+        }
+    }
+
+    function SAVE_FILEINFO_UPDATEDATA() {
+        if ($('#form-file').valid()) {
+
+            ModalProcesandoShow();
+
+            $.ajax({
+                type: 'POST',
+                url: '/MPA/FILEINFO_UPDATEDATA',
+                data: $('#form-file').serialize(),
+                success: function (r) {
+                    console.log(r);
+
+                    alert('SAVE SUCCESS');
+                    window.location.href = window.location.href;
+
+                }, error: function (request) {
+
+                    ModalProcesandoHiden();
+                    Mensajes(request.statusText, 'error', '');
+                }
+            });
+        }
+    }
+
+</script>
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                @if (@Model.Name!=null)
+                {
+                    <h4 class="modal-title">@Model.Name</h4>
+                }
+                else
+                {
+                    <h4 class="modal-title">New Information File</h4>
+                }
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <form class="form-horizontal widget-main" role="form" id="form-file" method="post">
+
+                            <div class="col-sm-6">
+
+                                <input type="hidden" name="id" id="id" value="@Model.id" />
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label no-padding-right"
+                                               for="source">Source File&nbsp;<span class="required">*</span></label>
+
+                                        <div class="col-sm-8">
+                                            <input type="text" id="sourceFile" name="sourceFile" placeholder="source File"
+                                                   class="form-control" value="@Model.sourceFile" maxlength="10" required="required" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label no-padding-right"
+                                               for="name">Name&nbsp;<span class="required">*</span></label>
+
+                                        <div class="col-sm-8">
+                                            <input type="text" id="Name" name="Name" placeholder="Name"
+                                                   class="form-control" value="@Model.Name" maxlength="50" required="required" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label no-padding-right"
+                                               for="facilitycode">Facilty Code&nbsp;</label>
+
+                                        <div class="col-sm-8">
+                                            <input type="text" id="facilityCode" name="facilityCode" placeholder="facility Code"
+                                                   class="form-control" value="@Model.facilityCode" maxlength="50" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label no-padding-right"
+                                               for="filetype">File Type&nbsp;</label>
+
+                                        <div class="col-sm-8">
+                                            <select class="form-control" name="filetype" id="filetype">
+                                                <option value=""></option>
+                                                @foreach (var row in (ViewBag.FilesTypes.Rows))
+                                                {
+                                                    if (@row["Value"] == Model.filetype)
+                                                    {
+                                                        <option value="@row["Value"]" selected>@row["Label"]</option>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@row["Value"]">@row["Label"]</option>
+
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label no-padding-right"
+                                               for="facilitycode">Merchant Id&nbsp;</label>
+
+                                        <div class="col-sm-8">
+                                            <input type="text" id="merchantId" name="merchantId" placeholder="merchant Id"
+                                                   class="form-control" value="@Model.merchantId" maxlength="50" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label no-padding-right"
+                                               for="path">Path&nbsp;<span class="required">*</span></label>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="path" name="path" placeholder="path"
+                                                   class="form-control" value="@Model.path" maxlength="50" required="required" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                                @if (Model.Name == null)
+                                {
+                                    <div class="row" style="display:none">
+
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right"
+                                                       for="runConciliation">runConciliation&nbsp;</label>
+                                                <div class="col-sm-8">
+                                                    <input type="number" id="runConciliation" name="runConciliation" placeholder="runConciliation"
+                                                           class="form-control" value="@Model.runConciliation" min="0" max="1" />
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right"
+                                                       for="columnsQty">columnsQty&nbsp;</label>
+                                                <div class="col-sm-7">
+                                                    <input type="number" id="columnsQty" name="columnsQty" placeholder="columnsQty"
+                                                           class="form-control" value="@Model.columnsQty" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right"
+                                                       for="rowsFrom">rowsFrom&nbsp;</label>
+                                                <div class="col-sm-8">
+                                                    <input type="number" id="rowsFrom" name="rowsFrom" placeholder="rowsFrom"
+                                                           class="form-control" value="@Model.rowsFrom" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right"
+                                                       for="ConciliateWith">ConciliateWith&nbsp;</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" id="ConciliateWith" name="ConciliateWith" maxlength="10" placeholder="ConciliateWith"
+                                                           class="form-control" value="@Model.ConciliateWith" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right"
+                                                       for="inactiveDate">inactiveDate&nbsp;</label>
+                                                <div class="col-sm-8">
+                                                    <input type="date" id="inactiveDate" name="inactiveDate" placeholder="inactiveDate"
+                                                           class="form-control" value="@Model.inactiveDate" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+
+
+
+
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        @if (Model.Name != null)
+                                        {
+                                            <button type="button" class="btn btn-primary" onclick="SAVE_FILEINFO_UPDATEDATA();">UPDATE </button>
+                                        }
+                                        else
+                                        {
+                                            <button type="button" class="btn btn-primary" onclick="SAVE_FILEINFO_NEWDATA();">SAVE</button>
+                                        }
+                                    </div>
+                                </div>
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

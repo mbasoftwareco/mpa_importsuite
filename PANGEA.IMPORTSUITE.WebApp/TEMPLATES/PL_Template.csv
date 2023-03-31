@@ -1,0 +1,2 @@
+Relation;Description;AccountCode;AccountRelation;ItemCode;ItemRelation;InventSiteId;QuantityAmountFrom;QuantityAmountTo;UnitId;Amount;Currency;Markup;FromDate;ToDate
+Relation;Description;Account code;Account selection;Item code;Item relation;Site;From;To;Unit;Amount in currency;Currency;Price charges;From date;To date

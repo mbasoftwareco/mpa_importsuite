@@ -1,0 +1,2 @@
+JNL_SQ;TransDate;LEGALENTITY;AccountType;AccountNum;Dimensions[1];Invoice;Currency;Description;AmountCurDebit;AmountCurCredit;OFFSETLEGALENTITY;OffSetAccountType;OffSetAccountNum;OffSetDimensions[1];PaymMode;Payment;DocumentNum;DocumentDate;TaxGroup;TaxItemGroup
+JNL_SQ;Date;Company;Account Type;Main Account;Business unit;Invoice Number;Currency;Line Description;Debit;Credit;Offset Company;Offset Account Type;Offset Account;Business Unit2;Methods of Payment;Terms of Payment;Document;Document date;Sales Tax Group;Item Sales Tax Group

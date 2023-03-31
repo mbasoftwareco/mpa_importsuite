@@ -1,0 +1,145 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+@{
+    Layout = null;
+}
+
+<script>
+
+    function LOAD_IMPORT_TEMPLATE_RESULT(FILTER) {
+
+        window.open('/PROCESS/IMPORT_TEMPLATE_RESULT?ROWID_TEMPLATE=@(Request["ROWID_TEMPLATE"])&GUID=@(Request["GUID"])&FILTER=' + FILTER, '@(Request["ROWID_TEMPLATE"])-@(Request["GUID"])', "width=1100,height=660,scrollbars=YES,top=0,left=250");
+
+    }
+
+    /* $('#TblMenu').DataTable({
+        "autoWidth": true
+    });*/
+
+</script>
+
+<br />
+
+@*<div class="row">*@
+<div class="col-sm-12">
+
+    <div class="card-box table-responsive">
+
+        @*<font color=brown>Click on description to see results.</font><br><br>*@
+
+        <table id="TblMenu" class="table table-bordered table-condensed table-striped">
+            <!--   -->
+            <thead>
+                <tr>
+                    <th align="center">ID</th>
+
+                    <th width="40%">File</th>
+
+                    <th width="170px;">Created On</th>
+
+                    <th align="center">Total Regs.</th>
+
+                    <th>&nbsp;</th>
+
+                    <th align="center">Errors Regs</th>
+
+                    <th>&nbsp;</th>
+
+                    <th align="center">Valid Regs</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @{ int i = 1; }
+                @{ double diff = 0; }
+                @foreach (DataRow row in Model.Rows)
+                {
+                    <tr>
+
+                        <td>@row["XGUID"]</td>
+
+                        <td width="40%"><nobr>@row["NAMEFILE"]</nobr></td>
+
+                        <td><nobr>@row["CreatedDateTime"]</nobr></td>
+
+                        <td align="center">
+                            <b>
+                                @if (double.Parse(row["RecId"].ToString()) > 0)
+                                {
+                                    <a href="javascript:PROCESS_SHOWREGS('@row["XGUID"]','TOTAL');">@double.Parse(row["RecId"].ToString()).ToString("N0")</a>
+                                }
+                                else
+                                {
+                                    <text>0</text>
+                                }
+                            </b>
+                        </td>
+
+                        <td align="center">=</td>
+
+                        <td align="center">
+                            <b>
+                                @if (double.Parse(row["ErrorId"].ToString()) > 0)
+                                {
+                                    <a href="javascript:PROCESS_SHOWREGS('@row["XGUID"]','ERROR');">
+                                        <font color=blue>
+                                            @double.Parse(row["ErrorId"].ToString()).ToString("N0")
+                                        </font>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <text>0</text>
+                                }
+                            </b>
+                        </td>
+
+                        <td align="center">+</td>
+
+                        <td align="center">
+                            @if (double.Parse(row["RecId"].ToString()) - double.Parse(row["ErrorId"].ToString()) > 0)
+                            {
+                                <a href="javascript:PROCESS_SHOWREGS('@row["XGUID"]','READY');">
+                                    @{ diff = double.Parse(row["RecId"].ToString()) - double.Parse(row["ErrorId"].ToString()); }
+                                    @diff.ToString("N0")
+                                </a>
+                            }
+                            else
+                            {
+                                <text>0</text>
+                            }
+                        </td>
+
+                    </tr>
+
+                            i++;
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <br />
+
+    <button class="btn bg-warning" onclick="PROCESS_02_RUN_VALIDATION('@Request["GUID"]', true);"><i class="icon-check"></i>&nbsp;Validate Records</button>
+
+    <button class="btn bg-danger" onclick="CANCEL_PROCESS()"><i class="icon-cancel-circle2"></i>&nbsp;Start Over</button>
+
+    @if (int.Parse(((DataTable)Model).Rows[0]["ErrorId"].ToString()) == 0)
+    {
+        <button class="btn btn-primary"  id="btnSendErp" onclick="PROCESS_03_SENDERP('@Request["GUID"]');"><i class="icon-cloud-upload2"></i>&nbsp;Send to ERP</button>
+    }
+    else
+    {
+        <label style="color:brown">&nbsp;<b>Must fix all records with error before send transaction to ERP</b></label>
+    }
+
+
+
+    <div id="p2_error" style="color:red"></div>
+
+
+
+</div>
+
+@*</div>*@

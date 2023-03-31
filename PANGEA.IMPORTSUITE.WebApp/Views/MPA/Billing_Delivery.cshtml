@@ -1,0 +1,315 @@
+﻿@using System.Data
+<style type="text/css">
+    .scroll_horizontal {
+        width: 100%;
+        overflow: auto;
+    }
+
+    .hoverLink:hover {
+    background-color: yellow;
+}
+    
+    
+
+</style>
+<div class="panel">
+    <div class="panel-body">
+        <div class="row" style="overflow:hidden;">
+            <div class="col-md-12">
+                <div class="panel-group panel-group-control content-group-lg" id="accordion-control-right">
+
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">
+                                <a class="text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#" style="font-size:15px;">
+                                    <b>Billing Delivery &nbsp;</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div class="panel-collapse collapse in scroll_horizontal">
+
+                            <form method="POST"  id="mainForm">
+
+                                <div class="panel-body">
+                                    <div class="row" style="padding-bottom:15px;padding:10px;">
+
+                                        <div class="row" style="padding-top:5px;">
+
+                                            <div class="col-md-4">
+                                                <label for="" class="text-bold">@if(ViewBag.DatesIsNull){ <text><b class="text-brown">You must select dates*</b></text>}else{<text>Dates</text>}</label>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input class="form-control " type="text" id="StartDate" name="StartDate" value='@Request.Params["StartDate"]' placeholder="Start" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input class="form-control " type="text" id="EndDate" name="EndDate" value='@Request.Params["EndDate"]' placeholder="End" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            @*<div class="col-md-2">
+                                                <label for="FDELIVERY" class="text-bold">Delivery</label>
+                                                <br />
+                                                <select class="form-control" name="FDELIVERY" id="FDELIVERY">
+                                                    <option value="E-Mail" @if (Request.Params["FDELIVERY"] == "E-Mail") { <text> selected</text>}>
+                                                        E-Mail
+                                                    </option>
+
+                                                    <option value="Mail Invoice" @if (Request.Params["FDELIVERY"] == "Mail Invoice") { <text> selected</text>}>
+                                                        Mail Invoice
+                                                    </option>
+
+                                                    <option value="Do Not Mail" @if (Request.Params["FDELIVERY"] == "Do Not Mail") { <text> selected</text>}>
+                                                        Do Not Mail
+                                                    </option>
+
+                                                    <option value="BLANK" @if (Request.Params["FDELIVERY"] == "BLANK") { <text> selected</text>}>
+                                                        BLANK
+                                                    </option>
+
+                                                </select>
+
+                                            </div>*@
+
+                                            <div class="col-md-2">
+                                                <input type="hidden" name="load" value="1" id="load" />
+                                                <label>&nbsp;</label>
+                                                <br />
+                                                <button class="btn btn-primary" type="submit"><i class="icon-cloud-upload2"></i>&nbsp;Search !</button>
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                    <div class="row" style="padding-bottom:15px;padding:10px;">
+
+                                        @if (ViewBag.Data != null )
+                                        {
+
+                                            <div class="col-md-12">
+
+                                                <div class="row ">
+                                                    <table class="table table-bordered table-striped table-hover">
+                                                        <thead>
+                                                            <tr bgcolor="#cccccc">
+
+                                                                <th id="Total" data-sidx="Total">Total </th>
+
+                                                                <th id="Customer" data-sidx="Customer">To Email</th>
+
+                                                                <th id="Site" data-sidx="Site">Email Sent</th>
+
+                                                                <th id="Invoice" data-sidx="Invoice">Email not Sent</th>
+
+                                                                <th id="Date" data-sidx="Date">To Print</th>
+
+                                                                <th id="Amount" data-sidx="Amount">Printed</th>
+
+                                                                <th id="CreatedOn" data-sidx="CreatedOn">Not Printed</th>
+
+                                                                <th id="DeliveryMethod" data-sidx="DeliveryMethod">Blank</th>
+                                                           
+                                                             </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @{ int counter = 1; double total = 0;}
+
+                                                            @foreach (DataRow row in ((DataTable)ViewBag.Data).Rows)
+                                                            {
+
+                                                                <tr bgcolor="#ffffff"  style="align-content:center">
+
+                                                                    <td class="hoverLink" onclick="ViewDetails('','@row["total"].ToString()')" valign="top"><a href="javascript:ViewDetails('total','@row["total"].ToString()')"><b>@row["total"].ToString()</b></a></td>
+
+                                                                    <td class="hoverLink" onclick="ViewDetails('ToEmail','@row["toEmail"].ToString()')" valign="top"><a href="javascript:ViewDetails('toEmail','@row["toEmail"].ToString()')"><b>@row["toEmail"].ToString()</b></a></td>
+
+                                                                    <td class="hoverLink" onclick="ViewDetails('EmailSent','@row["EmailSent"].ToString()')" valign="top"><a class="hoverLink" href="javascript:ViewDetails('EmailSent','@row["EmailSent"].ToString()')"><b>@row["EmailSent"].ToString()</b></a></td>
+
+                                                                    <td class="hoverLink" onclick="ViewDetails('NotEmail','@row["EmailDift"].ToString()')" valign="top">
+                                                                        <nobr><a class="hoverLink" href="javascript:ViewDetails('NotEmail','@row["EmailDift"].ToString()')"><b>@row["EmailDift"].ToString()</b></a></nobr>
+                                                                    </td>
+
+                                                                    <td class="hoverLink" onclick="ViewDetails('ToPrint','@row["ToPrint"].ToString()')" valign="top"><a href="javascript:ViewDetails('ToPrint','@row["ToPrint"].ToString()')"><b>@row["ToPrint"].ToString()</b></a></td>
+
+                                                                    <td class="hoverLink " onclick="ViewDetails('Printed','@row["Printed"].ToString()')" valign="top"><a href="javascript:ViewDetails('Printed','@row["Printed"].ToString()')"><b>@row["Printed"].ToString()</b></a></td>
+
+                                                                    <td class="hoverLink" onclick="ViewDetails('NotPrinted','@row["PrintDift"].ToString()')" valign="top"><a href="javascript:ViewDetails('NotPrinted','@row["PrintDift"].ToString()')"><b>@row["PrintDift"].ToString()</b></a></td>
+
+                                                                    <td class="hoverLink" onclick="ViewDetails('Blank','@row["Blank"].ToString()')" valign="top"><a href="javascript:ViewDetails('Blank','@row["Blank"].ToString()')"><b>@row["Blank"].ToString()</b></a></td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+
+
+                                                </div>
+                                            </div>
+
+                                       }
+
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                        <div class="panel-collapse collapse in scroll_horizontal">
+
+
+                                <div class="panel-body">
+                                    <div class="row" id="Billing_Delivery_Details" > <!-- style="padding-bottom:15px;padding:10px;" -->
+                                    </div>
+
+                                </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .ASC {
+        display: block;
+        /*top: 10px;
+        border-top-color: silver;
+        background: url('/Imagenes/sort_asc.png') no-repeat;
+        background-size: 50px 50px;*/
+    }
+
+    .DESC {
+        display: block;
+        /*background: url('/Imagenes/sort_desc.png') 115% 50% no-repeat;*/
+    }
+</style>
+
+<script type="text/javascript">
+
+
+    var img_asc = ' <img src="/Imagenes/sort_asc.png" style="height: 30px;margin: -13px;margin-right: 0px;">';
+    var img_desc = ' <img src="/Imagenes/sort_desc.png" style="height: 30px;margin: -8px;margin-right: 0px;">';
+
+
+   // $(document).ready(function () {
+
+        $("#mainForm").submit(function(e) {
+
+            var StartDate = $("#StartDate").val();
+            var EndDate = $("#EndDate").val();
+            if (StartDate=="" || EndDate =="") {
+                alert("Please enter the range of dates");
+                e.preventDefault();
+                return;
+            }
+
+            if (StartDate > EndDate) {
+                alert("Range of dates incorrect");
+                e.preventDefault();
+                return;
+
+            } else {
+                $("#mainForm").submit();
+            }
+        });
+
+        $('#StartDate').datepicker();
+        $('#EndDate').datepicker();
+
+   // });
+
+
+        function ViewDetails(record,value) {
+            
+           // if (value == '' || value ==0 || value=="0")
+           //     return;
+             
+            $('#Billing_Delivery_Details').html('');
+
+            $("hoverLink").css({ 'background-color': 'transparent' });
+
+            $('#Billing_Delivery_Details').html('');
+            var StartDate = $("#StartDate").val();
+            var EndDate = $("#EndDate").val();
+            $.ajax({
+
+                type: 'GET',
+
+                url: '/MPA/Billing_Delivery_Details',
+
+                data: {
+                    Record: record,
+                    StartDate: StartDate,
+                    EndDate: EndDate
+                },
+                success: function (r) {
+
+                    $('#Billing_Delivery_Details').html(r);
+
+                }, error: function (result) {
+                    Mensajes(result.statusText, 'error', '');
+                }
+            });
+        }
+
+        $(".hoverLink").click(function () {
+
+            $(".hoverLink").css({ 'background-color': 'transparent' });
+
+            $(this).css({ 'background-color': 'yellow' });
+
+        });
+    /*
+    $(function () {
+
+        $("#dateFrom").datepicker({
+            //defaultDate: "+1w",
+            dateFormat: 'mm/dd/yy',
+            maxDate: '180',
+            changeMonth: true,
+            numberOfMonths: 1
+        });
+    });
+
+    $(function () {
+        $("#dateTo").datepicker({
+            //defaultDate: "+1w",
+            dateFormat: 'mm/dd/yy',
+            maxDate: '180',
+            changeMonth: true,
+            numberOfMonths: 1
+        })
+    });
+
+
+    $(function () {
+
+        $("#creaFrom").datepicker({
+            //defaultDate: "+1w",
+            dateFormat: 'mm/dd/yy',
+            maxDate: '180',
+            changeMonth: true,
+            numberOfMonths: 1
+        });
+    });
+
+    $(function () {
+        //$("#creaTo").datepicker({
+        //    //defaultDate: "+1w",
+        //    dateFormat: 'mm/dd/yy',
+        //    maxDate: '180',
+        //    changeMonth: true,
+        //    numberOfMonths: 1
+        //})
+    });
+    */
+
+</script>
+

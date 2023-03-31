@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="36718957-5571-4b1b-9bf9-1192e31a80ad" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://AX-DEV-AOS-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MPAPortalSuiteGroup.wsdl" MetadataType="Wsdl" ID="c7026506-6250-442f-8a0c-9fd6615960bd" SourceId="1" SourceUrl="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?wsdl=wsdl0" />
+    <MetadataFile FileName="MPAPortalSuiteGroup.xsd" MetadataType="Schema" ID="82148e34-2fca-4ff9-b1f4-783520b2dd48" SourceId="1" SourceUrl="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd6" />
+    <MetadataFile FileName="MPAPortalSuiteGroup1.xsd" MetadataType="Schema" ID="38c49557-251d-4aaf-a020-8624b3d7625a" SourceId="1" SourceUrl="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd2" />
+    <MetadataFile FileName="MPAPortalSuiteGroup1.wsdl" MetadataType="Wsdl" ID="a6ba1663-535a-4f6f-93e1-8f0fea08cc75" SourceId="1" SourceUrl="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup" />
+    <MetadataFile FileName="MPAPortalSuiteGroup2.xsd" MetadataType="Schema" ID="2e232c6d-19f3-4f7f-a2e6-a1d68ac9a3f6" SourceId="1" SourceUrl="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd0" />
+    <MetadataFile FileName="MPAPortalSuiteGroup3.xsd" MetadataType="Schema" ID="bcd66369-6c41-4107-b6a3-e80644d45819" SourceId="1" SourceUrl="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd3" />
+    <MetadataFile FileName="MPAPortalSuiteGroup4.xsd" MetadataType="Schema" ID="139045a9-016e-4c57-8cfd-1da28be0a993" SourceId="1" SourceUrl="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd5" />
+    <MetadataFile FileName="MPAPortalSuiteGroup5.xsd" MetadataType="Schema" ID="f41ac2ea-6283-4a04-b81b-ce897663027d" SourceId="1" SourceUrl="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd1" />
+    <MetadataFile FileName="MPAPortalSuiteGroup6.xsd" MetadataType="Schema" ID="31cbe406-2ba3-4e6d-8bb4-abd7cf6b13c0" SourceId="1" SourceUrl="http://ax-dev-aos-01.mpa-dom.local:8101/DynamicsAx/Services/MPAPortalSuiteGroup?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

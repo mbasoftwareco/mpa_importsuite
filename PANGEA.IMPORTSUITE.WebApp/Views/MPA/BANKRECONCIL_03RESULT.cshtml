@@ -1,0 +1,70 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+@{
+    Layout = null;
+}
+
+<div class="col-sm-12">
+
+    <div class="card-box table-responsive">
+
+
+        <table id="TblMenu2" class="table table-bordered table-condensed table-striped">
+            <!--   -->
+            <thead>
+                <tr>
+                    <th align="center">Sheet on File</th>
+
+                    <th align="center">Process Result</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @{ 
+                    int i = 1;
+                    int rOk = 0;
+                }
+                @foreach (DataRow row in Model.Rows)
+                {
+                    if (row["MESSAGE"] == null || row["MESSAGE"].ToString().Equals(""))
+                    {
+                        continue;
+                    }
+
+                    <tr>
+
+                        <td><nobr>@row["TABLE_NAME"].ToString().Replace("$", "").Replace("'","")</nobr></td>
+
+                        @if (@row["MESSAGE"].ToString() == "OK!")
+                        {
+                            rOk++;
+
+                            <td><font color="@row["COLOR"].ToString()">
+                                @row["MESSAGE"].ToString() <a href="javascript:PROCESS_SHOWREGS('@ViewBag.GUID')">View Records</a>
+                                </font></td>
+                        }
+                        else
+                        {
+                            <td><font color="@row["COLOR"].ToString()">@row["MESSAGE"].ToString()</font></td>
+                        }
+                    </tr>
+
+                    i++;
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <br />
+
+    <button class="btn bg-danger" onclick="CANCEL_PROCESS(false)"><i class="icon-cancel-circle2"></i>&nbsp;Start Over</button>
+
+    @if (rOk > 0)
+    {
+        <button class="btn btn-primary" onclick="RECONCILE_PROCESS()"><i class="icon-sync"></i>&nbsp;Go to Reconcile Process</button>
+    }
+
+</div>
+

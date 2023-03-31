@@ -1,0 +1,100 @@
+BULK LOAD
+
+
+        /*
+        public void LoadCsvDataIntoSqlServer()
+        {
+
+            // This should be the full path
+            var fileName = @"C:\Users\Lenovo\Documents\Prueba2.csv";
+
+            var createdCount = 0;
+
+            using (var textFieldParser = new TextFieldParser(fileName))
+            {
+                textFieldParser.TextFieldType = FieldType.Delimited;
+                textFieldParser.Delimiters = new[] { "," };
+                textFieldParser.HasFieldsEnclosedInQuotes = true;
+
+                var connectionString = ConfigurationManager.ConnectionStrings["IMPORTSUITEConnectionString"].ConnectionString;
+
+                var dataTable = new DataTable("T_TMP_UPLOAD_RECORDS");
+
+                // Add the columns in the temp table
+                dataTable.Columns.Add("C1");
+                dataTable.Columns.Add("C2");
+                dataTable.Columns.Add("C3");
+                dataTable.Columns.Add("C4");
+                dataTable.Columns.Add("C5");
+                dataTable.Columns.Add("C6");
+                dataTable.Columns.Add("C7");
+                dataTable.Columns.Add("C8");
+
+                dataTable.Columns.Add("C9");
+                dataTable.Columns.Add("C10");
+                dataTable.Columns.Add("C11");
+                dataTable.Columns.Add("C12");
+                dataTable.Columns.Add("C13");
+                dataTable.Columns.Add("C14");
+                dataTable.Columns.Add("C15");
+
+                using (var sqlConnection = new SqlConnection(connectionString))
+                {
+                    sqlConnection.Open();
+
+                    // Truncate the live table
+                    using (var sqlCommand = new SqlCommand(_truncateLiveTableCommandText, sqlConnection))
+                    {
+                        sqlCommand.ExecuteNonQuery();
+                    }
+
+                    // Create the bulk copy object
+                    var sqlBulkCopy = new SqlBulkCopy(sqlConnection)
+                    {
+                        DestinationTableName = "T_TMP_UPLOAD_RECORDS"
+                    };
+
+
+                    // Setup the column mappings, anything ommitted is skipped
+                    sqlBulkCopy.ColumnMappings.Add("C1", "C1");
+                    sqlBulkCopy.ColumnMappings.Add("C2", "C2");
+                    sqlBulkCopy.ColumnMappings.Add("C3", "C3");
+                    sqlBulkCopy.ColumnMappings.Add("C4", "C4");
+                    sqlBulkCopy.ColumnMappings.Add("C5", "C5");
+                    sqlBulkCopy.ColumnMappings.Add("C6", "C6");
+                    sqlBulkCopy.ColumnMappings.Add("C7", "C7");
+                    sqlBulkCopy.ColumnMappings.Add("C8", "C8");
+                    sqlBulkCopy.ColumnMappings.Add("C9", "C9");
+
+                    sqlBulkCopy.ColumnMappings.Add("C10", "C10");
+                    sqlBulkCopy.ColumnMappings.Add("C11", "C11");
+                    sqlBulkCopy.ColumnMappings.Add("C12", "C12");
+                    sqlBulkCopy.ColumnMappings.Add("C13", "C13");
+                    sqlBulkCopy.ColumnMappings.Add("C14", "C14");
+                    sqlBulkCopy.ColumnMappings.Add("C15", "C15"); ;
+
+                    // Loop through the CSV and load each set of 100,000 records into a DataTable
+                    // Then send it to the LiveTable
+                    while (!textFieldParser.EndOfData)
+                    {
+                        dataTable.Rows.Add(textFieldParser.ReadFields());
+
+                        createdCount++;
+
+                        if (createdCount % _batchSize == 0)
+                        {
+                            InsertDataTable(sqlBulkCopy, sqlConnection, dataTable);
+
+                            break;
+                        }
+                    }
+
+                    // Don't forget to send the last batch under 100,000
+                    InsertDataTable(sqlBulkCopy, sqlConnection, dataTable);
+
+                    sqlConnection.Close();
+                }
+            }
+        }
+        */
+

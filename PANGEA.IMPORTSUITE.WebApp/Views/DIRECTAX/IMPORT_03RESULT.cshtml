@@ -1,0 +1,165 @@
+﻿@{
+// Layout = null;
+}
+
+
+<div class="panel panel-white">
+    <div class="panel-heading">
+        <h5 class="panel-title">Configurati&oacute;n</h5>
+        <div class="heading-elements">
+            <ul class="icons-list">
+                <li><a data-action="reload"></a></li>
+            </ul>
+        </div>
+        <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-group panel-group-control content-group-lg" id="accordion-control-right">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="hot-container" style="width:100% !important">
+                                <div id="hot_context"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var cur_model = null;
+    var hot_context = null;
+    var hot_context_init = null;
+    var plugin = null;
+
+    function GetData() {
+
+        $.ajax({
+            async: false,
+            type: "GET",
+            url: "/PROCESS/IMPORT_TEMPLATE_RESULT_DATA",
+            data: {
+                GUID: '@Request["GUID"]',
+                ROWID_TEMPLATE: '@Request["ROWID_TEMPLATE"]'
+            },
+            dataType: "json",
+            success: function (response) {
+                cur_model = response;
+            },
+            error: function (msg) {
+
+            }
+        });
+
+        return cur_model;
+
+    }
+
+    function UPDATE_TMP_DATA(ROWID, FIELD, VALUE) {
+
+        ModalProcesandoShow();
+
+        $.ajax({
+            type: "POST",
+            url: "/PROCESS/UPDATE_TMP_DATA",
+            data: {
+                GUID: '@Request["GUID"]',
+                ROWID: ROWID,
+                FIELD: FIELD,
+                VALUE: VALUE
+            },
+            dataType: "json",
+            success: function (response) {
+
+                ModalProcesandoHiden();
+
+                Mensajes('Field updated successfully.', 'success', '');
+
+            },
+            error: function (result) {
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+
+    }
+
+
+
+    $(document).ready(function () {
+
+
+        // Get Data Model
+        GetData();
+
+        // Define element
+        hot_context = document.getElementById('hot_context');
+
+        // Initialize with options
+        hot_context_init = new Handsontable(hot_context, {
+            data: cur_model.data,
+            manualColumnResize: false,
+            manualColumnMove: false,
+            manualColumnFreeze: true,
+            persistentState: true,
+            colHeaders: true,
+            rowHeaders: true,
+            stretchH: 'all',
+            afterChange: function (changes, source) {
+
+                if (source == 'edit') {
+
+                    var row = cur_model.data[changes[0][0]];
+
+                    if (changes[0][2] != changes[0][3])
+                        UPDATE_TMP_DATA(row.ROWID, changes[0][1], changes[0][3]);
+
+                }
+
+            },
+            colHeaders: cur_model.header,
+            columns: cur_model.columns,
+            columnSorting: true,
+            sortIndicator: true,
+            autoColumnSize: {
+                samplingRatio: 23
+            },
+            dropdownMenu: true,
+            filters: true,
+            contextMenu: ['row_above', 'row_below', '---------', 'remove_row', 'copy', 'paste'],
+            contextMenuCopyPaste: {
+                swfPath: '/Content/assets/swf/handsontable/zero_clipboard.swf'
+            }
+        });
+
+
+        hot_context_init.updateSettings({
+            cells: function (row, col, prop) {
+                var cellProperties = {};
+
+                if (hot_context_init.getSourceData()[row][prop] === 'Nissan') {
+                    cellProperties.editor = false;
+                    cellProperties.className = "disabled";
+                }
+                else {
+                    cellProperties.editor = 'text';
+                }
+
+                return cellProperties;
+            }
+        });
+
+        /*plugin = hot_context_init.getPlugin('hiddenColumns');
+        plugin.hideColumn(0);*/
+
+    });
+
+
+</script>

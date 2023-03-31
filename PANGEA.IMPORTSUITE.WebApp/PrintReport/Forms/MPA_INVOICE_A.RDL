@@ -1,0 +1,2402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="table16">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>3.02391in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.87061in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.26529in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.61003in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.71902in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.00275in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.16in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="textbox207">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Description</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Bottom</VerticalAlign>
+                        <PaddingLeft>0.0625in</PaddingLeft>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox42">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Facility</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox42</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Bottom</VerticalAlign>
+                        <PaddingLeft>0.0625in</PaddingLeft>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox49">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Permit number</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox49</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Bottom</VerticalAlign>
+                        <PaddingLeft>0.0625in</PaddingLeft>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="textbox238">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Quantity</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Bottom</VerticalAlign>
+                        <PaddingLeft>0.0625in</PaddingLeft>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="textbox242">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Rate</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Bottom</VerticalAlign>
+                        <PaddingLeft>0.0625in</PaddingLeft>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="textbox243">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Amount</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Bottom</VerticalAlign>
+                        <PaddingLeft>0.0625in</PaddingLeft>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.16in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox11">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=" " + Fields!LineDescription.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox10</rd:DefaultName>
+                      <Style />
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="InventSiteId2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Facility.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>InventSiteId</rd:DefaultName>
+                      <Style />
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="PermitNumber">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!PermitNumber.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>PermitNumber</rd:DefaultName>
+                      <Style>
+                        <PaddingLeft>0.0625in</PaddingLeft>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="textbox122">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Quantity.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <PaddingLeft>0.0625in</PaddingLeft>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="textbox123">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Rate.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <PaddingLeft>0.0625in</PaddingLeft>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="textbox124">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Amount.Value</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <PaddingLeft>0.0625in</PaddingLeft>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
+              <KeepTogether>true</KeepTogether>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="table16_Details_Group">
+                <DataElementName>Detail</DataElementName>
+              </Group>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+              <DataElementName>Detail_Collection</DataElementName>
+              <DataElementOutput>Output</DataElementOutput>
+              <KeepTogether>true</KeepTogether>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>DataSet2</DataSetName>
+        <Top>0.13956in</Top>
+        <Left>0.33283in</Left>
+        <Height>0.32in</Height>
+        <Width>7.49161in</Width>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <FontFamily>Segoe UI</FontFamily>
+          <FontSize>8pt</FontSize>
+        </Style>
+      </Tablix>
+      <Textbox Name="CompanyNameTextBox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value EvaluationMode="Constant">Makes checks payable to: DEPARTMENT OF OFF-STREET PARKING</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>0.60021in</Top>
+        <Left>0.33172in</Left>
+        <Height>0.18852in</Height>
+        <Width>7.49272in</Width>
+        <ZIndex>1</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyNameTextBox5">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Subtotal</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>0.91982in</Top>
+        <Left>5.82489in</Left>
+        <Height>0.125in</Height>
+        <Width>0.96902in</Width>
+        <ZIndex>2</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyAddressTextBox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Subtotal.Value, "DataSet1")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>0.91982in</Top>
+        <Left>6.8078in</Left>
+        <Height>0.125in</Height>
+        <Width>1.00275in</Width>
+        <ZIndex>3</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+          </BottomBorder>
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyNameTextBox6">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value EvaluationMode="Constant">Subcharge</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.11427in</Top>
+        <Left>5.83878in</Left>
+        <Height>0.125in</Height>
+        <Width>0.96902in</Width>
+        <ZIndex>4</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyAddressTextBox3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!Subcharge.Value, "DataSet1")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.11427in</Top>
+        <Left>6.82169in</Left>
+        <Height>0.125in</Height>
+        <Width>1.00275in</Width>
+        <ZIndex>5</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+          </BottomBorder>
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyNameTextBox7">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Sales Tax</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.30871in</Top>
+        <Left>5.83878in</Left>
+        <Height>0.125in</Height>
+        <Width>0.96902in</Width>
+        <ZIndex>6</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyAddressTextBox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!SalesTax.Value, "DataSet1")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.29482in</Top>
+        <Left>6.82169in</Left>
+        <Height>0.125in</Height>
+        <Width>1.00275in</Width>
+        <ZIndex>7</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+          </BottomBorder>
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyNameTextBox8">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Total Charges</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.50316in</Top>
+        <Left>5.83878in</Left>
+        <Height>0.125in</Height>
+        <Width>0.96902in</Width>
+        <ZIndex>8</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyAddressTextBox5">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!TotalCharges.Value, "DataSet1")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.50316in</Top>
+        <Left>6.82169in</Left>
+        <Height>0.125in</Height>
+        <Width>1.00275in</Width>
+        <ZIndex>9</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+          </BottomBorder>
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyNameTextBox9">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Current Total</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.6976in</Top>
+        <Left>5.83878in</Left>
+        <Height>0.125in</Height>
+        <Width>0.96902in</Width>
+        <ZIndex>10</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyAddressTextBox6">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!CurrentTotal.Value, "DataSet1")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.6976in</Top>
+        <Left>6.82169in</Left>
+        <Height>0.125in</Height>
+        <Width>1.00275in</Width>
+        <ZIndex>11</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+          </BottomBorder>
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyNameTextBox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Balance Forward</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.89205in</Top>
+        <Left>5.83878in</Left>
+        <Height>0.125in</Height>
+        <Width>0.96902in</Width>
+        <ZIndex>12</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyAddressTextBox7">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!BalanceForward.Value, "DataSet1")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.89205in</Top>
+        <Left>6.82169in</Left>
+        <Height>0.125in</Height>
+        <Width>1.00275in</Width>
+        <ZIndex>13</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+          </BottomBorder>
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyNameTextBox11">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>GRAND TOTAL</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>2.08649in</Top>
+        <Left>5.83878in</Left>
+        <Height>0.125in</Height>
+        <Width>0.96902in</Width>
+        <ZIndex>14</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Textbox Name="CompanyAddressTextBox8">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!GrandTotal.Value, "DataSet1")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>2.08649in</Top>
+        <Left>6.82169in</Left>
+        <Height>0.125in</Height>
+        <Width>1.00275in</Width>
+        <ZIndex>15</ZIndex>
+        <DataElementOutput>NoOutput</DataElementOutput>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+          </BottomBorder>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>6.25667cm</Height>
+    <Style />
+  </Body>
+  <Width>21.20194cm</Width>
+  <Page>
+    <PageHeader>
+      <Height>6.74688cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="textbox704">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Invoice</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>14pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.00642in</Top>
+          <Left>4.90103in</Left>
+          <Height>0.2in</Height>
+          <Width>3.22917in</Width>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="textbox237">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!Address.Value, "DataSet1")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.98371in</Top>
+          <Left>4.86353in</Left>
+          <Height>0.13001in</Height>
+          <Width>2.625in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="textbox236">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!BillTo.Value, "DataSet1")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.83023in</Top>
+          <Left>4.86353in</Left>
+          <Height>0.125in</Height>
+          <Width>2.625in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox1615">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Bill To:</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>9pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <TextDecoration>Underline</TextDecoration>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1612</rd:DefaultName>
+          <Top>1.66857in</Top>
+          <Left>4.86353in</Left>
+          <Height>0.1061in</Height>
+          <Width>1.01375in</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyNameTextBox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Miami, FL, 33128</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.98872in</Top>
+          <Left>0.37286in</Left>
+          <Height>0.125in</Height>
+          <Width>2.375in</Width>
+          <ZIndex>4</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyNameTextBox3">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>USA</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>2.14428in</Top>
+          <Left>0.37286in</Left>
+          <Height>0.125in</Height>
+          <Width>2.375in</Width>
+          <ZIndex>5</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="textbox239">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!Address2.Value, "DataSet1")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>2.14428in</Top>
+          <Left>4.86169in</Left>
+          <Height>0.125in</Height>
+          <Width>2.625in</Width>
+          <ZIndex>6</ZIndex>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="textbox240">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!Address3.Value, "DataSet1")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>2.29567in</Top>
+          <Left>4.86169in</Left>
+          <Height>0.125in</Height>
+          <Width>2.62316in</Width>
+          <ZIndex>7</ZIndex>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Rectangle Name="Rectangle2">
+          <ReportItems>
+            <Textbox Name="InvoiceIdLbl">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Number</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.06422in</Top>
+              <Left>0.10618in</Left>
+              <Height>0.125in</Height>
+              <Width>1.35417in</Width>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="InvoiceIdTextBox">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Invoice.Value, "DataSet1")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.06422in</Top>
+              <Left>1.49369in</Left>
+              <Height>0.125in</Height>
+              <Width>1.375in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Textbox>
+            <Textbox Name="PaymentConditionLbl">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value EvaluationMode="Constant">Term of Payment</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.77097in</Top>
+              <Left>0.10618in</Left>
+              <Height>0.125in</Height>
+              <Width>1.35417in</Width>
+              <ZIndex>2</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="PaymentconditionTextBox">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!TermOfPayment.Value, "DataSet1")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.77186in</Top>
+              <Left>1.49369in</Left>
+              <Height>0.125in</Height>
+              <Width>1.375in</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="InvoiceAccountLbl">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Invoice account</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.61819in</Top>
+              <Left>0.10618in</Left>
+              <Height>0.125in</Height>
+              <Width>1.35417in</Width>
+              <ZIndex>4</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="InvoiceAccountTextBox">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!InvoiceAccount.Value, "DataSet1")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.61769in</Top>
+              <Left>1.49369in</Left>
+              <Height>0.125in</Height>
+              <Width>1.375in</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="InvoiceDateLbl">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Date</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.31214in</Top>
+              <Left>0.10618in</Left>
+              <Height>0.125in</Height>
+              <Width>1.35417in</Width>
+              <ZIndex>6</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="InvoiceDateTextBox">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!InvoiceDate.Value, "DataSet1")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.31214in</Top>
+              <Left>1.49369in</Left>
+              <Height>0.125in</Height>
+              <Width>1.26389in</Width>
+              <ZIndex>7</ZIndex>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="PageLbl">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Page</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.46542in</Top>
+              <Left>0.10618in</Left>
+              <Height>0.1255in</Height>
+              <Width>1.35417in</Width>
+              <ZIndex>8</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox174">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!PageNumber &amp; " of " &amp; Globals!TotalPages</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.46492in</Top>
+              <Left>1.49369in</Left>
+              <Height>0.125in</Height>
+              <Width>0.98519in</Width>
+              <ZIndex>9</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Textbox>
+            <Rectangle Name="Rectangle3">
+              <ReportItems>
+                <Textbox Name="PaymentReferenceLbl">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Due Date</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.0375in</Top>
+                  <Left>0.04597in</Left>
+                  <Height>0.125in</Height>
+                  <Width>1.35417in</Width>
+                  <DataElementOutput>NoOutput</DataElementOutput>
+                  <Style>
+                    <Border />
+                  </Style>
+                </Textbox>
+                <Textbox Name="PaymentReferenceTextBox">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!DueDate.Value, "DataSet1")</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.03978in</Top>
+                  <Left>1.43348in</Left>
+                  <Height>0.125in</Height>
+                  <Width>1.375in</Width>
+                  <ZIndex>1</ZIndex>
+                  <DataElementOutput>NoOutput</DataElementOutput>
+                  <Style>
+                    <Border />
+                  </Style>
+                </Textbox>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Top>0.99548in</Top>
+              <Left>0.05795in</Left>
+              <Height>0.21875in</Height>
+              <Width>2.85099in</Width>
+              <ZIndex>10</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+                <TopBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </TopBorder>
+                <BottomBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </BottomBorder>
+                <LeftBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </LeftBorder>
+                <RightBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </RightBorder>
+              </Style>
+            </Rectangle>
+          </ReportItems>
+          <KeepTogether>true</KeepTogether>
+          <Top>0.32795in</Top>
+          <Left>4.86353in</Left>
+          <Height>1.27118in</Height>
+          <Width>2.96091in</Width>
+          <ZIndex>8</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+            <TopBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </TopBorder>
+            <BottomBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </BottomBorder>
+            <LeftBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </LeftBorder>
+            <RightBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </RightBorder>
+          </Style>
+        </Rectangle>
+        <Textbox Name="CompanyNameTextBox">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Miami Parking Authority</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.68246in</Top>
+          <Left>0.37286in</Left>
+          <Height>0.125in</Height>
+          <Width>2.375in</Width>
+          <ZIndex>9</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyAddressTextBox">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>40 NW 3rd Str # 1103</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.83594in</Top>
+          <Left>0.37286in</Left>
+          <Height>0.125in</Height>
+          <Width>2.375in</Width>
+          <ZIndex>10</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Image Name="Image1">
+          <Source>Embedded</Source>
+          <Value>logo_mpa</Value>
+          <Sizing>FitProportional</Sizing>
+          <Top>0.42393cm</Top>
+          <Left>0.94706cm</Left>
+          <Height>3.35033cm</Height>
+          <Width>5.41583cm</Width>
+          <ZIndex>11</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
+    <PageFooter>
+      <Height>4.36562cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="CompanyNameTextBox12">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value />
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.20454in</Top>
+          <Left>0.02778in</Left>
+          <Height>0.18852in</Height>
+          <Width>8.31944in</Width>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+            <TopBorder>
+              <Style>Dashed</Style>
+              <Width>2pt</Width>
+            </TopBorder>
+            <BottomBorder>
+              <Style>None</Style>
+            </BottomBorder>
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyNameTextBox13">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>INVOICE DATE</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.65103in</Top>
+          <Left>1.41695in</Left>
+          <Height>0.125in</Height>
+          <Width>1.54376in</Width>
+          <ZIndex>1</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyNameTextBox14">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>INVOICE #</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.84548in</Top>
+          <Left>1.43084in</Left>
+          <Height>0.125in</Height>
+          <Width>1.54376in</Width>
+          <ZIndex>2</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyNameTextBox15">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>CUSTOMER #</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.03992in</Top>
+          <Left>1.43084in</Left>
+          <Height>0.125in</Height>
+          <Width>1.54376in</Width>
+          <ZIndex>3</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyNameTextBox16">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>CUSTOMER NAME</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.23437in</Top>
+          <Left>1.43084in</Left>
+          <Height>0.125in</Height>
+          <Width>1.54376in</Width>
+          <ZIndex>4</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyAddressTextBox9">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!InvoiceDate.Value, "DataSet1")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.65103in</Top>
+          <Left>2.9746in</Left>
+          <Height>0.125in</Height>
+          <Width>1.00275in</Width>
+          <ZIndex>5</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BottomBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+            </BottomBorder>
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyAddressTextBox10">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!Invoice.Value, "DataSet1")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.84548in</Top>
+          <Left>2.98849in</Left>
+          <Height>0.125in</Height>
+          <Width>1.00275in</Width>
+          <ZIndex>6</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BottomBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+            </BottomBorder>
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyAddressTextBox11">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!InvoiceAccount.Value, "DataSet1")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.02603in</Top>
+          <Left>2.98849in</Left>
+          <Height>0.125in</Height>
+          <Width>1.00275in</Width>
+          <ZIndex>7</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BottomBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+            </BottomBorder>
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyAddressTextBox12">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!BillTo.Value, "DataSet1")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.23437in</Top>
+          <Left>2.98849in</Left>
+          <Height>0.125in</Height>
+          <Width>1.00275in</Width>
+          <ZIndex>8</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BottomBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+            </BottomBorder>
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyNameTextBox17">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>CURRENT TOTAL</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.66492in</Top>
+          <Left>4.28113in</Left>
+          <Height>0.125in</Height>
+          <Width>1.54376in</Width>
+          <ZIndex>9</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyNameTextBox18">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>GRAND TOTAL</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.85937in</Top>
+          <Left>4.29502in</Left>
+          <Height>0.125in</Height>
+          <Width>1.54376in</Width>
+          <ZIndex>10</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyNameTextBox20">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>AMOUNT REMITTED</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.24826in</Top>
+          <Left>4.29502in</Left>
+          <Height>0.125in</Height>
+          <Width>1.54376in</Width>
+          <ZIndex>11</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border />
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyAddressTextBox13">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!CurrentTotal.Value, "DataSet1")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.66492in</Top>
+          <Left>5.83878in</Left>
+          <Height>0.125in</Height>
+          <Width>1.00275in</Width>
+          <ZIndex>12</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BottomBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+            </BottomBorder>
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyAddressTextBox14">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!GrandTotal.Value, "DataSet1")</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.85937in</Top>
+          <Left>5.85267in</Left>
+          <Height>0.125in</Height>
+          <Width>1.00275in</Width>
+          <ZIndex>13</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BottomBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+            </BottomBorder>
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyAddressTextBox16">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value />
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.24826in</Top>
+          <Left>5.85267in</Left>
+          <Height>0.125in</Height>
+          <Width>1.00275in</Width>
+          <ZIndex>14</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+              <Width>2pt</Width>
+            </Border>
+          </Style>
+        </Textbox>
+        <Textbox Name="CompanyNameTextBox19">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>RETURN THIS SECTION WITH PAYMENT</Value>
+                  <Style>
+                    <FontFamily>Segoe UI</FontFamily>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.26144in</Top>
+          <Left>0.01389in</Left>
+          <Height>0.18852in</Height>
+          <Width>8.33333in</Width>
+          <ZIndex>15</ZIndex>
+          <DataElementOutput>NoOutput</DataElementOutput>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
+    <PageHeight>27.94cm</PageHeight>
+    <PageWidth>21.59cm</PageWidth>
+    <LeftMargin>0cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>0.5cm</TopMargin>
+    <BottomMargin>0.5cm</BottomMargin>
+    <ColumnSpacing>1.27cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=(local)\SQL2014;Initial Catalog=PANGEA_Floyd_AX</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>643df04c-5a8a-466c-b3be-54290dd43bc5</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT 	'' Invoice,
+	'' InvoiceDate,
+	'' Page,
+	'' InvoiceAccount,
+	'' TermOfPayment,
+	'' DueDate,
+	'' BillTo,
+	'' Address,
+	'' Address2,
+	'' Address3,
+	1 Subtotal,
+	2 Subcharge,
+	3 SalesTax,
+	4 TotalCharges,
+	5 CurrentTotal,
+	6 BalanceForward,
+	7 GrandTotal</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Invoice">
+          <DataField>Invoice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceDate">
+          <DataField>InvoiceDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Page">
+          <DataField>Page</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceAccount">
+          <DataField>InvoiceAccount</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TermOfPayment">
+          <DataField>TermOfPayment</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DueDate">
+          <DataField>DueDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BillTo">
+          <DataField>BillTo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address2">
+          <DataField>Address2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address3">
+          <DataField>Address3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Subtotal">
+          <DataField>Subtotal</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Subcharge">
+          <DataField>Subcharge</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SalesTax">
+          <DataField>SalesTax</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalCharges">
+          <DataField>TotalCharges</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CurrentTotal">
+          <DataField>CurrentTotal</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BalanceForward">
+          <DataField>BalanceForward</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="GrandTotal">
+          <DataField>GrandTotal</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DataSet2">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT 	'' LineDescription,
+	'' Facility,
+	'' PermitNumber,
+	1 Quantity,
+	1.4 Rate,
+	2 Amount</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="LineDescription">
+          <DataField>LineDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Facility">
+          <DataField>Facility</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PermitNumber">
+          <DataField>PermitNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Rate">
+          <DataField>Rate</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <EmbeddedImages>
+    <EmbeddedImage Name="logo_mpa">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>iVBORw0KGgoAAAANSUhEUgAAAKgAAACjCAYAAAAejFV3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExOTEwOUU0MTlDNjg1OTFEMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowRDg3NDEwNUUyOUUxMUUzOUQ2MEI3NkJDODVBRkZDNyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowRDg3NDEwNEUyOUUxMUUzOUQ2MEI3NkJDODVBRkZDNyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBN
+TTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjc2NTE1MjdGMzIyMDY4MTE5NUZFRkFGNTZBOTAzQjk4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE5MTA5RTQxOUM2ODU5MUQyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hlmqvQAAWQtJREFUeNrsXQdYVNcSHiwUBelYABFUULEbe+8tauy9m8RoEmOMKfqiJkZNTFFTTaLGHnvvvWAXENQIFpAmglRBARvv/OeWvVvZXdaazPcdpSy7957575zpY5Wfn0+FodrN5tMrTKXYqsSWr7gqsFWaLTe23NlyZcuOLVu2bDT+No+tXLZy2Epl6w5bKWwlsXWTrWhxXWfrLv1L6ULQBwZ/X4z+I4kAvKZs1WWrprh8CvF+NuJyZKtMAa+NYStcXCFsnRCB/K8nK0MS1MrK6pW98VpN53mw/zqx1VoEZmXN11hbPSY/x3TytM8gL4cMKueQSR4ls8jJOoec7XLIyTaX7Io9JOuij8mKLSXlPy5KD9jKeVScMnJtKT3HjjIe2FHyPQe6leVI8VlOlJDtRFGZzvQgv6iuS7wmAvUwW3vCTkxMflV5YRCD/yaAMlBCOr7BVhdRUso3aFPkEdVyu021POIpwDWZAlzukLdjBlGRJ0/3op4UobhMJ4pMc6fIVA8KS/aisJQylPdE7XDLFyXrLra2MLCG/AfQVwSgDJSB7L8BbPVlK0D6eXEGvNcYGJt53qB6ZeOpiluyfjAyECVlO1BCVilKzHbkEjEjrwSl59rR3Txbhh4ryn6oroLaF89jP82nUja55GzLpK3NfS5xy9pnkqfDXSptn2Xw8yJSPCg40YuCEirSeQbah+xnCopkaz1baxhYL/8H0JcPlCVF
+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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>en-US</Language>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>f43713ab-bf69-4189-bb29-03290c468ba4</rd:ReportID>
+</Report>

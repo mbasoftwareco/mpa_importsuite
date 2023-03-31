@@ -1,0 +1,67 @@
+﻿@model IEnumerable<PANGEA.IMPORTSUITE.DataModel.S_PARAMETER>
+
+<div class="panel-body">
+
+
+        <div class="col-md-10">
+             
+
+                <div class="panel panel-white">
+
+                    <div class="panel-heading">
+                        <h5 class="panel-title">Configuration</h5>
+                        <div class="heading-elements">
+                            <ul class="icons-list">
+                                <li><a data-action="reload"></a></li>
+                            </ul>
+                        </div>
+                        <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+                    </div>
+
+                </div>
+
+            <div class="container">
+
+                <div class="row">
+             
+
+                        @using (Html.BeginForm("PARAMETERS", "MASTER", FormMethod.Post))
+                        {
+                       
+                            <div class="col-md-8">
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                @foreach (var parm in Model.ToList())
+                                {
+                                    <div class="form-group row">
+                                        <div class="col-md-5">
+                                            <label class="text-bold">@parm.LABEL:</label>
+                                        </div>
+                                       
+                                        <div class="col-md-7" >
+                                            <input type="text" class="form-control" name="@parm.CODE" id="@parm.CODE" value="@parm.VALUE" />
+                                        </div>
+                                       
+                                    </div>
+                                }
+
+                                <div class="form-group col-md-12">
+                                    <button type="submit" class="btn bg-primary  pull-right" style="margin-left:10px;">Save</button>
+                                    <a href="/MASTER/PARAMETERS" class="btn btn-danger  pull-right">Cancel</a>
+                                
+                                    <input type="hidden" name="KEY" value="@ViewBag.KEY" />
+                                </div>
+
+                            </div>
+                       
+                        }
+
+                </div>
+
+                </div>
+
+            </div>
+ 
+ 
+</div>

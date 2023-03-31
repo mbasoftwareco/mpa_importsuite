@@ -1,0 +1,177 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+@{
+    Layout = null;
+}
+<style>
+    .table {
+        width: auto !important;
+    }
+</style>
+
+<script type="text/javascript" src="https://cdn.datatables.net/scroller/1.5.1/js/dataTables.scroller.min.js"></script>
+
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                @if (Request["MPA"] == "1")
+                {
+                    <button type="button" onclick="EXPORT_REGS_MPA()"><i class="icon-file-excel"></i></button>
+                }
+                else
+                {
+                    <button type="button" onclick="EXPORT_REGS()"><i class="icon-file-excel"></i></button>
+                }
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@ViewBag.Title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive" style="height:480px;overflow-y:auto;">
+                    <table id="TblRegShow" class="table table-bordered table-condensed table-striped table-hover">
+                        <thead>
+                            <tr>
+                                @foreach (DataColumn column in Model.Columns)
+                                {
+                                    <th>@column.ColumnName</th>
+                                }
+                            </tr>
+                        </thead>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $("#myModal").modal()                       // initialized with defaults
+    $("#myModal").modal({
+        backdrop: 'static',
+        keyboard: false,
+        width: '800px'
+    })   // initialized with no keyboard
+
+    $("#myModal").modal('show');
+
+
+    ModalProcesandoShow();
+
+    function EXPORT_REGS() {
+
+        $.ajax({
+
+            type: 'POST',
+
+            url: '/DIRECTAX/EXPORT_IMPORT_04SHOWREGS',
+
+            data: {
+                GUID: '@Request.Params["GUID"]',
+                etype: '@Request.Params["etype"]',
+                TPL: '@Request.Params["TPL"]'
+            },
+
+            success: function (r) {
+
+                window.open(r);
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+    }
+
+
+    function EXPORT_REGS_MPA() {
+
+        $.ajax({
+
+            type: 'POST',
+
+            url: '/MPA/EXPORT_IMPORT_04SHOWREGS',
+
+            data: {
+                GUID: '@Request.Params["GUID"]',
+                RegType: '@Request.Params["RegType"]',
+            },
+
+            success: function (r) {
+
+                window.open(r);
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+    }
+
+    var columns = [];
+    var columnsName = [];
+    
+    @foreach(DataColumn col in Model.Columns)
+    {
+        <text>
+            columns.push({
+                "title": "@col.ColumnName", "data": "@col.ColumnName", "render": function (data, type, row) {
+                    return row["@col.ColumnName"];
+                }
+            });
+            columnsName.push("@col.ColumnName");
+        </text>
+    }
+
+    var pagination = 100;
+    var table = $("#TblRegShow").DataTable({
+
+        "searching": false,
+
+        "lengthChange": false,
+
+        "processing": true,
+
+        "serverSide": true,
+
+        "ajax": {
+
+            "url": '/MPA/BANKRECONCIL_04SHOWREGS_DATA?RegType=@Request["RegType"]&pagination=' + pagination + '&GUID=@ViewBag.GUID&recordsTotal=@ViewBag.recordsTotal',
+
+            "dataSrc": function (json) {
+                var data = [];
+                $.each(JSON.parse(json.data), function (index, item) {
+                    var row = {};
+                    $.each(columnsName, function (i, r) {
+                        row[r] = item[r];
+                    });
+                    data.push(row);
+                });
+                console.log(data);
+                return data;
+            }
+        },
+
+        "iDisplayLength": pagination,
+
+        "fnDrawCallback": function (oSettings) {
+
+            ModalProcesandoHiden();
+
+        },
+
+        "columns": columns
+
+    });
+
+    $('#TblRegShow').on('processing.dt', function (e, settings, processing) {
+        if (processing)
+            ModalProcesandoShow();
+        else
+            ModalProcesandoHiden();
+    }).dataTable();
+</script>

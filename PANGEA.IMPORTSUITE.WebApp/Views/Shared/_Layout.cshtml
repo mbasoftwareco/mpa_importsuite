@@ -1,0 +1,527 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@Session["APPLICATION_NAME"]</title>
+
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/core.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/components.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/assets/css/colors.css" rel="stylesheet" type="text/css">
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    @*<script type="text/javascript" src="~/Content/assets/js/plugins/loaders/pace.min.js"></script>*@
+    <script type="text/javascript" src="~/Content/assets/js/core/libraries/jquery.min.js"></script>
+
+    <!-- The jQuery library is a prerequisite for all jqSuite products -->
+    <script type="text/javascript" src="~/Content/assets/js/core/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/loaders/blockui.min.js"></script>
+
+    <script type="text/javascript" src="~/Content/assets/js/plugins/ui/nicescroll.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/ui/drilldown.js"></script>
+
+    <!-- /core JS files -->
+
+    <script type="text/javascript" src="~/Content/assets/js/plugins/visualization/d3/d3.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/forms/styling/switchery.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/forms/styling/uniform.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+
+    <script type="text/javascript" src="~/Content/assets/js/plugins/ui/moment/moment.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/pickers/daterangepicker.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/pickers/datepicker.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/pickers/anytime.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/pickers/pickadate/picker.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/pickers/pickadate/legacy.js"></script>
+
+    <script type="text/javascript" src="~/Content/assets/js/plugins/notifications/pnotify.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/ui/moment/moment.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/ui/fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/ui/fullcalendar/lang/es.js"></script>
+
+    <script type="text/javascript" src="~/Content/assets/js/plugins/loaders/blockui.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/core/libraries/jquery_ui/interactions.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/core/libraries/jquery_ui/touch.min.js"></script>
+
+    <script type="text/javascript" src="~/Content/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/forms/selects/select2.min.js"></script>
+
+    <script type="text/javascript" src="~/Content/assets/js/core/app.js"></script>
+    <script src="~/Content/assets/js/pages/components_popups.js"></script>
+    <script src="~/Content/assets/js/pages/datatables_basic.js"></script>
+
+
+    <!-- Handsontable -->
+    <script type="text/javascript" src="~/Content/assets/js/plugins/tables/handsontable/handsontable.full.min.js"></script>
+    <script type="text/javascript" src="~/Content/assets/js/plugins/tables/handsontable/zero_clipboard.min.js"></script>
+
+    <!-- /jquery.validate -->
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            $(window).load(function () {
+                $("#loader").fadeOut("slow");
+            });
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            // Checkboxes, radios
+            $(".styled").uniform({ radioClass: 'choice' });
+
+            // File input
+            $(".file-styled").uniform({
+                fileButtonHtml: '<i class="icon-googleplus5"></i>',
+                wrapperClass: 'bg-warning'
+            });
+
+
+            $(".select2").select2({ placeholder: "Selecione una opcion" });
+
+            $('.pickadate').pickadate({
+                // Escape any “rule” characters with an exclamation mark (!).
+                selectYears: 550,
+                format: 'dd/mm/yyyy',
+                formatSubmit: 'dd/mm/yyyy',
+                hiddenPrefix: 'prefix__',
+                hiddenSuffix: '__suffix'
+            });
+
+
+            $('table tbody tr').click(function () {
+                $('table tbody tr').removeClass('dynGridViewSelectedRowTr');
+                $(this).toggleClass('dynGridViewSelectedRowTr');
+            });
+
+        });
+
+
+        function DisableForm(FormID) {
+            $('#' + FormID + ' input').attr('disabled', 'disabled');
+            $('#' + FormID + ' select').attr('disabled', 'disabled');
+            $('#' + FormID + ' button').attr('disabled', 'disabled');
+        }
+
+        function SendFormInDIV(url_page, form_id, divtoshow) {
+            //$("#" + divtoshow).html('<p align=center><img src="/images/auto_loader.gif" /></p>');
+
+            $.ajax({
+                type: 'post',
+                url: url_page,
+                data: $("#" + form_id).serialize(), //params,
+                success: function (r) {
+                    $("#" + divtoshow).html(r);
+                    $("#" + divtoshow + "_loading").hide();
+                }
+            });
+        }
+
+
+        function OpenW(url, w, h, sb, reg) {
+            sb = 'yes';//scrollbars activo en ventana
+            x = window.open(url, 'OpenW' + reg, 'menubar,toolbars=no,scrollbars=' + sb + ',resizable=yes,status=1,width=' + screen.width + ',height=' + screen.height + ',top=0,left=0');
+            x.focus();
+        }
+
+
+        function OpenWindow(url, reg, w, h) {
+            window.open(url, reg, 'width=' + w + ',height=' + h + ',scrollbars=YES');
+        }
+
+
+        function NewGUID(inferior, superior) {
+            var numPosibilidades = superior - inferior;
+            var aleat = Math.random() * numPosibilidades;
+            aleat = Math.round(aleat);
+            return parseInt(inferior) + aleat;
+        }
+
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        }
+
+
+        function NumCheck(e, field) {
+            key = e.keyCode ? e.keyCode : e.which
+            // backspace
+            if (key == 8) return true
+            // 0-9
+            if (key > 47 && key < 58) {
+                if (field.value == "") return true
+                regexp = /.[0-9]{2}$/
+                return !(regexp.test(field.value))
+            }
+            // .
+            if (key == 46) {
+                if (field.value == "") return false
+                regexp = /^[0-9]+$/
+                return regexp.test(field.value)
+            }
+            // other key
+            return false
+
+        }
+
+
+        var nav4b = window.Event ? true : false;
+        function acceptNumEnt(evt) {
+            // NOTE: Backspace=8, tab=9, Enter=13, '0'=48, '9'=57, comma=188, decimal point=110
+            var key = nav4b ? evt.which : evt.keyCode;
+
+            return (key == 8 || key == 9 || key == 13 || key == 45 || key == 44 || (key >= 48 && key <= 57));
+        }
+
+
+        var block;
+        // Muestra Modal Procesando
+        function ModalProcesandoShow() {
+            block = $('body').parent();
+            $(block).block({
+                message: '<i class="icon-spinner4 spinner"></i>',
+                overlayCSS: {
+                    backgroundColor: '#fff',
+                    opacity: 0.8,
+                    cursor: 'wait'
+                },
+                css: {
+                    width: 16,
+                    border: 0,
+                    padding: 0,
+                    backgroundColor: 'transparent'
+                }
+            });
+
+            //$("#ModalProcessing").modal();// initialized with defaults
+            //$("#ModalProcessing").modal({ backdrop: 'static', keyboard: false });// initialized with no keyboard
+            //$("#ModalProcessing").modal('show');
+        }
+
+
+        // Oculta Modal de procesando
+        function ModalProcesandoHiden() {
+            $(block).unblock();
+            //$("#ModalProcessing").modal('hide');
+        }
+
+        var block_parent;
+        function ProcesandoInElementShow(elemet) {
+            block_parent = $(elemet);
+            $(block).block({
+                message: '<i class="icon-spinner2 spinner"></i>',
+                overlayCSS: {
+                    backgroundColor: '#fff',
+                    opacity: 0.8,
+                    cursor: 'wait',
+                    'box-shadow': '0 0 0 1px #ddd'
+                },
+                css: {
+                    border: 0,
+                    padding: 0,
+                    backgroundColor: 'none'
+                }
+            });
+        }
+
+        function ProcesandoInElementHiden() {
+            $(block_parent).unblock();
+            //$("#ModalProcessing").modal('hide');
+        }
+
+        function ImprimirPantalla() {
+            window.print();
+        }
+
+
+        function Alerta(msg) {
+            swal({
+                title: "@Session["APPLICATION_NAME"]",
+                text: msg,
+                confirmButtonColor: "#2196F3"
+            });
+        }
+
+
+        function Confirmacion(msg) {
+            swal({
+                title: "@Session["APPLICATION_NAME"]",
+                text: msg,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#EF5350",
+                confirmButtonText: "SI",
+                cancelButtonText: "NO",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    return true;
+                    //swal({
+                    //    title: "Deleted!",
+                    //    text: "Your imaginary file has been deleted.",
+                    //    confirmButtonColor: "#66BB6A",
+                    //    type: "success"
+                    //});
+                }
+                else {
+                    return false;
+                    //swal({
+                    //    title: "Cancelled",
+                    //    text: "Your imaginary file is safe :)",
+                    //    confirmButtonColor: "#2196F3",
+                    //    type: "error"
+                    //});
+                }
+            });
+        }
+
+
+        // Genera Los Mensajes de Alertas
+        function Mensajes(text, type, layout) {
+
+            var delay = 5000;
+            var bg = 'bg-info';
+            var icon = 'icon-info22';
+
+            if (type == 'error') {
+                delay = 10000;
+                bg = 'bg-danger';
+                icon = 'icon-cross2';
+            }
+
+            else if (type == 'success') {
+                bg = 'bg-success';
+                icon = 'icon-checkmark';
+            }
+
+            else if (type == 'warning') {
+                bg = 'bg-warning';
+                icon = 'icon-warning2';
+            }
+
+            else if (type == 'info') {
+                bg = 'bg-info';
+                icon = 'icon-info22';
+            }
+
+            new PNotify({
+                title: '@Session["APPLICATION_NAME"]',
+                text: text,
+                type: type,
+                // icon: icon,
+                addclass: bg + ' alert-styled-left',
+                delay: delay,
+                styling: 'bootstrap3'
+            });
+
+            //if (layout == '')
+            //    layout = 'bottomRight';
+
+            //var self = $(this);
+            //noty({
+            //    text: text,
+            //    type: type,
+            //    theme: 'defaultTheme',
+            //    layout: layout,
+            //    timeout: 9000,
+            //    modal: self.data('modal')
+            //});
+
+            return false;
+        }
+
+    </script>
+
+    <style>
+        /*.modal-open .modal {
+            background: #BDBDBD !important;
+        }*/
+
+        body {
+            width: 100% !important;
+            background: #eaeaea;
+        }
+
+        .footer {
+            bottom: 0px;
+        }
+
+        .table > thead > tr > th,
+        .table > tbody > tr > th,
+        .table > tfoot > tr > th,
+        .table > thead > tr > td,
+        .table > tbody > tr > td,
+        .table > tfoot > tr > td {
+            padding: 5px 20px !important;
+        }
+
+        .blockOverlay {
+            height: 36500px !important;
+        }
+
+        .heading-elements {
+            top: 75%;
+            height: auto;
+            margin-top: -22px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main navbar -->
+    <div class="navbar navbar-inverse" id="navbar-first">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/DIRECTAX/Dashboard">
+                @*<img src="~/Content/assets/images/logo_light.png" alt="">*@
+                @Session["APPLICATION_NAME"]
+            </a>
+            <ul class="nav navbar-nav pull-right visible-xs-block">
+                <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-mobile">
+
+            @*<ul class="nav navbar-nav">
+                    <li>
+                        <p class="navbar-text text-bold">|&nbsp;@Request.Params["nm"]&nbsp;|</p>
+                    </li>
+                </ul>*@
+
+            @if (Request.Params["nm"] != null)
+            {
+                <p class="navbar-text"><span class="label bg-success-400">@Request.Params["nm"]</span></p>
+            }
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropdown-user">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+
+                        <font color="yellow"><b>@(Session["365CNN"])</b></font>&nbsp;
+
+                        <img src="~/Imagenes/user.png" alt="">
+
+                        <span>@((Session["curUser"] as PANGEA.IMPORTSUITE.DataModel.S_USER).USERNAME )</span>
+
+                        <i class="caret"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" style="background:#000000">
+                        <li class="divider"></li>
+                        <li><a href="/DIRECTAX/ClosedSession" style="color:white"><i class="icon-switch2"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /main navbar -->
+
+
+    @Html.Partial("_UC_SIDEBAR")
+
+    <!-- Page header -->
+    @*<div class="page-header">
+            <div class="page-header-content">
+                <div class="page-title">
+                    <h4>
+                        <span class="text-semibold">Home</span>
+                        <i class="icon-circle-right2"></i>
+                        <span class="text-semibold">@Request.Params["nm"]</span>
+                        <small class="display-block">@Request.Params["nm"]</small>
+                    </h4>
+                </div>
+                <div class="heading-elements">
+                    <div class="heading-btn-group">
+                        <a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
+                        <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
+                        <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <!-- /page header -->
+    <!-- Page container -->
+    <div class="page-container">
+        <!-- Page content -->
+        <div class="page-content">
+            <!-- Main content -->
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <br />
+
+                        @try
+                        {
+                            if (TempData["Error"] != null || !string.IsNullOrEmpty(TempData["Error"].ToString()))
+                            {
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="alert bg-danger alert-styled-left">
+                                            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                                            <span class="text-semibold">@TempData["Error"]</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        catch { }
+
+                        @try
+                        {
+                            if (TempData["Success"] != null || !string.IsNullOrEmpty(TempData["Success"].ToString()))
+                            {
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="alert bg-success alert-styled-left">
+                                            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                                            <span class="text-semibold">@TempData["Success"]</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        catch { }
+
+                        @RenderBody()
+
+                    </div>
+                </div>
+            </div>
+            <!-- /main content -->
+        </div>
+        <!-- /page content -->
+        <!-- Footer -->
+        <div class="footer text-muted">
+            <strong>&nbsp; <a href="http://grouppangea.com">Pangea Group, Inc,</a></strong> Copyright &copy; 2015 - @DateTime.Today.Year.ToString(), All rights reserved.
+        </div>
+        <!-- /footer -->
+    </div>
+    <!-- /page container -->
+    <div id="DivLoadingPage"></div>
+    <div id="loader"></div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

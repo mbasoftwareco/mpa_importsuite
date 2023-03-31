@@ -1,0 +1,111 @@
+﻿@model S_USER
+@using PANGEA.IMPORTSUITE.DataModel
+
+@{
+    Layout = null;
+}
+<style>
+    .error{
+        color: red;
+    }
+</style>
+<script>
+
+    $("#myModal").modal()                       // initialized with defaults
+    $("#myModal").modal({
+        backdrop: 'static',
+        keyboard: false,
+        width: '800px'
+    })   // initialized with no keyboard
+
+    $("#myModal").modal('show');
+
+    $("#form-user #ROWID_ROL").val('@Model.ROWID_ROL');
+
+    function SAVE_USER() {
+        if ($('#form-user').valid()) {
+
+            ModalProcesandoShow();
+
+            $.ajax({
+                type: 'POST',
+                url: '/PROFILE/NEW_USER',
+                data: $('#form-user').serialize(),
+                success: function (r) {
+
+                    alert('SAVE SUCCESS');
+                    window.location.href = window.location.href;
+
+                }, error: function (request) {
+
+                    ModalProcesandoHiden();
+                    Mensajes(request.statusText, 'error', '');
+                }
+            });
+        }
+    }
+
+</script>
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">@Model.USERNAME</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <form class="form-horizontal widget-main" role="form" id="form-user" method="post">
+
+                            <input type="hidden" name="ROWID" id="ROWID" value="@Model.ROWID" />
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right"
+                                       for="USERNAME">USERNAME&nbsp;<span class="required">*</span></label>
+
+                                <div class="col-sm-4">
+                                    <input type="text" id="USERNAME" name="USERNAME" placeholder="USERNAME"
+                                           class="form-control" value="@Model.USERNAME" required="required" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right"
+                                       for="ROWID_ROL">ROL&nbsp;<span class="required">*</span></label>
+
+                                <div class="col-sm-4">
+                                    <select class="form-control" name="ROWID_ROL" id="ROWID_ROL" required="required">
+                                        <option value=""></option>
+                                        @foreach (var row in (ViewBag.ROLES as List<M_ROL>))
+                                        {
+                                            <option value="@row.ROWID">@row.NAME</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right"
+                                       for="ACTIVE">ACTIVE</label>
+
+                                <div class="col-sm-4">
+                                    <input name="ACTIVE" id="ACTIVE" class="styled" type="checkbox" @if (Model.ACTIVE == true || Model.ROWID == 0) { <text> checked="checked" </text>       } />
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <button type="button" class="btn btn-primary" onclick="SAVE_USER();">SAVE</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

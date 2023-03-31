@@ -1,0 +1,130 @@
+﻿<!-- Second navbar -->
+<div class="navbar navbar-default bg-blue" id="navbar-second">
+    <ul class="nav navbar-nav no-border visible-xs-block">
+        <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
+    </ul>
+    <div class="navbar-collapse collapse" id="navbar-second-toggle">
+        <ul class="nav navbar-nav">
+
+            @*<li class=""><a href="/Home/Dashboard"><i class="icon-display4 position-left"></i> Dashboard</a></li>*@
+
+            @if (Session["curUser"] != null)
+            {
+                //List<PANGEA.IMPORTSUITE.DataModel.T_TEMPLATE> lista_templates = ((List<PANGEA.IMPORTSUITE.DataModel.T_TEMPLATE>)HttpContext.Current.Session["curTemplates"]).OrderBy(f => f.NAME).ToList();
+
+                foreach (PANGEA.IMPORTSUITE.DataModel.S_MENU opcion in ((List<PANGEA.IMPORTSUITE.DataModel.S_MENU>)HttpContext.Current.Session["curUser_Menu"]).Where(f => f.ACTIVE == true &&  f.S_MENU1 != null && f.S_MENU1.NAME == HttpContext.Current.Session["MODE"].ToString()).Distinct().OrderBy(f => f.SEQ))
+                {
+
+                    //List<PANGEA.IMPORTSUITE.DataModel.S_MENU> lista_sub_opciones = ((List<PANGEA.IMPORTSUITE.DataModel.S_MENU>)HttpContext.Current.Session["curUser_Menu"]).Where(f => f.PARENTOPTION == opcion.ROWID).OrderBy(f => f.NAME).ToList();
+
+
+                    //if (lista_sub_opciones.Count == 0 && !opcion.NAME.Contains("FILE UPLOAD"))
+                    //{
+                    //    continue;
+                    //}
+
+                    if (opcion.URL.Contains("?"))
+                    {
+                        <li class=""><a href="@opcion.URL&nm=@HttpUtility.UrlEncode(opcion.NAME)&rhi=@opcion.ROWID" data-toggle="tooltip" data-placement="bottom"  title="@opcion.DESCRIPTION"><i class="@opcion.ICON position-left"></i>&nbsp;@opcion.NAME&nbsp;</a></li>
+                    }
+                    else
+                    {
+                        <li class=""><a href="@opcion.URL?nm=@HttpUtility.UrlEncode(opcion.NAME)&rhi=@opcion.ROWID" data-toggle="tooltip" data-placement="bottom"  title="@opcion.DESCRIPTION"><i class="@opcion.ICON position-left"></i>&nbsp;@opcion.NAME&nbsp;</a></li>
+                    }
+
+                    @*<li class="dropdown mega-menu mega-menu-wide">
+
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="@opcion.ICON position-left"></i>&nbsp;@opcion.NAME&nbsp;<span class="caret"></span></a>
+
+                            <div class="dropdown-menu dropdown-content">
+                                <div class="dropdown-content-body">
+                                    <div class="row">
+                                        @foreach (PANGEA.IMPORTSUITE.DataModel.S_MENU subOpcion in lista_sub_opciones)
+                                        {
+                                            <div class="col-md-3">
+                                                <ul class="menu-list">
+                                                    @if (subOpcion.URL.Contains("?"))
+                                                    {
+                                                        <li>
+                                                            <a href="@subOpcion.URL&nm=@HttpUtility.UrlEncode(subOpcion.NAME)&rhi=@subOpcion.ROWID">
+                                                                @if (string.IsNullOrEmpty(subOpcion.ICON))
+                                                                {
+                                                                <i class="icon-circle"></i>
+                                                                }
+                                                                else
+                                                                {
+                                                                <i class="@subOpcion.ICON"></i>
+                                                                }
+                                                                @subOpcion.NAME
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li>
+                                                            <a href="@subOpcion.URL?nm=@HttpUtility.UrlEncode(subOpcion.NAME)&rhi=@subOpcion.ROWID">
+                                                                @if (string.IsNullOrEmpty(subOpcion.ICON))
+                                                                {
+                                                                <i class="icon-circle"></i>
+                                                                }
+                                                                else
+                                                                {
+                                                                <i class="@subOpcion.ICON"></i>
+                                                                }
+                                                                @subOpcion.NAME
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        }
+
+                                        @if (opcion.NAME.Contains("FILE UPLOAD"))
+                                        {
+                                            foreach (PANGEA.IMPORTSUITE.DataModel.T_TEMPLATE template in lista_templates)
+                                            {
+                                                <div class="col-md-3">
+                                                    <ul class="menu-list">
+                                                        <li>
+                                                            <a href="/PROCESS/IMPORT_TEMPLATE?nm=@HttpUtility.UrlEncode(template.NAME)&rhi=@template.ROWID&ROWID_TEMPLATE=@template.ROWID">
+                                                                <i class="icon-circle"></i>
+                                                                @template.NAME
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </li>*@
+                }
+            }
+            else
+            {
+                Response.Redirect(Url.Action("Login", "Home"));
+
+            }
+
+
+            @if (HttpContext.Current.Session["MODE"].ToString() == "UPLOAD")
+            {
+                <li class=""><a href="/DIRECTAX/ChangeMenu?mode=SETUP" style="color:#f3f57c;"><i class="icon-display4 position-left"></i>SETUP</a></li>
+                <li class=""><a href="/DIRECTAX/ChangeMenu?mode=MASTER" style="color:#f3f57c;"><i class="icon-display4 position-left"></i>MASTERS</a></li>
+            }
+            else if (HttpContext.Current.Session["MODE"].ToString() == "MASTER")
+            {
+                <li class=""><a href="/DIRECTAX/ChangeMenu?mode=UPLOAD" style="color:#f3f57c; font-weight:bold;"><i class="icon-cloud-upload2 position-left"></i>UPLOAD</a></li>
+                <li class=""><a href="/DIRECTAX/ChangeMenu?mode=SETUP" style="color:#f3f57c;"><i class="icon-display4 position-left"></i>SETUP</a></li>
+            }
+            else if (HttpContext.Current.Session["MODE"].ToString() == "SETUP")
+            {
+                <li class=""><a href="/DIRECTAX/ChangeMenu?mode=UPLOAD" style="color:#f3f57c; font-weight:bold;"><i class="icon-cloud-upload2 position-left"></i>UPLOAD</a></li>
+                <li class=""><a href="/DIRECTAX/ChangeMenu?mode=MASTER" style="color:#f3f57c;"><i class="icon-display4 position-left"></i>MASTERS</a></li>
+            }
+
+        </ul>
+    </div>
+</div>
+<!-- /second navbar -->

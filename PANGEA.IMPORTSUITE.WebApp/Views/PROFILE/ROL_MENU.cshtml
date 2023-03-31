@@ -1,0 +1,155 @@
+﻿
+<style>
+    * {
+        -webkit-font-smoothing: antialiased;
+        -webkit-user-select: none;
+        -moz-user-select: moz-none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .external-event {
+        padding: 5px 10px;
+        font-weight: bold;
+        margin-bottom: 4px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+        cursor: move;
+    }
+
+        .external-event:hover {
+            box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.2);
+        }
+</style>
+
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+
+<script>
+    $(function () {
+
+        var adding = 0
+        var scrollInterval = null;
+
+        /* initialize the external events
+            -----------------------------------------------------------------*/
+        function ini_events(ele) {
+            ele.each(function () {
+
+                // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                // it doesn't need to have a start or end
+                var eventObject = {
+                    title: $.trim($(this).text()) // use the element's text as the event title
+                };
+
+                // store the Event Object in the DOM element so we can get to it later
+                $(this).data('eventObject', eventObject);
+
+                // make the event draggable using jQuery UI
+                $(this).draggable({
+                    zIndex: 1070,
+                    scroll: true,
+                    helper: "clone",
+                    revert: true, // will cause the event to go back to its
+                    revertDuration: 0  //  original position after the drag
+                });
+
+                $(this).sortable({
+                    items: "div:not(.external-event)",
+                    sort: function () {
+                        $(this).removeClass("ui-state-default");
+                    }
+                });
+            });
+        }
+
+        ini_events($('#external-events1 div.external-event'));
+        ini_events($('#external-events2 div.external-event'));
+
+        $("#external-events1, #external-events2").droppable({
+            accept: ".external-event",
+            scroll: true,
+            drop: function (event, ui) {
+
+                // Recuperar Identificador del usuario
+                var thisUser = ui.draggable;
+
+                if ($(this).attr('id') == 'external-events1') {
+                    // Insertar
+                    $.get('/PROFILE/OPTION_MENU_PROFILE?oper=add&opcionMenuId=' + thisUser.attr('id') + "&ROWID_ROL=" + '@ViewBag.RolID').done(function () {
+
+                        $("<div class='external-event bg-success ui-draggable ui-draggable-handle' style='position: relative;' id='" + thisUser.attr('id') + "'></div>").text(thisUser.text()).appendTo($("#external-events1"));
+
+                        ui.draggable.remove();
+
+                        ini_events($('#external-events1 div.external-event'));
+                        ini_events($('#external-events2 div.external-event'));
+                    });
+                }
+                else {
+                    // Eliminar
+                    $.get('/PROFILE/OPTION_MENU_PROFILE?oper=delete&opcionMenuId=' + thisUser.attr('id') + "&ROWID_ROL=" + '@ViewBag.RolID').done(function () {
+
+                        $("<div class='external-event bg-primary ui-draggable ui-draggable-handle' style='position: relative;' id='" + thisUser.attr('id') + "'></div>").text(thisUser.text()).appendTo($("#external-events2"));
+
+                        ui.draggable.remove();
+
+                        ini_events($('#external-events1 div.external-event'));
+                        ini_events($('#external-events2 div.external-event'));
+                    });
+                }
+            },
+            over: function () {
+
+            }
+        });
+
+    });
+</script>
+
+<div class="panel panel-white">
+    <div class="panel-heading">
+        <h5 class="panel-title">
+            <a href="/PROFILE/ROLES?nm=ROLES"><i class="icon-arrow-left52 position-left"></i>&nbsp;<span class="text-semibold">Back</span></a>
+        </h5>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-white">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">Option Men&uacute; Role&nbsp;<a href="#" class="text-bold">@ViewBag.NombreRol</a></h5>
+                        <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+                    </div>
+                    <div class="panel-body">
+                        <div id="external-events1" style="min-height:100px;border:2px solid #4CAF50;padding:5px;">
+                            @foreach (PANGEA.IMPORTSUITE.DataModel.S_MENU menuop in ViewBag.MenuOpcionesRol)
+                            {
+                                <div class="external-event bg-success borde border-success" id="@menuop.ROWID">&nbsp;@menuop.NAME</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-white">
+                    <div class="panel-heading">
+                        <h5 class="panel-title">Option Men&uacute; Avalaible</h5>
+                        <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+                    </div>
+                    <div class="panel-body">
+                        <div id="external-events2" style="min-height:100px;border:2px solid #2196F3;padding:5px;">
+                            @foreach (PANGEA.IMPORTSUITE.DataModel.S_MENU item in ((IEnumerable<PANGEA.IMPORTSUITE.DataModel.S_MENU>)ViewBag.MenuOpcionesDisponibles).ToList())
+                            {
+                                <div class="external-event bg-primary" id="@item.ROWID">&nbsp;@item.NAME</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

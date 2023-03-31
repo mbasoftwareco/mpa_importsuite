@@ -1,0 +1,2 @@
+JNL_SQ;PurchReqName;RequiredDate;TransDate;Name;PurchReqLine.editItemName();(Ref_EcoResCategory_EcoResCategory).Name;PurchQty;UnitOfMeasure;PurchPrice;CurrencyCode;VendAccount;Dimensions[1]
+JNL_SQ;Name;Requested date;Accounting date;Requester;Product name;Procurement Category;Quantity;Unit  ;Unit Price;Currency;Vendor Account;Business Unit

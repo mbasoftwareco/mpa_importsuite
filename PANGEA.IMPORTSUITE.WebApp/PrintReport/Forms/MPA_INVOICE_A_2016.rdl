@@ -1,0 +1,2528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=(local)\SQL2014;Initial Catalog=PANGEA_Floyd_AX</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>ec03a52e-1627-4335-9e29-6c1c4bed6f0e</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT 	'' Invoice,
+	'' InvoiceDate,
+	'' Page,
+	'' InvoiceAccount,
+	'' TermOfPayment,
+	'' DueDate,
+	'' BillTo,
+	'' Address,
+	'' Address2,
+	'' Address3,
+	1 Subtotal,
+	2 Subcharge,
+	3 SalesTax,
+	4 TotalCharges,
+	5 CurrentTotal,
+	6 BalanceForward,
+	7 GrandTotal</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Invoice">
+          <DataField>Invoice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceDate">
+          <DataField>InvoiceDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Page">
+          <DataField>Page</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceAccount">
+          <DataField>InvoiceAccount</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TermOfPayment">
+          <DataField>TermOfPayment</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DueDate">
+          <DataField>DueDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BillTo">
+          <DataField>BillTo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address2">
+          <DataField>Address2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address3">
+          <DataField>Address3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Subtotal">
+          <DataField>Subtotal</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Subcharge">
+          <DataField>Subcharge</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SalesTax">
+          <DataField>SalesTax</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TotalCharges">
+          <DataField>TotalCharges</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CurrentTotal">
+          <DataField>CurrentTotal</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BalanceForward">
+          <DataField>BalanceForward</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="GrandTotal">
+          <DataField>GrandTotal</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DataSet2">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT 	'' LineDescription,
+	'' Facility,
+	'' PermitNumber,
+	1 Quantity,
+	1.4 Rate,
+	2 Amount
+</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="LineDescription">
+          <DataField>LineDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Facility">
+          <DataField>Facility</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PermitNumber">
+          <DataField>PermitNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Rate">
+          <DataField>Rate</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Amount">
+          <DataField>Amount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="table16">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>2.77391in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.87061in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.26529in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.61003in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.71902in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.00275in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.16in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox207">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Description</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Visibility>
+                            <Hidden>=IIf(First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "PrePrinted", True, False)</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>0.0625in</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox42">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Facility</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox42</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>0.0625in</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox49">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Permit number</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox49</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>0.0625in</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox238">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Quantity</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Visibility>
+                            <Hidden>=IIf(First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "PrePrinted", True, False)</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>0.0625in</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox242">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Rate</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Visibility>
+                            <Hidden>=IIf(First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "PrePrinted", True, False)</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>0.0625in</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox243">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Amount</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Visibility>
+                            <Hidden>=IIf(First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "PrePrinted", True, False)</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>0.0625in</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.16in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox11">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!LineDescription.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                          <Style />
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="InventSiteId2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Facility.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>InventSiteId</rd:DefaultName>
+                          <CustomProperties>
+                            <CustomProperty>
+                              <Name>AXDataType</Name>
+                              <Value>String</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTFormat</Name>
+                              <Value>SalesInvoiceTmp.InventSiteId</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTTextAlign</Name>
+                              <Value>SalesInvoiceTmp.InventSiteId</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTDirection</Name>
+                              <Value>SalesInvoiceTmp.InventSiteId</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXFieldName</Name>
+                              <Value>InventSiteId</Value>
+                            </CustomProperty>
+                          </CustomProperties>
+                          <Style />
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="PermitNumber">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!PermitNumber.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>PermitNumber</rd:DefaultName>
+                          <CustomProperties>
+                            <CustomProperty>
+                              <Name>AXDataType</Name>
+                              <Value>String</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTFormat</Name>
+                              <Value>SalesInvoiceTmp.MPAFacilityNumber</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTTextAlign</Name>
+                              <Value>SalesInvoiceTmp.MPAFacilityNumber</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTDirection</Name>
+                              <Value>SalesInvoiceTmp.MPAFacilityNumber</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXFieldName</Name>
+                              <Value>MPAFacilityNumber</Value>
+                            </CustomProperty>
+                          </CustomProperties>
+                          <Style>
+                            <PaddingLeft>0.0625in</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox122">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Quantity.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <CustomProperties>
+                            <CustomProperty>
+                              <Name>AXDataType</Name>
+                              <Value>Float</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTFormat</Name>
+                              <Value>SalesInvoiceTmp.Qty</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTTextAlign</Name>
+                              <Value>SalesInvoiceTmp.Qty</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTDirection</Name>
+                              <Value>SalesInvoiceTmp.Qty</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXFieldName</Name>
+                              <Value>Qty</Value>
+                            </CustomProperty>
+                          </CustomProperties>
+                          <Style>
+                            <PaddingLeft>0.0625in</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox123">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Rate.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <CustomProperties>
+                            <CustomProperty>
+                              <Name>AXDataType</Name>
+                              <Value>Float</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTFormat</Name>
+                              <Value>SalesInvoiceTmp.SalesPrice</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTTextAlign</Name>
+                              <Value>SalesInvoiceTmp.SalesPrice</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTDirection</Name>
+                              <Value>SalesInvoiceTmp.SalesPrice</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXFieldName</Name>
+                              <Value>SalesPrice</Value>
+                            </CustomProperty>
+                          </CustomProperties>
+                          <Style>
+                            <PaddingLeft>0.0625in</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox124">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Amount.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <CustomProperties>
+                            <CustomProperty>
+                              <Name>AXDataType</Name>
+                              <Value>Float</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTFormat</Name>
+                              <Value>SalesInvoiceTmp.LineAmountInclTax</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTTextAlign</Name>
+                              <Value>SalesInvoiceTmp.LineAmountInclTax</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXEDTDirection</Name>
+                              <Value>SalesInvoiceTmp.LineAmountInclTax</Value>
+                            </CustomProperty>
+                            <CustomProperty>
+                              <Name>AXFieldName</Name>
+                              <Value>LineAmountInclTax</Value>
+                            </CustomProperty>
+                          </CustomProperties>
+                          <Style>
+                            <PaddingLeft>0.0625in</PaddingLeft>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="table16_Details_Group">
+                    <DataElementName>Detail</DataElementName>
+                  </Group>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>=IIf(Fields!Qty.Value = 0, True, False)</Hidden>
+                      </Visibility>
+                    </TablixMember>
+                  </TablixMembers>
+                  <DataElementName>Detail_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>DataSet2</DataSetName>
+            <Top>0.01516in</Top>
+            <Left>0.00111in</Left>
+            <Height>0.32in</Height>
+            <Width>7.24161in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <FontFamily>Segoe UI</FontFamily>
+              <FontSize>8pt</FontSize>
+            </Style>
+          </Tablix>
+          <Textbox Name="CompanyNameTextBox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value EvaluationMode="Constant">Makes checks payable to: DEPARTMENT OF OFF-STREET PARKING</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.72581in</Top>
+            <Height>0.18852in</Height>
+            <Width>7.24272in</Width>
+            <ZIndex>1</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border />
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyNameTextBox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Subtotal</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.17042in</Top>
+            <Left>4.68232in</Left>
+            <Height>0.125in</Height>
+            <Width>1.54376in</Width>
+            <ZIndex>2</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border />
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyAddressTextBox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Subtotal.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.17042in</Top>
+            <Left>6.23997in</Left>
+            <Height>0.125in</Height>
+            <Width>1.00275in</Width>
+            <ZIndex>3</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+              </BottomBorder>
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyNameTextBox6">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value EvaluationMode="Constant">Subcharge</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.36487in</Top>
+            <Left>4.69621in</Left>
+            <Height>0.125in</Height>
+            <Width>1.54376in</Width>
+            <ZIndex>4</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border />
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyAddressTextBox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Subcharge.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.36487in</Top>
+            <Left>6.25386in</Left>
+            <Height>0.125in</Height>
+            <Width>1.00275in</Width>
+            <ZIndex>5</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+              </BottomBorder>
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyNameTextBox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Sales Tax</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.55931in</Top>
+            <Left>4.69621in</Left>
+            <Height>0.125in</Height>
+            <Width>1.54376in</Width>
+            <ZIndex>6</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border />
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyAddressTextBox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!SalesTax.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.54542in</Top>
+            <Left>6.25386in</Left>
+            <Height>0.125in</Height>
+            <Width>1.00275in</Width>
+            <ZIndex>7</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+              </BottomBorder>
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyNameTextBox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Total Charges</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.75376in</Top>
+            <Left>4.69621in</Left>
+            <Height>0.125in</Height>
+            <Width>1.54376in</Width>
+            <ZIndex>8</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border />
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyAddressTextBox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!TotalCharges.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.75376in</Top>
+            <Left>6.25386in</Left>
+            <Height>0.125in</Height>
+            <Width>1.00275in</Width>
+            <ZIndex>9</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+              </BottomBorder>
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyNameTextBox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Current Total</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.9482in</Top>
+            <Left>4.69621in</Left>
+            <Height>0.125in</Height>
+            <Width>1.54376in</Width>
+            <ZIndex>10</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border />
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyAddressTextBox6">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!CurrentTotal.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.9482in</Top>
+            <Left>6.25386in</Left>
+            <Height>0.125in</Height>
+            <Width>1.00275in</Width>
+            <ZIndex>11</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+              </BottomBorder>
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyNameTextBox10">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Balance Forward</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.14265in</Top>
+            <Left>4.69621in</Left>
+            <Height>0.125in</Height>
+            <Width>1.54376in</Width>
+            <ZIndex>12</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border />
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyAddressTextBox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!BalanceForward.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.14265in</Top>
+            <Left>6.25386in</Left>
+            <Height>0.125in</Height>
+            <Width>1.00275in</Width>
+            <ZIndex>13</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+              </BottomBorder>
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyNameTextBox11">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>GRAND TOTAL</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.33709in</Top>
+            <Left>4.69621in</Left>
+            <Height>0.125in</Height>
+            <Width>1.54376in</Width>
+            <ZIndex>14</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border />
+            </Style>
+          </Textbox>
+          <Textbox Name="CompanyAddressTextBox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!GrandTotal.Value, "DataSet1")</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.33709in</Top>
+            <Left>6.25386in</Left>
+            <Height>0.125in</Height>
+            <Width>1.00275in</Width>
+            <ZIndex>15</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+              </BottomBorder>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>9.87184in</Height>
+        <Style />
+      </Body>
+      <Width>7.74512in</Width>
+      <Page>
+        <PageHeader>
+          <Height>2.69484in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="textbox704">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Invoice</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>14pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Left>4.31931in</Left>
+              <Height>0.2in</Height>
+              <Width>3.22917in</Width>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox237">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Address.Value, "DataSet1")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.97729in</Top>
+              <Left>4.28181in</Left>
+              <Height>0.28556in</Height>
+              <Width>2.625in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox236">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!BillTo.Value, "DataSet1")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.82381in</Top>
+              <Left>4.28181in</Left>
+              <Height>0.125in</Height>
+              <Width>2.625in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox1615">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Bill To:</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <TextDecoration>Underline</TextDecoration>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1612</rd:DefaultName>
+              <Top>1.66215in</Top>
+              <Left>4.28181in</Left>
+              <Height>0.1061in</Height>
+              <Width>1.01375in</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyNameTextBox2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Miami, FL, 33128</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.9823in</Top>
+              <Left>0.04114in</Left>
+              <Height>0.125in</Height>
+              <Width>2.375in</Width>
+              <ZIndex>4</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyNameTextBox3">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>USA</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.13786in</Top>
+              <Left>0.04114in</Left>
+              <Height>0.125in</Height>
+              <Width>2.375in</Width>
+              <ZIndex>5</ZIndex>
+              <Visibility>
+                <Hidden>=IIf(Parameters!SalesInvoiceDS_CountryRegionISOCode.Value = "TH", false, true)</Hidden>
+              </Visibility>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox239">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Address2.Value, "DataSet1")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.26286in</Top>
+              <Left>4.27997in</Left>
+              <Height>0.125in</Height>
+              <Width>2.625in</Width>
+              <ZIndex>6</ZIndex>
+              <Visibility>
+                <Hidden>=IIf(Parameters!SalesInvoiceDS_CountryRegionISOCode.Value = "TH", false, true)</Hidden>
+              </Visibility>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox240">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Address3.Value, "DataSet1")</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>2.41425in</Top>
+              <Left>4.27997in</Left>
+              <Height>0.125in</Height>
+              <Width>2.62316in</Width>
+              <ZIndex>7</ZIndex>
+              <Visibility>
+                <Hidden>=IIf(Parameters!SalesInvoiceDS_CountryRegionISOCode.Value = "TH", false, true)</Hidden>
+              </Visibility>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Image Name="CompanyLogo">
+              <Source>Database</Source>
+              <Value>=First(Fields!CompanyLogo.Value, "SalesInvoiceHeaderFooterDS")</Value>
+              <MIMEType>image/bmp</MIMEType>
+              <Sizing>FitProportional</Sizing>
+              <Top>0.16438in</Top>
+              <Left>0.04114in</Left>
+              <Height>1.18875in</Height>
+              <Width>2.25706in</Width>
+              <ZIndex>8</ZIndex>
+              <Visibility>
+                <Hidden>=IIf(First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "SemiPrePrinted" or First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "PrePrinted", True, False)</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+            <Rectangle Name="Rectangle2">
+              <ReportItems>
+                <Textbox Name="InvoiceIdLbl">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Number</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.06422in</Top>
+                  <Left>0.10618in</Left>
+                  <Height>0.125in</Height>
+                  <Width>1.35417in</Width>
+                  <Visibility>
+                    <Hidden>=IIf(First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "SemiPrePrinted" or First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "PrePrinted", True, False)</Hidden>
+                  </Visibility>
+                  <DataElementOutput>NoOutput</DataElementOutput>
+                  <Style>
+                    <Border />
+                  </Style>
+                </Textbox>
+                <Textbox Name="InvoiceIdTextBox">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!Invoice.Value, "DataSet1")</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.06422in</Top>
+                  <Left>1.49369in</Left>
+                  <Height>0.125in</Height>
+                  <Width>1.375in</Width>
+                  <ZIndex>1</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Textbox>
+                <Textbox Name="PaymentConditionLbl">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value EvaluationMode="Constant">Term of Payment</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.77097in</Top>
+                  <Left>0.10618in</Left>
+                  <Height>0.125in</Height>
+                  <Width>1.35417in</Width>
+                  <ZIndex>2</ZIndex>
+                  <Visibility>
+                    <Hidden>=IIf(First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "SemiPrePrinted" or First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "PrePrinted", True, False)</Hidden>
+                  </Visibility>
+                  <DataElementOutput>NoOutput</DataElementOutput>
+                  <Style>
+                    <Border />
+                  </Style>
+                </Textbox>
+                <Textbox Name="PaymentconditionTextBox">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!TermOfPayment.Value, "DataSet1")</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.77186in</Top>
+                  <Left>1.49369in</Left>
+                  <Height>0.125in</Height>
+                  <Width>1.375in</Width>
+                  <ZIndex>3</ZIndex>
+                  <Style>
+                    <Border />
+                  </Style>
+                </Textbox>
+                <Textbox Name="InvoiceAccountLbl">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Invoice account</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.61819in</Top>
+                  <Left>0.10618in</Left>
+                  <Height>0.125in</Height>
+                  <Width>1.35417in</Width>
+                  <ZIndex>4</ZIndex>
+                  <Visibility>
+                    <Hidden>=IIf(First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "SemiPrePrinted" or First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "PrePrinted", True, False)</Hidden>
+                  </Visibility>
+                  <DataElementOutput>NoOutput</DataElementOutput>
+                  <Style>
+                    <Border />
+                  </Style>
+                </Textbox>
+                <Textbox Name="InvoiceAccountTextBox">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!InvoiceAccount.Value, "DataSet1")</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <ActionInfo>
+                    <Actions>
+                      <Action>
+                        <Hyperlink>=Microsoft.Dynamics.Framework.Reports.DataMethodUtility.PostDataMethodEvaluation(Microsoft.Dynamics.Framework.Reports.DataMethodUtility.UpdateAxContextPartition(Parameters!AX_CompanyName.Value, Parameters!AX_UserContext.Value, Parameters!AX_RenderingCulture.Value, Parameters!AX_PartitionKey.Value), SalesInvoice.DrillCustomer(Parameters!AX_ReportContext.Value, First(Fields!InvoiceAccount.Value, "SalesInvoiceHeaderFooterDS")))</Hyperlink>
+                      </Action>
+                    </Actions>
+                  </ActionInfo>
+                  <Top>0.61769in</Top>
+                  <Left>1.49369in</Left>
+                  <Height>0.125in</Height>
+                  <Width>1.375in</Width>
+                  <ZIndex>5</ZIndex>
+                  <Style>
+                    <Border />
+                  </Style>
+                </Textbox>
+                <Textbox Name="InvoiceDateLbl">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Date</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.31214in</Top>
+                  <Left>0.10618in</Left>
+                  <Height>0.125in</Height>
+                  <Width>1.35417in</Width>
+                  <ZIndex>6</ZIndex>
+                  <Visibility>
+                    <Hidden>=IIf(First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "SemiPrePrinted" or First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "PrePrinted", True, False)</Hidden>
+                  </Visibility>
+                  <DataElementOutput>NoOutput</DataElementOutput>
+                  <Style>
+                    <Border />
+                  </Style>
+                </Textbox>
+                <Textbox Name="InvoiceDateTextBox">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=First(Fields!InvoiceDate.Value, "DataSet1")</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                            <Format>=Microsoft.Dynamics.Framework.Reports.BuiltInMethods.GetExtendedDataTypeFormat("Transdate", Parameters!AX_RenderingCulture.Value)</Format>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.31214in</Top>
+                  <Left>1.49369in</Left>
+                  <Height>0.125in</Height>
+                  <Width>1.26389in</Width>
+                  <ZIndex>7</ZIndex>
+                  <Style>
+                    <Border />
+                  </Style>
+                </Textbox>
+                <Textbox Name="PageLbl">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Page</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.46542in</Top>
+                  <Left>0.10618in</Left>
+                  <Height>0.1255in</Height>
+                  <Width>1.35417in</Width>
+                  <ZIndex>8</ZIndex>
+                  <Visibility>
+                    <Hidden>=IIf(First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "SemiPrePrinted" or First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "PrePrinted", True, False)</Hidden>
+                  </Visibility>
+                  <DataElementOutput>NoOutput</DataElementOutput>
+                  <Style>
+                    <Border />
+                  </Style>
+                </Textbox>
+                <Textbox Name="textbox174">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Globals!PageNumber &amp; " of " &amp; Globals!TotalPages</Value>
+                          <Style>
+                            <FontFamily>Segoe UI</FontFamily>
+                            <FontSize>8pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Left</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <Top>0.46492in</Top>
+                  <Left>1.49369in</Left>
+                  <Height>0.125in</Height>
+                  <Width>0.98519in</Width>
+                  <ZIndex>9</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                  </Style>
+                </Textbox>
+                <Rectangle Name="Rectangle3">
+                  <ReportItems>
+                    <Textbox Name="PaymentReferenceLbl">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Due Date</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.0375in</Top>
+                      <Left>0.04597in</Left>
+                      <Height>0.125in</Height>
+                      <Width>1.35417in</Width>
+                      <Visibility>
+                        <Hidden>=IIf(First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "SemiPrePrinted" or First(Fields!PrePrintLevel.Value, "SalesInvoiceDS") = "PrePrinted", True, IIf(First(Fields!GiroType.Value, "SalesInvoiceDS") = "BelSMS101" OR First(Fields!GiroType.Value, "SalesInvoiceDS") = "BelSMS102", true, false))</Hidden>
+                      </Visibility>
+                      <DataElementOutput>NoOutput</DataElementOutput>
+                      <Style>
+                        <Border />
+                      </Style>
+                    </Textbox>
+                    <Textbox Name="PaymentReferenceTextBox">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=First(Fields!DueDate.Value, "DataSet1")</Value>
+                              <Style>
+                                <FontFamily>Segoe UI</FontFamily>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Format>=Microsoft.Dynamics.Framework.Reports.BuiltInMethods.GetExtendedDataTypeFormat("Transdate", Parameters!AX_RenderingCulture.Value)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Top>0.03978in</Top>
+                      <Left>1.43348in</Left>
+                      <Height>0.125in</Height>
+                      <Width>1.375in</Width>
+                      <ZIndex>1</ZIndex>
+                      <Visibility>
+                        <Hidden>=IIf(First(Fields!GiroType.Value, "SalesInvoiceDS") = "BelSMS101" OR First(Fields!GiroType.Value, "SalesInvoiceDS") = "BelSMS102", true, false)</Hidden>
+                      </Visibility>
+                      <DataElementOutput>NoOutput</DataElementOutput>
+                      <Style>
+                        <Border />
+                      </Style>
+                    </Textbox>
+                  </ReportItems>
+                  <KeepTogether>true</KeepTogether>
+                  <Top>0.99548in</Top>
+                  <Left>0.05795in</Left>
+                  <Height>0.21875in</Height>
+                  <Width>2.85099in</Width>
+                  <ZIndex>10</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>Solid</Style>
+                    </Border>
+                    <TopBorder>
+                      <Color>Black</Color>
+                      <Style>Solid</Style>
+                      <Width>1pt</Width>
+                    </TopBorder>
+                    <BottomBorder>
+                      <Color>Black</Color>
+                      <Style>Solid</Style>
+                      <Width>1pt</Width>
+                    </BottomBorder>
+                    <LeftBorder>
+                      <Color>Black</Color>
+                      <Style>Solid</Style>
+                      <Width>1pt</Width>
+                    </LeftBorder>
+                    <RightBorder>
+                      <Color>Black</Color>
+                      <Style>Solid</Style>
+                      <Width>1pt</Width>
+                    </RightBorder>
+                  </Style>
+                </Rectangle>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Top>0.32153in</Top>
+              <Left>4.28181in</Left>
+              <Height>1.27118in</Height>
+              <Width>2.96091in</Width>
+              <ZIndex>9</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+                <TopBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </TopBorder>
+                <BottomBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </BottomBorder>
+                <LeftBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </LeftBorder>
+                <RightBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </RightBorder>
+              </Style>
+            </Rectangle>
+            <Textbox Name="CompanyNameTextBox">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Miami Parking Authority</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.67604in</Top>
+              <Left>0.04114in</Left>
+              <Height>0.125in</Height>
+              <Width>2.375in</Width>
+              <ZIndex>10</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyAddressTextBox">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>40 NW 3rd Str # 1103</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.82952in</Top>
+              <Left>0.04114in</Left>
+              <Height>0.125in</Height>
+              <Width>2.375in</Width>
+              <ZIndex>11</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>1.29886in</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="CompanyNameTextBox12">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>RETURN THIS SECTION WITH PAYMENT</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.02778in</Top>
+              <Height>0.18852in</Height>
+              <Width>7.74512in</Width>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+                <TopBorder>
+                  <Style>Dashed</Style>
+                  <Width>2pt</Width>
+                </TopBorder>
+                <BottomBorder>
+                  <Style>None</Style>
+                </BottomBorder>
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyNameTextBox13">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>INVOICE DATE</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.42533in</Top>
+              <Left>1.09912in</Left>
+              <Height>0.125in</Height>
+              <Width>1.54376in</Width>
+              <ZIndex>1</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyNameTextBox14">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>INVOICE #</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.61978in</Top>
+              <Left>1.11301in</Left>
+              <Height>0.125in</Height>
+              <Width>1.54376in</Width>
+              <ZIndex>2</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyNameTextBox15">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>CUSTOMER #</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.81422in</Top>
+              <Left>1.11301in</Left>
+              <Height>0.125in</Height>
+              <Width>1.54376in</Width>
+              <ZIndex>3</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyNameTextBox16">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>CUSTOMER NAME</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.00867in</Top>
+              <Left>1.11301in</Left>
+              <Height>0.125in</Height>
+              <Width>1.54376in</Width>
+              <ZIndex>4</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyAddressTextBox9">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value />
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.42533in</Top>
+              <Left>2.65677in</Left>
+              <Height>0.125in</Height>
+              <Width>1.00275in</Width>
+              <ZIndex>5</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BottomBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                </BottomBorder>
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyAddressTextBox10">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value />
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.61978in</Top>
+              <Left>2.67066in</Left>
+              <Height>0.125in</Height>
+              <Width>1.00275in</Width>
+              <ZIndex>6</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BottomBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                </BottomBorder>
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyAddressTextBox11">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value />
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.80033in</Top>
+              <Left>2.67066in</Left>
+              <Height>0.125in</Height>
+              <Width>1.00275in</Width>
+              <ZIndex>7</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BottomBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                </BottomBorder>
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyAddressTextBox12">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value />
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.00867in</Top>
+              <Left>2.67066in</Left>
+              <Height>0.125in</Height>
+              <Width>1.00275in</Width>
+              <ZIndex>8</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BottomBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                </BottomBorder>
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyNameTextBox17">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>CURRENT TOTAL</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.43922in</Top>
+              <Left>3.9633in</Left>
+              <Height>0.125in</Height>
+              <Width>1.54376in</Width>
+              <ZIndex>9</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyNameTextBox18">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>GRAND TOTAL</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.63367in</Top>
+              <Left>3.97719in</Left>
+              <Height>0.125in</Height>
+              <Width>1.54376in</Width>
+              <ZIndex>10</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyNameTextBox20">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>AMOIUNT REMITTED</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.02256in</Top>
+              <Left>3.97719in</Left>
+              <Height>0.125in</Height>
+              <Width>1.54376in</Width>
+              <ZIndex>11</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border />
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyAddressTextBox13">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value />
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.43922in</Top>
+              <Left>5.52095in</Left>
+              <Height>0.125in</Height>
+              <Width>1.00275in</Width>
+              <ZIndex>12</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BottomBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                </BottomBorder>
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyAddressTextBox14">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value />
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.63367in</Top>
+              <Left>5.53484in</Left>
+              <Height>0.125in</Height>
+              <Width>1.00275in</Width>
+              <ZIndex>13</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BottomBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                </BottomBorder>
+              </Style>
+            </Textbox>
+            <Textbox Name="CompanyAddressTextBox16">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value />
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.02256in</Top>
+              <Left>5.53484in</Left>
+              <Height>0.125in</Height>
+              <Width>1.00275in</Width>
+              <ZIndex>14</ZIndex>
+              <DataElementOutput>NoOutput</DataElementOutput>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                  <Width>2pt</Width>
+                </Border>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <TopBorder>
+              <Style>Dashed</Style>
+            </TopBorder>
+          </Style>
+        </PageFooter>
+        <InteractiveHeight>11in</InteractiveHeight>
+        <InteractiveWidth>8.5in</InteractiveWidth>
+        <LeftMargin>0.59055in</LeftMargin>
+        <RightMargin>0.59055in</RightMargin>
+        <TopMargin>0.59055in</TopMargin>
+        <BottomMargin>0.59055in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>8</NumberOfColumns>
+      <NumberOfRows>5</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <CustomProperties>
+    <CustomProperty>
+      <Name>DATASETSFIELDS</Name>
+      <Value>SalesInvoiceDS:Amount.SalesInvoiceTmp.Amount;BackOrderConfirmedDeliveryDate.SalesInvoiceTmp.BackOrderConfirmedDeliveryDate;BackOrderLineItemId.SalesInvoiceTmp.BackOrderLineItemId;BackOrderLineName.SalesInvoiceTmp.BackOrderLineName;BackOrderLineQuantity.SalesInvoiceTmp.BackOrderLineQuantity;BackOrderLineSalesUnit.SalesInvoiceTmp.BackOrderLineSalesUnit;CashAccountingRegime_ES.SalesInvoiceTmp.CashAccountingRegime_ES;CashAccountingRegime_ES1.SalesInvoiceTmp.CashAccountingRegime_ES;CashDisc.SalesInvoiceTmp.CashDisc;CashDiscAmount.SalesInvoiceTmp.CashDiscAmount;CashDiscEuro.SalesInvoiceTmp.CashDiscEuro;CashDiscTxt_LanguageId.SalesInvoiceTmp.CashDiscTxt_LanguageId;CommodityCode_IN.SalesInvoiceTmp.CommodityCode_IN;CompanyBankRegNum.SalesInvoiceTmp.CompanyBankRegNum;CompanyRegNum.SalesInvoiceTmp.CompanyRegNum;ConfigId.SalesInvoiceTmp.ConfigId;ConfigIdFlag1.SalesInvoiceTmp.ConfigIdFlag;ConfigIdFlag.SalesInvoiceTmp.ConfigIdFlag;CorrectiveReasonLines.SalesInvoiceTmp.CorrectiveReasonLines;CurrencyCode.SalesInvoiceTmp.CurrencyCode;CustInvoiceBackorderLineName.SalesInvoiceTmp.CustInvoiceBackorderLineName;CustInvoiceJourCurrencyCode.SalesInvoiceTmp.CustInvoiceJourCurrencyCode;CustInvoiceJourDueDate.SalesInvoiceTmp.CustInvoiceJourDueDate;DateOfCreation.SalesInvoiceTmp.DateOfCreation;DiscAmount.SalesInvoiceTmp.DiscAmount;DiscDate.SalesInvoiceTmp.DiscDate;DiscPercent.SalesInvoiceTmp.DiscPercent;DiscountAmount.SalesInvoiceTmp.DiscountAmount;DueAmount.SalesInvoiceTmp.DueAmount;DueDate.SalesInvoiceTmp.DueDate;EndDisc.SalesInvoiceTmp.EndDisc;EndDiscEuro.SalesInvoiceTmp.EndDiscEuro;EuroCurrencyCode.SalesInvoiceTmp.EuroCurrencyCode;ExchRate.SalesInvoiceTmp.ExchRate;ExternalItemId.SalesInvoiceTmp.ExternalItemId;FormLetterRemarksTxt.SalesInvoiceTmp.FormLetterRemarksTxt;GSTReliefItemNumber_MY.SalesInvoiceTmp.GSTReliefItemNumber_MY;GSTReliefSchedule_MY.SalesInvoiceTmp.GSTReliefSchedule_MY;GSTSummaryText_MY.SalesInvoiceTmp.GSTSummaryText_MY;GiroType.SalesInvoiceTmp.GiroType;GiroType1.SalesInvoiceTmp.GiroType;HeaderNotes.SalesInvoiceTmp.HeaderNotes;InventBatchId.SalesInvoiceTmp.InventBatchId;InventColorId.SalesInvoiceTmp.InventColorId;InventColorIdFlag1.SalesInvoiceTmp.InventColorIdFlag;InventColorIdFlag.SalesInvoiceTmp.InventColorIdFlag;InventDimPrint.SalesInvoiceTmp.InventDimPrint;InventGTDIdFlag_RU.SalesInvoiceTmp.InventGTDIdFlag_RU;InventGTDIdFlag_RU1.SalesInvoiceTmp.InventGTDIdFlag_RU;InventGTDId_RU.SalesInvoiceTmp.InventGTDId_RU;InventLocationId.SalesInvoiceTmp.InventLocationId;InventOwnerIdFlag_RU.SalesInvoiceTmp.InventOwnerIdFlag_RU;InventOwnerIdFlag_RU1.SalesInvoiceTmp.InventOwnerIdFlag_RU;InventOwnerId_RU.SalesInvoiceTmp.InventOwnerId_RU;InventProfileIdFlag_RU.SalesInvoiceTmp.InventProfileIdFlag_RU;InventProfileIdFlag_RU1.SalesInvoiceTmp.InventProfileIdFlag_RU;InventProfileId_RU.SalesInvoiceTmp.InventProfileId_RU;InventSerialId.SalesInvoiceTmp.InventSerialId;InventSiteId.SalesInvoiceTmp.InventSiteId;InventSizeId.SalesInvoiceTmp.InventSizeId;InventSizeIdFlag.SalesInvoiceTmp.InventSizeIdFlag;InventSizeIdFlag1.SalesInvoiceTmp.InventSizeIdFlag;InventStatusId.SalesInvoiceTmp.InventStatusId;InventStyleId.SalesInvoiceTmp.InventStyleId;InventStyleIdFlag.SalesInvoiceTmp.InventStyleIdFlag;InventStyleIdFlag1.SalesInvoiceTmp.InventStyleIdFlag;InvoiceAmount.SalesInvoiceTmp.InvoiceAmount;InvoiceAmountEuro.SalesInvoiceTmp.InvoiceAmountEuro;InvoiceAmountMST.SalesInvoiceTmp.InvoiceAmountMST;InvoiceId.SalesInvoiceTmp.InvoiceId;InvoiceRoundOff.SalesInvoiceTmp.InvoiceRoundOff;InvoiceRoundOffEuro.SalesInvoiceTmp.InvoiceRoundOffEuro;IsCreditInvoicingReportEnabled.SalesInvoiceTmp.IsCreditInvoicingReportEnabled;IsCreditInvoicingReportEnabled1.SalesInvoiceTmp.IsCreditInvoicingReportEnabled;IsCreditInvoicingReportEnabled_W.SalesInvoiceTmp.IsCreditInvoicingReportEnabled_W;IsCreditInvoicingReportEnabled_W1.SalesInvoiceTmp.IsCreditInvoicingReportEnabled_W;IsInvoiceRefVisible1.SalesInvoiceTmp.IsInvoiceRefVisible;IsInvoiceRefVisible.SalesInvoiceTmp.IsInvoiceRefVisible;IsTaxAmountMST.SalesInvoiceTmp.IsTaxAmountMST;IsTaxAmountMST1.SalesInvoiceTmp.IsTaxAmountMST;IsTaxAmountMSTVisible.SalesInvoiceTmp.IsTaxAmountMSTVisible;IsTaxAmountMSTVisible1.SalesInvoiceTmp.IsTaxAmountMSTVisible;IsTaxAmountVisible.SalesInvoiceTmp.IsTaxAmountVisible;IsTaxAmountVisible1.SalesInvoiceTmp.IsTaxAmountVisible;ItemId.SalesInvoiceTmp.ItemId;JournalRecId.SalesInvoiceTmp.JournalRecId;LicensePlateId.SalesInvoiceTmp.LicensePlateId;LineAmount.SalesInvoiceTmp.LineAmount;LineAmountInclTax.SalesInvoiceTmp.LineAmountInclTax;LineHeader.SalesInvoiceTmp.LineHeader;MCRDueAmount.SalesInvoiceTmp.MCRDueAmount;MCRHeadingLine.SalesInvoiceTmp.MCRHeadingLine;MCRHeadingLine1.SalesInvoiceTmp.MCRHeadingLine;MCRInventTransQty.SalesInvoiceTmp.MCRInventTransQty;MCRInventTrans_ItemId.SalesInvoiceTmp.MCRInventTrans_ItemId;MCRMarkupCalculatedAmount.SalesInvoiceTmp.MCRMarkupCalculatedAmount;MCRMarkupCode.SalesInvoiceTmp.MCRMarkupCode;MCRMarkupTxt.SalesInvoiceTmp.MCRMarkupTxt;MCRMarkupValue.SalesInvoiceTmp.MCRMarkupValue;MCRPaymAmount.SalesInvoiceTmp.MCRPaymAmount;MCRPayment.SalesInvoiceTmp.MCRPayment;MCRTableNum.SalesInvoiceTmp.MCRTableNum;MPAFacilityNumber.SalesInvoiceTmp.MPAFacilityNumber;MandateBankIBAN.SalesInvoiceTmp.MandateBankIBAN;MandateReference.SalesInvoiceTmp.MandateReference;MandateSWIFTNo.SalesInvoiceTmp.MandateSWIFTNo;MarkupAmount.SalesInvoiceTmp.MarkupAmount;MarkupCode.SalesInvoiceTmp.MarkupCode;MarkupTaxCode.SalesInvoiceTmp.MarkupTaxCode;Name.SalesInvoiceTmp.Name;NetAmount.SalesInvoiceTmp.NetAmount;NetAmountEuro.SalesInvoiceTmp.NetAmountEuro;Notes.SalesInvoiceTmp.Notes;PackMaterialCode.SalesInvoiceTmp.PackMaterialCode;PackMaterialName.SalesInvoiceTmp.PackMaterialName;PackMaterialUnit.SalesInvoiceTmp.PackMaterialUnit;PackagingMaterialText.SalesInvoiceTmp.PackagingMaterialText;PackagingWeight.SalesInvoiceTmp.PackagingWeight;PackingSlip.SalesInvoiceTmp.PackingSlip;PackingSlipDeliveryDate.SalesInvoiceTmp.PackingSlipDeliveryDate;PackingSlipId.SalesInvoiceTmp.PackingSlipId;PackingSlipTransQty.SalesInvoiceTmp.PackingSlipTransQty;PaymentId.SalesInvoiceTmp.PaymentId;PaymentStubDueDate.SalesInvoiceTmp.PaymentStubDueDate;PaymentStubInvoiceId.SalesInvoiceTmp.PaymentStubInvoiceId;PdsEnabled1.SalesInvoiceTmp.PdsEnabled;PdsEnabled.SalesInvoiceTmp.PdsEnabled;PrePrintLevel1.SalesInvoiceTmp.PrePrintLevel;PrePrintLevel.SalesInvoiceTmp.PrePrintLevel;PrepaidAmount.SalesInvoiceTmp.PrepaidAmount;PrepaidAmountEuro.SalesInvoiceTmp.PrepaidAmountEuro;PrintCode.SalesInvoiceTmp.PrintCode;PrintEuroTotals.SalesInvoiceTmp.PrintEuroTotals;PrintEuroTotals1.SalesInvoiceTmp.PrintEuroTotals;PrintFreeTextInvoiceVATNum1.SalesInvoiceTmp.PrintFreeTextInvoiceVATNum;PrintFreeTextInvoiceVATNum.SalesInvoiceTmp.PrintFreeTextInvoiceVATNum;Qty.SalesInvoiceTmp.Qty;RefInvoiceDate_MY.SalesInvoiceTmp.RefInvoiceDate_MY;RefInvoiceID_MY.SalesInvoiceTmp.RefInvoiceID_MY;RemainAmountToBePaid.SalesInvoiceTmp.RemainAmountToBePaid;RemainAmountToBePaidEuro.SalesInvoiceTmp.RemainAmountToBePaidEuro;ReverseChargeApplies_UK.SalesInvoiceTmp.ReverseChargeApplies_UK;ReverseChargeWording_UK.SalesInvoiceTmp.ReverseChargeWording_UK;SalesBalance.SalesInvoiceTmp.SalesBalance;SalesBalanceEuro.SalesInvoiceTmp.SalesBalanceEuro;SalesBalanceMST.SalesInvoiceTmp.SalesBalanceMST;SalesPrice.SalesInvoiceTmp.SalesPrice;SalesUnitTxt.SalesInvoiceTmp.SalesUnitTxt;SettledAmountCur.SalesInvoiceTmp.SettledAmountCur;ShowBackOrderConfirmedDeliveryDate.SalesInvoiceTmp.ShowBackOrderConfirmedDeliveryDate;ShowBackOrderConfirmedDeliveryDate1.SalesInvoiceTmp.ShowBackOrderConfirmedDeliveryDate;ShowBackorders.SalesInvoiceTmp.ShowBackorders;ShowBackorders1.SalesInvoiceTmp.ShowBackorders;ShowCashDiscOnInvoiceControls.SalesInvoiceTmp.ShowCashDiscOnInvoiceControls;ShowCashDiscOnInvoiceControls1.SalesInvoiceTmp.ShowCashDiscOnInvoiceControls;ShowCustPackingSlipTrans.SalesInvoiceTmp.ShowCustPackingSlipTrans;ShowCustPackingSlipTrans1.SalesInvoiceTmp.ShowCustPackingSlipTrans;ShowCustPaymSched1.SalesInvoiceTmp.ShowCustPaymSched;ShowCustPaymSched.SalesInvoiceTmp.ShowCustPaymSched;ShowCustPaymSchedLine.SalesInvoiceTmp.ShowCustPaymSchedLine;ShowCustPaymSchedLine1.SalesInvoiceTmp.ShowCustPaymSchedLine;ShowCustTrans1.SalesInvoiceTmp.ShowCustTrans;ShowCustTrans.SalesInvoiceTmp.ShowCustTrans;ShowGiro1.SalesInvoiceTmp.ShowGiro;ShowGiro.SalesInvoiceTmp.ShowGiro;ShowGoodsDiscount.SalesInvoiceTmp.ShowGoodsDiscount;ShowGoodsDiscount1.SalesInvoiceTmp.ShowGoodsDiscount;ShowLocalCurAmt.SalesInvoiceTmp.ShowLocalCurAmt;ShowLocalCurAmt1.SalesInvoiceTmp.ShowLocalCurAmt;ShowMarkupTrans1.SalesInvoiceTmp.ShowMarkupTrans;ShowMarkupTrans.SalesInvoiceTmp.ShowMarkupTrans;ShowPackingMaterial1.SalesInvoiceTmp.ShowPackingMaterial;ShowPackingMaterial.SalesInvoiceTmp.ShowPackingMaterial;ShowPayment1.SalesInvoiceTmp.ShowPayment;ShowPayment.SalesInvoiceTmp.ShowPayment;ShowPrepaidTotals1.SalesInvoiceTmp.ShowPrepaidTotals;ShowPrepaidTotals.SalesInvoiceTmp.ShowPrepaidTotals;ShowPrepaidTotalsEuro1.SalesInvoiceTmp.ShowPrepaidTotalsEuro;ShowPrepaidTotalsEuro.SalesInvoiceTmp.ShowPrepaidTotalsEuro;ShowSepaNotification1.SalesInvoiceTmp.ShowSepaNotification;ShowSepaNotification.SalesInvoiceTmp.ShowSepaNotification;ShowTaxTrans1.SalesInvoiceTmp.ShowTaxTrans;ShowTaxTrans.SalesInvoiceTmp.ShowTaxTrans;ShowTaxWithholdTrans_IN1.SalesInvoiceTmp.ShowTaxWithholdTrans_IN;ShowTaxWithholdTrans_IN.SalesInvoiceTmp.ShowTaxWithholdTrans_IN;ShowTotals1.SalesInvoiceTmp.ShowTotals;ShowTotals.SalesInvoiceTmp.ShowTotals;ShowTotalsEuro1.SalesInvoiceTmp.ShowTotalsEuro;ShowTotalsEuro.SalesInvoiceTmp.ShowTotalsEuro;ShowTotalsTaxBalances1.SalesInvoiceTmp.ShowTotalsTaxBalances;ShowTotalsTaxBalances.SalesInvoiceTmp.ShowTotalsTaxBalances;ShowTotalsTaxBalancesEuro1.SalesInvoiceTmp.ShowTotalsTaxBalancesEuro;ShowTotalsTaxBalancesEuro.SalesInvoiceTmp.ShowTotalsTaxBalancesEuro;SourceBaseAmountCur_IN.SalesInvoiceTmp.SourceBaseAmountCur_IN;SourceRegulateAmountCur_IN.SalesInvoiceTmp.SourceRegulateAmountCur_IN;StandardCurrency.SalesInvoiceTmp.StandardCurrency;SumMarkup.SalesInvoiceTmp.SumMarkup;SumMarkupEuro.SalesInvoiceTmp.SumMarkupEuro;SumTax.SalesInvoiceTmp.SumTax;SumTaxEuro.SalesInvoiceTmp.SumTaxEuro;SumTaxMST.SalesInvoiceTmp.SumTaxMST;SumTaxWithhold_IN.SalesInvoiceTmp.SumTaxWithhold_IN;TaxAmount.SalesInvoiceTmp.TaxAmount;TaxAmountLabel.SalesInvoiceTmp.TaxAmountLabel;TaxAmountMST.SalesInvoiceTmp.TaxAmountMST;TaxAmountMSTLabel.SalesInvoiceTmp.TaxAmountMSTLabel;TaxBaseAmount.SalesInvoiceTmp.TaxBaseAmount;TaxBaseAmountMST.SalesInvoiceTmp.TaxBaseAmountMST;TaxBaseQty.SalesInvoiceTmp.TaxBaseQty;TaxCode.SalesInvoiceTmp.TaxCode;TaxExemptDescription.SalesInvoiceTmp.TaxExemptDescription;TaxFreeBalance.SalesInvoiceTmp.TaxFreeBalance;TaxFreeBalanceEuro.SalesInvoiceTmp.TaxFreeBalanceEuro;TaxInvoiceSalesId.SalesInvoiceTmp.TaxInvoiceSalesId;TaxPrintTaxFreeBalance1.SalesInvoiceTmp.TaxPrintTaxFreeBalance;TaxPrintTaxFreeBalance.SalesInvoiceTmp.TaxPrintTaxFreeBalance;TaxText.SalesInvoiceTmp.TaxText;TaxWithholdCode_IN.SalesInvoiceTmp.TaxWithholdCode_IN;TaxWriteCode.SalesInvoiceTmp.TaxWriteCode;TaxableBalance.SalesInvoiceTmp.TaxableBalance;TaxableBalanceEuro.SalesInvoiceTmp.TaxableBalanceEuro;TransDate.SalesInvoiceTmp.TransDate;Txt.SalesInvoiceTmp.Txt;WMSLocationId.SalesInvoiceTmp.WMSLocationId;WMSPalletId.SalesInvoiceTmp.WMSPalletId;createdTransactionId.SalesInvoiceTmp.createdTransactionId;pdsCWQty.SalesInvoiceTmp.pdsCWQty;pdsCWUnitId.SalesInvoiceTmp.pdsCWUnitId;showPreviouslyInvoiced1.SalesInvoiceTmp.showPreviouslyInvoiced;showPreviouslyInvoiced.SalesInvoiceTmp.showPreviouslyInvoiced|SalesInvoiceHeaderFooterDS:BankSpecificSymbol.SalesInvoiceHeaderFooterTmp.BankSpecificSymbol;BuyerAddress.SalesInvoiceHeaderFooterTmp.BuyerAddress;BuyerEnterpriseCode.SalesInvoiceHeaderFooterTmp.BuyerEnterpriseCode;BuyerName.SalesInvoiceHeaderFooterTmp.BuyerName;BuyerRegNum_W.SalesInvoiceHeaderFooterTmp.BuyerRegNum_W;CompanyAddress.SalesInvoiceHeaderFooterTmp.CompanyAddress;CompanyBankAccount.SalesInvoiceHeaderFooterTmp.CompanyBankAccount;CompanyBankName.SalesInvoiceHeaderFooterTmp.CompanyBankName;CompanyBranch_TH.SalesInvoiceHeaderFooterTmp.CompanyBranch_TH;CompanyCoRegNum.SalesInvoiceHeaderFooterTmp.CompanyCoRegNum;CompanyCommercialRegister.SalesInvoiceHeaderFooterTmp.CompanyCommercialRegister;CompanyCommercialRegisterInsetNumber.SalesInvoiceHeaderFooterTmp.CompanyCommercialRegisterInsetNumber;CompanyCommercialRegisterSection.SalesInvoiceHeaderFooterTmp.CompanyCommercialRegisterSection;CompanyCurrencyBankAccount.SalesInvoiceHeaderFooterTmp.CompanyCurrencyBankAccount;CompanyCurrencyBankName.SalesInvoiceHeaderFooterTmp.CompanyCurrencyBankName;CompanyDebitDirectId.SalesInvoiceHeaderFooterTmp.CompanyDebitDirectId;CompanyEmail.SalesInvoiceHeaderFooterTmp.CompanyEmail;CompanyEnterpriseCode.SalesInvoiceHeaderFooterTmp.CompanyEnterpriseCode;CompanyEnterpriseNumber.SalesInvoiceHeaderFooterTmp.CompanyEnterpriseNumber;CompanyGiro.SalesInvoiceHeaderFooterTmp.CompanyGiro;CompanyLogo.SalesInvoiceHeaderFooterTmp.CompanyLogo;CompanyName.SalesInvoiceHeaderFooterTmp.CompanyName;CompanyPhone.SalesInvoiceHeaderFooterTmp.CompanyPhone;CompanyRegNum.SalesInvoiceHeaderFooterTmp.CompanyRegNum;CompanyTeleFax.SalesInvoiceHeaderFooterTmp.CompanyTeleFax;CompanyURL.SalesInvoiceHeaderFooterTmp.CompanyURL;CompanyVATNum.SalesInvoiceHeaderFooterTmp.CompanyVATNum;ConstantSymbol.SalesInvoiceHeaderFooterTmp.ConstantSymbol;ContactPersonName.SalesInvoiceHeaderFooterTmp.ContactPersonName;CorrectedInvoiceId.SalesInvoiceHeaderFooterTmp.CorrectedInvoiceId;CorrectiveReasonHeader.SalesInvoiceHeaderFooterTmp.CorrectiveReasonHeader;CustInvoiceRefNum_FI.SalesInvoiceHeaderFooterTmp.CustInvoiceRefNum_FI;CustInvoiceRefNum_FI1.SalesInvoiceHeaderFooterTmp.CustInvoiceRefNum_FI;CustomerBankAccount.SalesInvoiceHeaderFooterTmp.CustomerBankAccount;CustomerBankName.SalesInvoiceHeaderFooterTmp.CustomerBankName;CustomerRef.SalesInvoiceHeaderFooterTmp.CustomerRef;DocumentDate.SalesInvoiceHeaderFooterTmp.DocumentDate;DuplicateDate.SalesInvoiceHeaderFooterTmp.DuplicateDate;DuplicateNum.SalesInvoiceHeaderFooterTmp.DuplicateNum;EnterpriseNumber.SalesInvoiceHeaderFooterTmp.EnterpriseNumber;Enterpriseregister_NO.SalesInvoiceHeaderFooterTmp.Enterpriseregister_NO;GSTReasonCode_MY.SalesInvoiceHeaderFooterTmp.GSTReasonCode_MY;GSTReliefClause_MY.SalesInvoiceHeaderFooterTmp.GSTReliefClause_MY;Iban.SalesInvoiceHeaderFooterTmp.Iban;InvoiceAccount.SalesInvoiceHeaderFooterTmp.InvoiceAccount;InvoiceBranch_TH.SalesInvoiceHeaderFooterTmp.InvoiceBranch_TH;InvoiceDate.SalesInvoiceHeaderFooterTmp.InvoiceDate;InvoiceReferenceNumber.SalesInvoiceHeaderFooterTmp.InvoiceReferenceNumber;InvoiceTaxNatureOfAddress_TH.SalesInvoiceHeaderFooterTmp.InvoiceTaxNatureOfAddress_TH;InvoiceTaxNatureOfAddress_TH1.SalesInvoiceHeaderFooterTmp.InvoiceTaxNatureOfAddress_TH;InvoiceTaxRegNumber_TH.SalesInvoiceHeaderFooterTmp.InvoiceTaxRegNumber_TH;InvoiceTxt.SalesInvoiceHeaderFooterTmp.InvoiceTxt;InvoiceTxtSequel.SalesInvoiceHeaderFooterTmp.InvoiceTxtSequel;InvoiceTypeLabel_MY.SalesInvoiceHeaderFooterTmp.InvoiceType_MY;InvoiceType_MY.SalesInvoiceHeaderFooterTmp.InvoiceType_MY;InvoicingAddress.SalesInvoiceHeaderFooterTmp.InvoicingAddress;InvoicingName.SalesInvoiceHeaderFooterTmp.InvoicingName;IsPaymIdVisible.SalesInvoiceHeaderFooterTmp.IsPaymIdVisible;IsPaymIdVisible1.SalesInvoiceHeaderFooterTmp.IsPaymIdVisible;JournalRecId.SalesInvoiceHeaderFooterTmp.JournalRecId;Listcode.SalesInvoiceHeaderFooterTmp.Listcode;Listcode1.SalesInvoiceHeaderFooterTmp.Listcode;MCRDlvMode.SalesInvoiceHeaderFooterTmp.MCRDlvMode;MCRDlvTerm.SalesInvoiceHeaderFooterTmp.MCRDlvTerm;MPABankInformation.SalesInvoiceHeaderFooterTmp.MPABankInformation;MPADueDate.SalesInvoiceHeaderFooterTmp.MPADueDate;MPATitleBankInformation.SalesInvoiceHeaderFooterTmp.MPATitleBankInformation;NotesLine_FR.SalesInvoiceHeaderFooterTmp.NotesLine_FR;OriginalInvoiceAmount.SalesInvoiceHeaderFooterTmp.OriginalInvoiceAmount;OriginalInvoiceReference.SalesInvoiceHeaderFooterTmp.OriginalInvoiceReference;OriginalVatAmount.SalesInvoiceHeaderFooterTmp.OriginalVatAmount;PayerEnterpriseCode.SalesInvoiceHeaderFooterTmp.PayerEnterpriseCode;PayerRegNum_W.SalesInvoiceHeaderFooterTmp.PayerRegNum_W;PaymId.SalesInvoiceHeaderFooterTmp.PaymId;PaymentCondition.SalesInvoiceHeaderFooterTmp.PaymentCondition;PaymentReference.SalesInvoiceHeaderFooterTmp.PaymentReference;PrintFreeTextInvoiceVATNum.SalesInvoiceHeaderFooterTmp.PrintFreeTextInvoiceVATNum;PrintFreeTextInvoiceVATNum1.SalesInvoiceHeaderFooterTmp.PrintFreeTextInvoiceVATNum;PurchaseOrder.SalesInvoiceHeaderFooterTmp.PurchaseOrder;Reference.SalesInvoiceHeaderFooterTmp.Reference;SalesAdministrator.SalesInvoiceHeaderFooterTmp.SalesAdministrator;SalesAdministratorEmail.SalesInvoiceHeaderFooterTmp.SalesAdministratorEmail;SalesAdministratorPhone.SalesInvoiceHeaderFooterTmp.SalesAdministratorPhone;SalesDate.SalesInvoiceHeaderFooterTmp.SalesDate;SalesId.SalesInvoiceHeaderFooterTmp.SalesId;ShowCompanyVATNum.SalesInvoiceHeaderFooterTmp.ShowCompanyVATNum;ShowCompanyVATNum1.SalesInvoiceHeaderFooterTmp.ShowCompanyVATNum;ShowCurrencyBankAccount.SalesInvoiceHeaderFooterTmp.ShowCurrencyBankAccount;ShowCurrencyBankAccount1.SalesInvoiceHeaderFooterTmp.ShowCurrencyBankAccount;ShowPayer1.SalesInvoiceHeaderFooterTmp.ShowPayer;ShowPayer.SalesInvoiceHeaderFooterTmp.ShowPayer;SpecialFormattedDocumentDate.SalesInvoiceHeaderFooterTmp.SpecialFormattedDocumentDate;SpecialFormattedInvoiceDate.SalesInvoiceHeaderFooterTmp.SpecialFormattedInvoiceDate;SpecialFormattedPrintDate.SalesInvoiceHeaderFooterTmp.SpecialFormattedPrintDate;SwiftNumber.SalesInvoiceHeaderFooterTmp.SwiftNumber;TaxLicenseNum.SalesInvoiceHeaderFooterTmp.TaxLicenseNum;VatDueDate_W.SalesInvoiceHeaderFooterTmp.VatDueDate_W;VatNum.SalesInvoiceHeaderFooterTmp.VatNum;createdTransactionId.SalesInvoiceHeaderFooterTmp.createdTransactionId|SalesInvoiceLocalizationDS:Amount.SalesInvoiceLocalizationTmp.Amount;AmountInWords.SalesInvoiceLocalizationTmp.AmountInWords;AmountInWordsEUR.SalesInvoiceLocalizationTmp.AmountInWordsEUR;BackOrderConfirmedDeliveryDate.SalesInvoiceLocalizationTmp.BackOrderConfirmedDeliveryDate;BackOrderLineItemId.SalesInvoiceLocalizationTmp.BackOrderLineItemId;BackOrderLineName.SalesInvoiceLocalizationTmp.BackOrderLineName;BackOrderLineQuantity.SalesInvoiceLocalizationTmp.BackOrderLineQuantity;BackOrderLineSalesUnit.SalesInvoiceLocalizationTmp.BackOrderLineSalesUnit;Caption.SalesInvoiceLocalizationTmp.Caption;CashDisc.SalesInvoiceLocalizationTmp.CashDisc;CashDiscAmount.SalesInvoiceLocalizationTmp.CashDiscAmount;CashDiscTxt_LanguageId.SalesInvoiceLocalizationTmp.CashDiscTxt_LanguageId;ConfigId.SalesInvoiceLocalizationTmp.ConfigId;ConfigIdFlag.SalesInvoiceLocalizationTmp.ConfigIdFlag;ConfigIdFlag1.SalesInvoiceLocalizationTmp.ConfigIdFlag;CorrectiveReasonHeader.SalesInvoiceLocalizationTmp.CorrectiveReasonHeader;CorrectiveReasonLines.SalesInvoiceLocalizationTmp.CorrectiveReasonLines;CurrencyCode.SalesInvoiceLocalizationTmp.CurrencyCode;CustInvoiceJourCurrencyCode.SalesInvoiceLocalizationTmp.CustInvoiceJourCurrencyCode;CustInvoiceJourDueDate.SalesInvoiceLocalizationTmp.CustInvoiceJourDueDate;CustomerRef.SalesInvoiceLocalizationTmp.CustomerRef;DateOfCreation.SalesInvoiceLocalizationTmp.DateOfCreation;DeliveryAddress.SalesInvoiceLocalizationTmp.DeliveryAddress;DeliveryName.SalesInvoiceLocalizationTmp.DeliveryName;DiscAmount.SalesInvoiceLocalizationTmp.DiscAmount;DiscDate.SalesInvoiceLocalizationTmp.DiscDate;DiscPercent.SalesInvoiceLocalizationTmp.DiscPercent;DiscountAmount.SalesInvoiceLocalizationTmp.DiscountAmount;DoPrintTransportationDocument1.SalesInvoiceLocalizationTmp.DoPrintTransportationDocument;DoPrintTransportationDocument.SalesInvoiceLocalizationTmp.DoPrintTransportationDocument;DueAmount.SalesInvoiceLocalizationTmp.DueAmount;DueDate.SalesInvoiceLocalizationTmp.DueDate;EUROExchangeRate.SalesInvoiceLocalizationTmp.EUROExchangeRate;EconomicActivity1.SalesInvoiceLocalizationTmp.EconomicActivity;EconomicActivity.SalesInvoiceLocalizationTmp.EconomicActivity;EndDisc.SalesInvoiceLocalizationTmp.EndDisc;EndDiscEuro.SalesInvoiceLocalizationTmp.EndDiscEuro;EndDiscMST.SalesInvoiceLocalizationTmp.EndDiscMST;EuroCurrencyCode.SalesInvoiceLocalizationTmp.EuroCurrencyCode;ExchRate.SalesInvoiceLocalizationTmp.ExchRate;ExternalItemId.SalesInvoiceLocalizationTmp.ExternalItemId;FooterText.SalesInvoiceLocalizationTmp.FooterText;FormLetterRemarksTxt.SalesInvoiceLocalizationTmp.FormLetterRemarksTxt;HeaderNotes.SalesInvoiceLocalizationTmp.HeaderNotes;HideInvoiceLine_PL.SalesInvoiceLocalizationTmp.HideInvoiceLine_PL;HideInvoiceLine_PL1.SalesInvoiceLocalizationTmp.HideInvoiceLine_PL;IntrastatCode.SalesInvoiceLocalizationTmp.IntrastatCode;InventBatchId.SalesInvoiceLocalizationTmp.InventBatchId;InventColorId.SalesInvoiceLocalizationTmp.InventColorId;InventColorIdFlag.SalesInvoiceLocalizationTmp.InventColorIdFlag;InventColorIdFlag1.SalesInvoiceLocalizationTmp.InventColorIdFlag;InventDimPrint.SalesInvoiceLocalizationTmp.InventDimPrint;InventGTDId_RU.SalesInvoiceLocalizationTmp.InventGTDId_RU;InventLocationId.SalesInvoiceLocalizationTmp.InventLocationId;InventOwnerId_RU.SalesInvoiceLocalizationTmp.InventOwnerId_RU;InventProfileId_RU.SalesInvoiceLocalizationTmp.InventProfileId_RU;InventSerialId.SalesInvoiceLocalizationTmp.InventSerialId;InventSiteId.SalesInvoiceLocalizationTmp.InventSiteId;InventSizeId.SalesInvoiceLocalizationTmp.InventSizeId;InventSizeIdFlag1.SalesInvoiceLocalizationTmp.InventSizeIdFlag;InventSizeIdFlag.SalesInvoiceLocalizationTmp.InventSizeIdFlag;InventStatusId.SalesInvoiceLocalizationTmp.InventStatusId;InventStyleId.SalesInvoiceLocalizationTmp.InventStyleId;InventStyleIdFlag.SalesInvoiceLocalizationTmp.InventStyleIdFlag;InventStyleIdFlag1.SalesInvoiceLocalizationTmp.InventStyleIdFlag;InvoiceAmount.SalesInvoiceLocalizationTmp.InvoiceAmount;InvoiceAmountEuro.SalesInvoiceLocalizationTmp.InvoiceAmountEuro;InvoiceAmountMST.SalesInvoiceLocalizationTmp.InvoiceAmountMST;InvoiceId.SalesInvoiceLocalizationTmp.InvoiceId;InvoiceName.SalesInvoiceLocalizationTmp.InvoiceName;InvoiceRoundOff.SalesInvoiceLocalizationTmp.InvoiceRoundOff;InvoiceRoundOffEuro.SalesInvoiceLocalizationTmp.InvoiceRoundOffEuro;InvoiceRoundOffMST.SalesInvoiceLocalizationTmp.InvoiceRoundOffMST;IsBankExchangeRateEnabled1.SalesInvoiceLocalizationTmp.IsBankExchangeRateEnabled;IsBankExchangeRateEnabled.SalesInvoiceLocalizationTmp.IsBankExchangeRateEnabled;IsTaxAmountMST.SalesInvoiceLocalizationTmp.IsTaxAmountMST;IsTaxAmountMST1.SalesInvoiceLocalizationTmp.IsTaxAmountMST;IsTaxAmountMSTVisible1.SalesInvoiceLocalizationTmp.IsTaxAmountMSTVisible;IsTaxAmountMSTVisible.SalesInvoiceLocalizationTmp.IsTaxAmountMSTVisible;ItemId.SalesInvoiceLocalizationTmp.ItemId;ItemInventoryDetails.SalesInvoiceLocalizationTmp.ItemInventoryDetails;JournalRecId.SalesInvoiceLocalizationTmp.JournalRecId;LicensePlateId.SalesInvoiceLocalizationTmp.LicensePlateId;LineAmount.SalesInvoiceLocalizationTmp.LineAmount;LineAmountInclTax.SalesInvoiceLocalizationTmp.LineAmountInclTax;LineHeader.SalesInvoiceLocalizationTmp.LineHeader;LineNumber.SalesInvoiceLocalizationTmp.LineNumber;LineSign.SalesInvoiceLocalizationTmp.LineSign;LineTaxAmount.SalesInvoiceLocalizationTmp.LineTaxAmount;MandateBankIBAN.SalesInvoiceLocalizationTmp.MandateBankIBAN;MandateReference.SalesInvoiceLocalizationTmp.MandateReference;MandateSWIFTNo.SalesInvoiceLocalizationTmp.MandateSWIFTNo;MarkupAmount.SalesInvoiceLocalizationTmp.MarkupAmount;MarkupCode.SalesInvoiceLocalizationTmp.MarkupCode;MarkupTaxCode.SalesInvoiceLocalizationTmp.MarkupTaxCode;Name.SalesInvoiceLocalizationTmp.Name;NetAmount.SalesInvoiceLocalizationTmp.NetAmount;NetAmountEuro.SalesInvoiceLocalizationTmp.NetAmountEuro;NetAmountMST.SalesInvoiceLocalizationTmp.NetAmountMST;Notes.SalesInvoiceLocalizationTmp.Notes;OriginalInvoiceId_CZ.SalesInvoiceLocalizationTmp.OriginalInvoiceId_CZ;PKWiUCode.SalesInvoiceLocalizationTmp.PKWiUCode;PackMaterialCode.SalesInvoiceLocalizationTmp.PackMaterialCode;PackMaterialName.SalesInvoiceLocalizationTmp.PackMaterialName;PackMaterialUnit.SalesInvoiceLocalizationTmp.PackMaterialUnit;PackageDepositAmount.SalesInvoiceLocalizationTmp.PackageDepositAmount;PackageDescription.SalesInvoiceLocalizationTmp.PackageDescription;PackageId.SalesInvoiceLocalizationTmp.PackageId;PackageQuantity.SalesInvoiceLocalizationTmp.PackageQuantity;PackagingMaterialText.SalesInvoiceLocalizationTmp.PackagingMaterialText;PackagingWeight.SalesInvoiceLocalizationTmp.PackagingWeight;PackingSlip.SalesInvoiceLocalizationTmp.PackingSlip;PackingSlipDeliveryDate.SalesInvoiceLocalizationTmp.PackingSlipDeliveryDate;PackingSlipId.SalesInvoiceLocalizationTmp.PackingSlipId;PackingSlipTransQty.SalesInvoiceLocalizationTmp.PackingSlipTransQty;Page.SalesInvoiceLocalizationTmp.Page;PagesTotal.SalesInvoiceLocalizationTmp.PagesTotal;PaymentId.SalesInvoiceLocalizationTmp.PaymentId;PaymentReference.SalesInvoiceLocalizationTmp.PaymentReference;PdsEnabled.SalesInvoiceLocalizationTmp.PdsEnabled;PdsEnabled1.SalesInvoiceLocalizationTmp.PdsEnabled;PrePaymentAmountTax.SalesInvoiceLocalizationTmp.PrePaymentAmountTax;PrePaymentAmountTaxEuro.SalesInvoiceLocalizationTmp.PrePaymentAmountTaxEuro;PrePaymentAmountTaxMST.SalesInvoiceLocalizationTmp.PrePaymentAmountTaxMST;PrePrintLevel1.SalesInvoiceLocalizationTmp.PrePrintLevel;PrePrintLevel.SalesInvoiceLocalizationTmp.PrePrintLevel;PrepaidAmount.SalesInvoiceLocalizationTmp.PrepaidAmount;PrepaidAmountEuro.SalesInvoiceLocalizationTmp.PrepaidAmountEuro;previousRunningTotal.SalesInvoiceLocalizationTmp.previousRunningTotal;PriceIncludeTax1.SalesInvoiceLocalizationTmp.PriceIncludeTax;PriceIncludeTax.SalesInvoiceLocalizationTmp.PriceIncludeTax;PrintCode.SalesInvoiceLocalizationTmp.PrintCode;PrintEuroTotals1.SalesInvoiceLocalizationTmp.PrintEuroTotals;PrintEuroTotals.SalesInvoiceLocalizationTmp.PrintEuroTotals;PrintEuroTotals12.SalesInvoiceLocalizationTmp.PrintEuroTotals1;PrintEuroTotals11.SalesInvoiceLocalizationTmp.PrintEuroTotals1;Qty.SalesInvoiceLocalizationTmp.Qty;RemainAmountToBePaid.SalesInvoiceLocalizationTmp.RemainAmountToBePaid;RemainAmountToBePaidEuro.SalesInvoiceLocalizationTmp.RemainAmountToBePaidEuro;SalesBalance.SalesInvoiceLocalizationTmp.SalesBalance;SalesBalanceEuro.SalesInvoiceLocalizationTmp.SalesBalanceEuro;SalesBalanceMST.SalesInvoiceLocalizationTmp.SalesBalanceMST;SalesPrice.SalesInvoiceLocalizationTmp.SalesPrice;SalesTaxExchangeRate.SalesInvoiceLocalizationTmp.SalesTaxExchangeRate;SalesUnitTxt.SalesInvoiceLocalizationTmp.SalesUnitTxt;SettledAmountCur.SalesInvoiceLocalizationTmp.SettledAmountCur;ShipmentDate.SalesInvoiceLocalizationTmp.ShipmentDate;ShowBackOrderConfirmedDeliveryDate.SalesInvoiceLocalizationTmp.ShowBackOrderConfirmedDeliveryDate;ShowBackOrderConfirmedDeliveryDate1.SalesInvoiceLocalizationTmp.ShowBackOrderConfirmedDeliveryDate;ShowBackorders1.SalesInvoiceLocalizationTmp.ShowBackorders;ShowBackorders.SalesInvoiceLocalizationTmp.ShowBackorders;ShowCashDiscOnInvoiceControls1.SalesInvoiceLocalizationTmp.ShowCashDiscOnInvoiceControls;ShowCashDiscOnInvoiceControls.SalesInvoiceLocalizationTmp.ShowCashDiscOnInvoiceControls;ShowCustPackingSlipTrans.SalesInvoiceLocalizationTmp.ShowCustPackingSlipTrans;ShowCustPackingSlipTrans1.SalesInvoiceLocalizationTmp.ShowCustPackingSlipTrans;ShowCustPaymSched1.SalesInvoiceLocalizationTmp.ShowCustPaymSched;ShowCustPaymSched.SalesInvoiceLocalizationTmp.ShowCustPaymSched;ShowCustPaymSchedLine1.SalesInvoiceLocalizationTmp.ShowCustPaymSchedLine;ShowCustPaymSchedLine.SalesInvoiceLocalizationTmp.ShowCustPaymSchedLine;ShowCustTrans.SalesInvoiceLocalizationTmp.ShowCustTrans;ShowCustTrans1.SalesInvoiceLocalizationTmp.ShowCustTrans;ShowMarkupTrans1.SalesInvoiceLocalizationTmp.ShowMarkupTrans;ShowMarkupTrans.SalesInvoiceLocalizationTmp.ShowMarkupTrans;ShowPackingMaterial1.SalesInvoiceLocalizationTmp.ShowPackingMaterial;ShowPackingMaterial.SalesInvoiceLocalizationTmp.ShowPackingMaterial;ShowPayment.SalesInvoiceLocalizationTmp.ShowPayment;ShowPayment1.SalesInvoiceLocalizationTmp.ShowPayment;ShowPrepaidTotals.SalesInvoiceLocalizationTmp.ShowPrepaidTotals;ShowPrepaidTotals1.SalesInvoiceLocalizationTmp.ShowPrepaidTotals;ShowPrepaidTotalsEuro1.SalesInvoiceLocalizationTmp.ShowPrepaidTotalsEuro;ShowPrepaidTotalsEuro.SalesInvoiceLocalizationTmp.ShowPrepaidTotalsEuro;ShowSepaNotification.SalesInvoiceLocalizationTmp.ShowSepaNotification;ShowSepaNotification1.SalesInvoiceLocalizationTmp.ShowSepaNotification;ShowTaxTrans.SalesInvoiceLocalizationTmp.ShowTaxTrans;ShowTaxTrans1.SalesInvoiceLocalizationTmp.ShowTaxTrans;ShowTotals1.SalesInvoiceLocalizationTmp.ShowTotals;ShowTotals.SalesInvoiceLocalizationTmp.ShowTotals;ShowTotalsEuro1.SalesInvoiceLocalizationTmp.ShowTotalsEuro;ShowTotalsEuro.SalesInvoiceLocalizationTmp.ShowTotalsEuro;ShowTotalsTaxBalances1.SalesInvoiceLocalizationTmp.ShowTotalsTaxBalances;ShowTotalsTaxBalances.SalesInvoiceLocalizationTmp.ShowTotalsTaxBalances;ShowTotalsTaxBalancesEuro1.SalesInvoiceLocalizationTmp.ShowTotalsTaxBalancesEuro;ShowTotalsTaxBalancesEuro.SalesInvoiceLocalizationTmp.ShowTotalsTaxBalancesEuro;SpecialFormattedDiscountDate.SalesInvoiceLocalizationTmp.SpecialFormattedDiscountDate;SpecialFormattedDiscountDueDate.SalesInvoiceLocalizationTmp.SpecialFormattedDiscountDueDate;SpecialFormattedPaymentDueDate.SalesInvoiceLocalizationTmp.SpecialFormattedPaymentDueDate;SpecialFormattedPrePaymentTransDate.SalesInvoiceLocalizationTmp.SpecialFormattedPrePaymentTransDate;SpecialFormattedTransportationLoadedD.SalesInvoiceLocalizationTmp.SpecialFormattedTransportationLoadedDate;StandardCurrency.SalesInvoiceLocalizationTmp.StandardCurrency;SumMarkup.SalesInvoiceLocalizationTmp.SumMarkup;SumMarkupEuro.SalesInvoiceLocalizationTmp.SumMarkupEuro;SumMarkupMST.SalesInvoiceLocalizationTmp.SumMarkupMST;SumTax.SalesInvoiceLocalizationTmp.SumTax;SumTaxEuro.SalesInvoiceLocalizationTmp.SumTaxEuro;SumTaxMST.SalesInvoiceLocalizationTmp.SumTaxMST;SummaryLine_PL1.SalesInvoiceLocalizationTmp.SummaryLine_PL;SummaryLine_PL.SalesInvoiceLocalizationTmp.SummaryLine_PL;TaxAmount.SalesInvoiceLocalizationTmp.TaxAmount;TaxAmountExcluded.SalesInvoiceLocalizationTmp.TaxAmountExcluded;TaxAmountExcludedEuro.SalesInvoiceLocalizationTmp.TaxAmountExcludedEuro;TaxAmountMST.SalesInvoiceLocalizationTmp.TaxAmountMST;TaxBaseAmount.SalesInvoiceLocalizationTmp.TaxBaseAmount;TaxBaseAmountMST.SalesInvoiceLocalizationTmp.TaxBaseAmountMST;TaxBaseQty.SalesInvoiceLocalizationTmp.TaxBaseQty;TaxCode.SalesInvoiceLocalizationTmp.TaxCode;TaxCurrencyCode.SalesInvoiceLocalizationTmp.TaxCurrencyCode;TaxDirective.SalesInvoiceLocalizationTmp.TaxDirective;TaxDocumentNumber.SalesInvoiceLocalizationTmp.TaxDocumentNumber;TaxExcludeFromInvoice1.SalesInvoiceLocalizationTmp.TaxExcludeFromInvoice;TaxExcludeFromInvoice.SalesInvoiceLocalizationTmp.TaxExcludeFromInvoice;TaxExemptDescription.SalesInvoiceLocalizationTmp.TaxExemptDescription;TaxFreeBalance.SalesInvoiceLocalizationTmp.TaxFreeBalance;TaxFreeBalanceEuro.SalesInvoiceLocalizationTmp.TaxFreeBalanceEuro;TaxFreeBalanceMST.SalesInvoiceLocalizationTmp.TaxFreeBalanceMST;TaxPrintTaxFreeBalance.SalesInvoiceLocalizationTmp.TaxPrintTaxFreeBalance;TaxPrintTaxFreeBalance1.SalesInvoiceLocalizationTmp.TaxPrintTaxFreeBalance;TaxText.SalesInvoiceLocalizationTmp.TaxText;TaxValue.SalesInvoiceLocalizationTmp.TaxValue;TaxWriteCode.SalesInvoiceLocalizationTmp.TaxWriteCode;TaxableBalance.SalesInvoiceLocalizationTmp.TaxableBalance;TaxableBalanceEuro.SalesInvoiceLocalizationTmp.TaxableBalanceEuro;TaxableBalanceMST.SalesInvoiceLocalizationTmp.TaxableBalanceMST;TransDate.SalesInvoiceLocalizationTmp.TransDate;TransPortationIssuedByName.SalesInvoiceLocalizationTmp.TransPortationIssuedByName;TransportationCarrierAddress.SalesInvoiceLocalizationTmp.TransportationCarrierAddress;TransportationCarrierName.SalesInvoiceLocalizationTmp.TransportationCarrierName;TransportationContactPersonName.SalesInvoiceLocalizationTmp.TransportationContactPersonName;TransportationContactPersonTitle.SalesInvoiceLocalizationTmp.TransportationContactPersonTitle;TransportationDataSection.SalesInvoiceLocalizationTmp.TransportationDataSection;TransportationDataSection1.SalesInvoiceLocalizationTmp.TransportationDataSection;TransportationIssuedByTitle.SalesInvoiceLocalizationTmp.TransportationIssuedByTitle;TransportationLoadedAddress.SalesInvoiceLocalizationTmp.TransportationLoadedAddress;TransportationLoadedDateTime.SalesInvoiceLocalizationTmp.TransportationLoadedDateTime;TransportationLoadedName.SalesInvoiceLocalizationTmp.TransportationLoadedName;TransportationPackageDangerDegree.SalesInvoiceLocalizationTmp.TransportationPackageDangerDegree;TransportationPackageDescription.SalesInvoiceLocalizationTmp.TransportationPackageDescription;TransportationVehicleDescription.SalesInvoiceLocalizationTmp.TransportationVehicleDescription;TransportationVehicleDriverName.SalesInvoiceLocalizationTmp.TransportationVehicleDriverName;TransportationVehiclePlateNumber.SalesInvoiceLocalizationTmp.TransportationVehiclePlateNumber;TransportationVehicleTrailerNumber.SalesInvoiceLocalizationTmp.TransportationVehicleTrailerNumber;Txt.SalesInvoiceLocalizationTmp.Txt;WMSLocationId.SalesInvoiceLocalizationTmp.WMSLocationId;WMSPalletId.SalesInvoiceLocalizationTmp.WMSPalletId;createdTransactionId.SalesInvoiceLocalizationTmp.createdTransactionId;pdsCWQty.SalesInvoiceLocalizationTmp.pdsCWQty;pdsCWUnitId.SalesInvoiceLocalizationTmp.pdsCWUnitId</Value>
+    </CustomProperty>
+  </CustomProperties>
+  <Code>Protected Overrides Sub OnInit()
+    Microsoft.Dynamics.Framework.Reports.DataMethodUtility.ReportInitialize()
+End Sub
+
+</Code>
+  <Language>en-US</Language>
+  <CodeModules>
+    <CodeModule>Microsoft.Dynamics.Framework.Reports, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</CodeModule>
+    <CodeModule>Microsoft.Dynamics.Framework.Metadata.AX, Version=6.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</CodeModule>
+    <CodeModule>SalesInvoiceReport.BusinessLogic, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</CodeModule>
+  </CodeModules>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ExpressionDialog>Microsoft.Dynamics.Framework.Design.Reports.ExpressionEditor.ExpressionEditorDialog, Microsoft.Dynamics.Framework.Design.Reports</rd:ExpressionDialog>
+  <rd:ReportID>a1234403-dfc4-40b5-8562-c09a60647afa</rd:ReportID>
+</Report>

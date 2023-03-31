@@ -1,0 +1,222 @@
+﻿@model  PANGEA.IMPORTSUITE.DataModel.T_TEMPLATE
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#template_config").click(function () {
+
+            LOAD_TEMPLATE_CONFIG_FIELD();
+
+        });
+
+
+        @if(Model.ROWID == 0)
+        {
+            <text>$(".teb_template_config").hide();</text>
+        }
+
+        @if(Model.ROWID > 0 && Model.HEADER_FIRSTROW == false)
+        {
+            <text>$(".NUMBER_FIELDS").show();</text>
+        }
+
+
+        $("#HEADER_FIRSTROW").change(function () {
+
+            if ($(this).is(':checked'))
+                $('.NUMBER_FIELDS').hide();
+            else
+                $('.NUMBER_FIELDS').show();
+
+        });
+
+    });
+
+
+    function LOAD_TEMPLATE_CONFIG_FIELD() {
+
+        ModalProcesandoShow();
+
+        $.ajax({
+            method: "GET",
+            url: "/MASTER/TEMPLATE_02_CONFIG_FIELD",
+            data: { ROWID_TEMPLATE: '@Request["ROWID_TEMPLATE"]' },
+            cache: false
+        }).success(function (data) {
+            ModalProcesandoHiden();
+            $('#DIV_FIELD').html(data);
+        }).error(function (data) {
+            ModalProcesandoHiden();
+            Mensajes(data.responseText, 'error', '');
+        });
+    }
+
+
+    function LOAD_TEMPLATE_FIELD() {
+
+        var validate = $("#form_file_template").validate();
+        if (!validate.form())
+            return false;
+
+        if (confirm('Confirm to continue.') == false)
+            return;
+
+        ModalProcesandoShow();
+
+        var form = $('#form_file_template')[0];
+        var dataString = new FormData(form);
+
+        $.ajax({
+            type: "post",
+            url: "/PROCESS/LOAD_TEMPLATE_FIELD",
+            data: dataString,
+            success: function (response) {
+
+                ModalProcesandoHiden();
+
+                Mensajes('File uploaded successfully.', 'success', '');
+
+                LOAD_TEMPLATE_CONFIG_FIELD();
+
+            },
+            error: function (result) {
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+    }
+
+
+</script>
+
+<div class="panel panel-white">
+    <div class="panel-heading">
+        <h5 class="panel-title">Template Configuration</h5>
+        <div class="heading-elements">
+            <ul class="icons-list">
+                <li><a data-action="reload"></a></li>
+            </ul>
+        </div>
+        <a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbable tab-content-bordered">
+                    <ul class="nav nav-tabs nav-tabs-highlight">
+                        <li class="active"><a href="#teb_template" data-toggle="tab">Template</a></li>
+                        <li id="template_config" class="teb_template_config"><a href="#teb_template_config" data-toggle="tab">Field configuration</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane has-padding active" id="teb_template">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form id="form_template">
+                                        <input type="hidden" name="ROWID" value="@Model.ROWID" />
+
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label class="control-label col-md-3 text-bold">Name</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text" id="NAME" name="NAME" class="form-control" value="@Model.NAME" required="required" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label class="control-label col-md-3 text-bold">Folder Files</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text" id="FOLDER" name="FOLDER" class="form-control" value="@Model.FOLDER" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label class="control-label col-md-3 text-bold">Active</label>
+                                                    <div class="col-md-9">
+                                                        @Html.CheckBoxFor(f => f.ACTIVE, new { @class = "styled" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label class="control-label col-md-3 text-bold">Pangea template?</label>
+                                                    <div class="col-md-9">
+                                                        @Html.CheckBoxFor(f => f.PANGEA_TEMPLATE, new { @class = "styled" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label class="control-label col-md-3 text-bold">Header is the first row?</label>
+                                                    <div class="col-md-2">
+                                                        @Html.CheckBoxFor(f => f.HEADER_FIRSTROW, new { @class = "styled" })
+                                                    </div>
+
+                                                    <label class="control-label col-md-3 text-bold NUMBER_FIELDS">Number of fields</label>
+                                                    <div class="col-md-3">
+                                                        <input type="number" name="NUMBER_FIELDS" id="NUMBER_FIELDS" class="form-control NUMBER_FIELDS" min="1" value="@Model.NUMBER_FIELDS" />
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn btn-primary">Continue</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane has-padding teb_template_config" id="teb_template_config">
+                            <div class="row UPLOAD_FILE">
+                                <div class="col-md-12">
+                                    <form id="form_file_template" enctype="multipart/form-data">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label class="text-bold">Upload file with fields</label>
+                                                <br />
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="icon-file-excel" style="color:green;"></i></span>
+                                                    <input type="file" class="form-control" placeholder="" name="FILE" required="required">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-success" type="button" onclick="LOAD_TEMPLATE_FIELD();"><i class="icon-cloud-upload2"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="DIV_FIELD"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+
+
+
+    });
+
+</script>
+

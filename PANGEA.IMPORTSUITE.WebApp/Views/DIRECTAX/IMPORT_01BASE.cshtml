@@ -1,0 +1,429 @@
+﻿@using System.Data;
+@using PANGEA.IMPORTSUITE.DataModel.Util;
+
+<script>
+
+    $(document).ready(function () {
+
+        @if (((List<LIST_SELECTION>)ViewBag.ENTITY_LIST).Count == 1)
+        {
+            <text>$("#ENTITY").val('@(((List<LIST_SELECTION>)ViewBag.ENTITY_LIST)[0].VALUE)');</text>
+        }
+
+
+    });
+
+
+    function PROCESS_01_UPLOAD_DATA() {
+
+        if ($("#ENTITY").val() == "") {
+            alert("Please select an Entity");
+            return;
+        }
+
+        if ($("#FILE").val() == "") {
+            alert("Please enter a file");
+            return;
+        }
+
+        if (confirm('Please confirm to continue in company [' + $("#ENTITY").val() + ']') == false)
+            return;
+
+        ModalProcesandoShow();
+
+        var form = $('#FORM_STEP_1')[0];
+
+        var dataString = new FormData(form);
+
+        $.ajax({
+
+            type: "post",
+
+            url: "IMPORT_01BASE_01GETFILE_BROWSE",
+
+            data: dataString,
+
+            success: function (response) {
+
+                ModalProcesandoHiden();
+
+                Mensajes('File uploaded successfully.', 'success', '');
+
+                PROCESS_02_RUN_VALIDATION(response.guid, false, false);
+
+                $("#xGUID").html('<br><b>' + response.guid + '</b>');
+
+            },
+
+            timeout: 3600000, // sets timeout to 3 seconds
+
+            error: function (result) {
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+                alert(result.statusText);
+            },
+
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+    }
+
+
+
+    function PROCESS_02_RUN_VALIDATION(zguid, reload, validate) {
+
+        $('#PANEL_STEP_2').css("display", "block");
+
+        $('#STEP_1').removeClass('in');
+        $('#PANEL_STEP_1').addClass('panel-primary');
+        $('#STEP_2').toggleClass('in');
+
+        DisableForm('FORM_STEP_1');
+
+        $('#DATA_STEP_2').html('');
+
+        //LOADING ICON
+        ModalProcesandoShow();
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: 'IMPORT_02CONFIRM',
+
+            async: false,
+
+            data: {
+                GUID: zguid,
+                validate: validate
+            },
+
+            success: function (r) {
+
+                ModalProcesandoHiden();
+
+                $("#PANEL_STEP_2 .heading-elements").show();
+                $('#DATA_STEP_2').html(r);
+
+                if (reload)
+                    $('#STEP_2').toggleClass('in');
+
+            }, error: function (result) {
+
+                ModalProcesandoHiden();
+
+                Mensajes(result.statusText, 'error', '');
+            },
+
+            timeout: 3600000 // sets timeout to 3 seconds
+        });
+
+    }
+
+
+
+    function PROCESS_03_SENDERP(zGUID) {
+
+
+        if (confirm('Please confirm to continue.') == false)
+            return;
+
+        $("#p2_error").html('');
+
+        ModalProcesandoShow();
+
+        $.ajax({
+
+            type: 'GET',
+
+            async: false,
+
+            url: 'IMPORT_03_SENDERP',
+
+            data: {
+
+                GUID: zGUID
+            },
+
+            success: function (r) {
+
+                ModalProcesandoHiden();
+
+                if (r.success) {
+
+                    alert(r.error);
+
+                    Mensajes(r.error, 'success', '');
+
+                    $("#btnSendErp").attr('disabled', 'disabled');
+
+                    //window.location.reload();
+                }
+                else {
+
+                    $("#p2_error").html(r.error);
+
+                    Mensajes(r.error, 'error', '');
+
+                }
+
+            }, error: function (result) {
+
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+
+            },
+
+            timeout: 3600000, // sets timeout to 3 seconds
+        });
+
+    }
+
+
+    function PROCESS_SHOWREGS(GUID, etype) {
+
+        $('#DivLoadingPage').html('');
+
+        ModalProcesandoShow();
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: 'IMPORT_04SHOWREGS',
+
+            data: {
+
+                GUID: GUID,
+                etype: etype,
+                TPL: '@ViewBag.TPL'
+            },
+
+            success: function (r) {
+
+                ModalProcesandoHiden();
+                $('#DivLoadingPage').html(r);
+
+            }, error: function (result) {
+
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+
+    }
+
+
+    function CANCEL_PROCESS() {
+
+        if (confirm("Are you sure about cancel this process?"))
+            window.location.reload();
+    }
+
+
+    function DOWNLOAD_TEMPLATE() {
+        window.open('../TEMPLATES/' + '@ViewBag.TPL' + '_Template.csv');
+    }
+
+
+    function HISTORY_RUNTIME() {
+
+        $('#DIV_HISTORY').html('');
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: 'IMPORT_HISTORY_RUNTIME',
+
+            data: {
+                TPL: '@ViewBag.TPL'
+            },
+
+            success: function (r) {
+
+                $('#DIV_HISTORY').html(r);
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+    }
+
+
+    $(document).ready(function () {
+
+        $("#FORM_STEP_1").submit(function (e) {
+            e.preventDefault();
+        });
+
+        HISTORY_RUNTIME();
+
+    });
+
+
+
+
+</script>
+
+<style>
+    /*.panel-heading {
+        padding: 8px 20px;
+        background-color: whitesmoke;
+    }*/
+
+    .icons-list > li > a {
+        margin-left: 5px;
+    }
+
+    #PANEL_STEP_2 .heading-elements {
+        display: none;
+    }
+
+    .heading-elements {
+        top: 84%;
+        height: auto;
+        margin-top: -22px;
+    }
+
+    .icons-list > li > a > i {
+        top: -3px;
+    }
+</style>
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="panel-group panel-group-control content-group-lg" id="accordion-control-right">
+
+                    <div class="panel" id="PANEL_STEP_1">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">
+                                <a class="text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#STEP_1" style="font-size:15px;">
+                                    STEP # 1 | Select a file for @Request.Params["nm"]
+                                </a>
+                                &nbsp;
+                                <span class="label bg-success-400" onclick="DOWNLOAD_TEMPLATE();"  data-popup="tooltip" data-placement="top" title="Download Template">Get Template</span>
+                            </h6>
+                        </div>
+                        <div id="STEP_1" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <form id="FORM_STEP_1" action="/DIRECTAX/IMPORT_01BASE_01GETFILE_BROWSE" method="post">
+
+                                    <input type="hidden" id="GUID" name="GUID" value="@ViewBag.GUID" />
+                                    <input type="hidden" id="TPL" name="TPL" value="@ViewBag.TPL" />
+
+
+                                    <div class="row">
+
+                                            @if (ViewBag.SELECT_ENTITY == 1 && ViewBag.TPL != "ADP")
+                                            {
+                                                <div class="col-md-2">
+                                                    <label for="ENTITY" class="text-bold">Select an Entity</label>
+                                                    <br />
+                                                    <select class="form-control" id="ENTITY" name="ENTITY" required="required">
+                                                        <option value=""></option>
+                                                        @foreach (var row in ViewBag.ENTITY_LIST)
+                                                        {
+                                                        <option value="@row.VALUE">@row.TEXT</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <input type="hidden" id="ENTITY" name="ENTITY" value="@ViewBag.SETUP_ENTITY" />
+                                            }
+
+
+                                        <div class="col-md-3">
+                                            <label for="FILE" class="text-bold">Select a file</label>
+                                            <br />
+                                            @*<div class="input-group">*@
+                                            <input type="file" class="file-styled file" id="FILE" name="FILE" accept=".xls,.xlsx,.cvs,.txt" title="Allowed: .xls, .xlsx, .cvs, .txt" placeholder="Select a file to upload">
+                                            @*<span class="help-block"></span>*@
+                                            @*</div>*@
+                                        </div>
+
+                                        <div class="col-md-3" style="display:none;">
+                                            <label for="FOLDER_FILE" class="text-bold">Select a folder</label>
+                                            <br />
+
+                                            <select class="form-control select2 file" id="FOLDER_FILE" name="FOLDER_FILE"></select>
+
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <label style="color:white;">.</label>
+                                            <br />
+                                            <button class="btn btn-primary" onclick="PROCESS_01_UPLOAD_DATA();"><i class="icon-cloud-upload2"></i>&nbsp;Continue</button>
+                                        </div>
+
+                                        <div id="xGUID"></div>
+
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel" id="PANEL_STEP_2" style="display:none;">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">
+                                <a class="collapsed text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#STEP_2" style="font-size:15px;">STEP # 2 | Preview Records / Send ERP / Results </a>
+                            </h6>
+
+                            @*<button class="btn btn-primary" onclick="PROCESS_03_SENDERP('@Request["GUID"]');"><i class="icon-cloud-upload2"></i>&nbsp;Send to ERP 365</button>*@
+
+
+                            <div class="heading-elements">
+                                <ul class="icons-list">
+                                    @*<li><a href="javascript:LOAD_STEP_2(true)" data-popup="tooltip" data-placement="left" title="Validate"><i class="icon-file-check"></i></a></li>
+                                        <li><a href="javascript:PROCESS_02_SENDERP()" data-popup="tooltip" data-placement="left" title="Send data to ERP"><i class="icon-file-upload"></i></a></li>
+                                        <li><a href="javascript:LOAD_STEP_2(false)" data-popup="tooltip" data-placement="left" title="Refresh"><i class="icon-reset"></i></a></li>*@
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="STEP_2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="DATA_STEP_2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel" id="PANEL_HISTORY">
+                    <div class="panel-heading">
+                        <h6 class="panel-title">
+                            <a class="text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#PANEL_HISTORY" style="font-size:15px;">History runtime for @Request.Params["nm"]</a>
+                        </h6>
+                        <div class="heading-elements">
+                            <ul class="icons-list">
+                                <li>
+                                    <a href="javascript:HISTORY_RUNTIME();">
+                                        <i class="icon icon-reload-alt"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-collapse collapse in">
+                        <div class="panel-body" id="DIV_HISTORY">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,294 @@
+﻿@using System.Data;
+
+<script>
+
+    $(document).ready(function () {
+
+        //$('.file').attr('disabled', 'disabled');
+
+        $("#TEMPLATE").change(function () {
+
+           /* if ($(this).val() == '')
+                $('.file').attr('disabled', 'disabled');
+            else
+                $('.file').removeAttr('disabled');*/
+
+            $('#FILE').val();
+            $('#FOLDER_FILE').val();
+
+            $.ajax({
+                type: 'GET',
+                url: '/PROCESS/IMPORT_TEMPLATE_GET_FILE_FOLDER',
+                data: {
+                    ROWID_TEMPLATE: $(this).val()
+                },
+                success: function (data) {
+
+                    $('#FOLDER_FILE').empty();
+
+                    $.each(data, function (i, row) {
+                        $('#FOLDER_FILE').append('<option value="' + row.VALUE + '">' + row.TEXT + '</option>');
+                    });
+
+                }, error: function (result) {
+                    Mensajes(result.statusText, 'error', '');
+                }
+            });
+
+        });
+
+        @if (Request.Params["ROWID_TEMPLATE"] != null) {
+
+           <text> $("#TEMPLATE").val('@Request.Params["ROWID_TEMPLATE"]').trigger('change');</text>
+        }
+
+        $("#OPEN_TRANSACTION").change(function () {
+            $("#FORM_STEP_1 #GUID").val($(this).val());
+            PROCESS_02_RUN_VALIDATION(false);
+        });
+
+    });
+
+
+    function PROCESS_01_UPLOAD_DATA() {
+
+        if (confirm('Please confirm to continue.') == false)
+            return;
+
+        ModalProcesandoShow();
+
+        var form = $('#FORM_STEP_1')[0];
+        var dataString = new FormData(form);
+
+        $.ajax({
+
+            type: "post",
+
+            url: "/PROCESS/IMPORT_DATA",
+
+            data: dataString,
+
+            success: function (response) {
+
+                ModalProcesandoHiden();
+
+                Mensajes('File uploaded successfully.', 'success', '');
+
+                PROCESS_02_RUN_VALIDATION(false);
+
+                
+
+            },
+            error: function (result) {
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+    }
+
+
+    function PROCESS_02_RUN_VALIDATION(mustValidate) {
+
+        $('#STEP_1').removeClass('in');
+        $('#PANEL_STEP_1').addClass('panel-primary');
+        $('#STEP_2').toggleClass('in');
+
+        DisableForm('FORM_STEP_1');
+
+        //   ProcesandoInElementShow($('#DATA_STEP_3'));
+        $('#DATA_STEP_2').html('');
+
+        //LOADING ICON
+
+        $.ajax({
+            type: 'GET',
+            url: '/PROCESS/IMPORT_TEMPLATE_VALIDATE_RESULT',
+            data: {
+                GUID:  $("#FORM_STEP_1 #GUID").val(),//'ViewBag.GUID',
+                mustValidate: mustValidate
+            },
+            success: function (r) {
+
+                $("#PANEL_STEP_2 .heading-elements").show();
+                $('#DATA_STEP_2').html(r);
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+
+    }
+
+
+
+    function PROCESS_03_SENDERP() {
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: '/PROCESS/IMPORT_TEMPLATE_SENDERP',
+
+            data: {
+
+                GUID: $("#FORM_STEP_1 #GUID").val(),//'ViewBag.GUID',
+                ROWID_TEMPLATE: $("#TEMPLATE").val()
+            },
+
+            success: function (r) {
+                /*
+                                $('#STEP_1').removeClass('in');
+                                $('#PANEL_STEP_1').addClass('panel-success');
+
+                                $('#STEP_2').toggleClass('in');
+                                $("#PANEL_STEP_2 .heading-elements").show();
+                                $('#DATA_STEP_2').html(r); */
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+
+    }
+
+
+    $(document).ready(function () {
+
+        $("#FORM_STEP_1").submit(function (e) {
+            e.preventDefault();
+        });
+
+
+    });
+
+
+
+
+</script>
+
+<style>
+    /*.panel-heading {
+        padding: 8px 20px;
+        background-color: whitesmoke;
+    }*/
+
+    .icons-list > li > a {
+        margin-left: 5px;
+    }
+
+    #PANEL_STEP_2 .heading-elements {
+        display: none;
+    }
+</style>
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-group panel-group-control content-group-lg" id="accordion-control-right">
+
+                    <div class="panel" id="PANEL_STEP_1">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">
+                                <a class="text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#STEP_1">STEP # 1 | Select a template and file</a>
+                            </h6>
+                        </div>
+                        <div id="STEP_1" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <form id="FORM_STEP_1" action="/PROCESS/IMPORT_DATA" method="post">
+
+                                    <input type="hidden" id="GUID" name="GUID" value="@ViewBag.GUID" />
+
+                                    <div class="row">
+
+                                        <div class="col-md-4" style="display:none;">
+                                            <label for="TEMPLATE" class="text-bold">Select a template</label>
+                                            <br />
+                                            <select class="form-control" id="TEMPLATE" name="TEMPLATE" required="required">
+                                                <option value=""></option>
+                                                @foreach (var row in ViewBag.TEMPLATES)
+                                                {
+                                                    <option value="@row.VALUE">@row.TEXT</option>
+                                                }
+                                            </select>
+                                        </div>
+
+
+                                        @if (ViewBag.OPEN_TRANSACTION.Rows.Count > 0)
+                                        {
+                                        <div class="col-md-3">
+                                            <label for="OPEN_TRANSACTION" class="text-bold">Open Transaction</label>
+                                            <br />
+                                            <select class="form-control" id="OPEN_TRANSACTION">
+                                                <option value=""></option>
+                                                @foreach (DataRow row in ViewBag.OPEN_TRANSACTION.Rows)
+                                                {
+                                                    <option value="@row["GUID"]">@row["CREATEDBY"], @row["CREATEDON"] - @row["GUID"]</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        }
+
+           
+                                        <div class="col-md-3">
+                                            <label for="FILE" class="text-bold">Select a file</label>
+                                            <br />
+                                            @*<div class="input-group">*@
+                                                <input type="file" class="file-styled file" id="FILE" name="FILE" accept=".xls,.xlsx,.cvs,.txt" title="Allowed: .xls, .xlsx, .cvs, .txt" placeholder="Select a file to upload">
+                                                @*<span class="help-block"></span>*@
+                                            @*</div>*@
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label for="FOLDER_FILE" class="text-bold">Select a folder</label>
+                                            <br />
+                              
+                                                <select class="form-control select2 file" id="FOLDER_FILE" name="FOLDER_FILE"></select>
+                                          
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <label style="color:white;">.</label>
+                                            <br />
+                                            <button class="btn btn-primary" onclick="PROCESS_01_UPLOAD_DATA();"><i class="icon-cloud-upload2"></i>&nbsp;Continue</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel" id="PANEL_STEP_2">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">
+                                <a class="collapsed text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#STEP_2">STEP # 2 | Preview Process/ Result</a>
+                            </h6>
+                            <div class="heading-elements">
+                                <ul class="icons-list">
+                                    @*<li><a href="javascript:LOAD_STEP_2(true)" data-popup="tooltip" data-placement="left" title="Validate"><i class="icon-file-check"></i></a></li>
+                                        <li><a href="javascript:PROCESS_02_SENDERP()" data-popup="tooltip" data-placement="left" title="Send data to ERP"><i class="icon-file-upload"></i></a></li>
+                                        <li><a href="javascript:LOAD_STEP_2(false)" data-popup="tooltip" data-placement="left" title="Refresh"><i class="icon-reset"></i></a></li>*@
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="STEP_2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="DATA_STEP_2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

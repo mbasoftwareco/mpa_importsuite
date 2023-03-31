@@ -1,0 +1,89 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PANGEA.IMPORTSUITE.DataModel.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MPAConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=(local);Initial Catalog=MPA;User ID=sa;Password=2289&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=(local);Initial Catalog=MPA;User ID=sa;Password=2289</Value>
+    </Setting>
+    <Setting Name="PANGEA_IMPORT_SUITEConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=(local);Initial Catalog=PANGEA_IMPORT_SUITE;User ID=sa;Password=2289&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=(local);Initial Catalog=PANGEA_IMPORT_SUITE;User ID=sa;Password=2289</Value>
+    </Setting>
+    <Setting Name="PANGEA_IMPORT_SUITEConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=(local)\SQL2014;Initial Catalog=PANGEA_IMPORT_SUITE;User ID=sa;Password=2289&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=(local)\SQL2014;Initial Catalog=PANGEA_IMPORT_SUITE;User ID=sa;Password=2289</Value>
+    </Setting>
+    <Setting Name="PANGEA_IMPORTSUITE_LATAMConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=SQLDEVLATAM;Initial Catalog=PANGEA_IMPORTSUITE_LATAM;User ID=pangea_ax;Password=pangea_4x&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=SQLDEVLATAM;Initial Catalog=PANGEA_IMPORTSUITE_LATAM;User ID=pangea_ax;Password=pangea_4x</Value>
+    </Setting>
+    <Setting Name="PANGEA_IMPORTSUITE_LATAMConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=(local)\SQL2014;Initial Catalog=PANGEA_IMPORTSUITE_LATAM;User ID=sa;Password=2289&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=(local)\SQL2014;Initial Catalog=PANGEA_IMPORTSUITE_LATAM;User ID=sa;Password=2289</Value>
+    </Setting>
+    <Setting Name="PANGEA_IMPORTSUITE_LATAMConnectionString2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=(local);Initial Catalog=PANGEA_IMPORTSUITE_LATAM;User ID=sa;Password=2289&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=(local);Initial Catalog=PANGEA_IMPORTSUITE_LATAM;User ID=sa;Password=2289</Value>
+    </Setting>
+    <Setting Name="PANGEA_IMPORTSUITE_LATAMConnectionString3" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=SVRSQLUAT;Initial Catalog=PANGEA_IMPORTSUITE_LATAM;User ID=pangea_ax;Password=pangea_4x&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=SVRSQLUAT;Initial Catalog=PANGEA_IMPORTSUITE_LATAM;User ID=pangea_ax;Password=pangea_4x</Value>
+    </Setting>
+    <Setting Name="PANGEA_IMPORTSUITE_DataModel_MPA_RECONCILE_WS_wsAdminFiles" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ax-dev-web-01:9090/wsAdminFiles.asmx</Value>
+    </Setting>
+    <Setting Name="MPA_ImportSuiteConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=AX-TEST-SQL-01\MSSQLSERVER_TEST;Initial Catalog=MPA_ImportSuite;User ID=sa;Password=P@ssword1&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=AX-TEST-SQL-01\MSSQLSERVER_TEST;Initial Catalog=MPA_ImportSuite;User ID=sa;Password=P@ssword1</Value>
+    </Setting>
+    <Setting Name="MPA_ImportSuiteConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=AX-DEV-SQL-01;Initial Catalog=MPA_ImportSuite;User ID=sa;Password=P@ssword1&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=AX-DEV-SQL-01;Initial Catalog=MPA_ImportSuite;User ID=sa;Password=P@ssword1</Value>
+    </Setting>
+    <Setting Name="MPA_ImportSuiteConnectionString2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=AX-TEST-SQL-01;Initial Catalog=MPA_ImportSuite;User ID=sa;Password=P@ssword1&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=AX-TEST-SQL-01;Initial Catalog=MPA_ImportSuite;User ID=sa;Password=P@ssword1</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

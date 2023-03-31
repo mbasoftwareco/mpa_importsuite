@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PANGEA.IMPORTSUITE.WebApp", "PANGEA.IMPORTSUITE.WebApp\PANGEA.IMPORTSUITE.WebApp.csproj", "{85350AF9-3834-4B1E-8D1B-863E1726C47B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PANGEA.IMPORTSUITE.DataModel", "PANGEA.IMPORTSUITE.DataModel\PANGEA.IMPORTSUITE.DataModel.csproj", "{C18AFA69-A959-45AA-BA37-A78E36B495A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{62897E59-E885-4B57-A2B0-87FF4115BFA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PANGEA.IMPORTSUITE.Runtime", "PANGEA.IMPORTSUITE.Runtime\PANGEA.IMPORTSUITE.Runtime.csproj", "{C187BDD8-2FDD-4BE2-A7A9-ACF492D474BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F733E812-111B-46D0-8C66-D74993135B0A}"
+	ProjectSection(SolutionItems) = preProject
+		BITACORA.txt = BITACORA.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PANGEA.IMPORTSUITE.ErpFactory", "PANGEA.IMPORTSUITE.ErpFactory\PANGEA.IMPORTSUITE.ErpFactory.csproj", "{0EBD7905-1BED-45AC-B3C0-21BA252D7910}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85350AF9-3834-4B1E-8D1B-863E1726C47B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85350AF9-3834-4B1E-8D1B-863E1726C47B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85350AF9-3834-4B1E-8D1B-863E1726C47B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85350AF9-3834-4B1E-8D1B-863E1726C47B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C18AFA69-A959-45AA-BA37-A78E36B495A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C18AFA69-A959-45AA-BA37-A78E36B495A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C18AFA69-A959-45AA-BA37-A78E36B495A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C18AFA69-A959-45AA-BA37-A78E36B495A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62897E59-E885-4B57-A2B0-87FF4115BFA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62897E59-E885-4B57-A2B0-87FF4115BFA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62897E59-E885-4B57-A2B0-87FF4115BFA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62897E59-E885-4B57-A2B0-87FF4115BFA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C187BDD8-2FDD-4BE2-A7A9-ACF492D474BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C187BDD8-2FDD-4BE2-A7A9-ACF492D474BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C187BDD8-2FDD-4BE2-A7A9-ACF492D474BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C187BDD8-2FDD-4BE2-A7A9-ACF492D474BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EBD7905-1BED-45AC-B3C0-21BA252D7910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EBD7905-1BED-45AC-B3C0-21BA252D7910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EBD7905-1BED-45AC-B3C0-21BA252D7910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EBD7905-1BED-45AC-B3C0-21BA252D7910}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CAA40FE1-B242-45EC-9ECD-769F6F716FBF}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://mbasoftware.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PANGEA.IMPORTSUITE.DataModel\\PANGEA.IMPORTSUITE.DataModel.csproj
+		SccProjectName1 = PANGEA.IMPORTSUITE.DataModel
+		SccLocalPath1 = PANGEA.IMPORTSUITE.DataModel
+		SccProjectUniqueName2 = PANGEA.IMPORTSUITE.WebApp\\PANGEA.IMPORTSUITE.WebApp.csproj
+		SccProjectName2 = PANGEA.IMPORTSUITE.WebApp
+		SccLocalPath2 = PANGEA.IMPORTSUITE.WebApp
+		SccProjectUniqueName3 = Tester\\Tester.csproj
+		SccProjectName3 = Tester
+		SccLocalPath3 = Tester
+		SccProjectUniqueName4 = PANGEA.IMPORTSUITE.Runtime\\PANGEA.IMPORTSUITE.Runtime.csproj
+		SccProjectName4 = PANGEA.IMPORTSUITE.Runtime
+		SccLocalPath4 = PANGEA.IMPORTSUITE.Runtime
+		SccProjectUniqueName5 = PANGEA.IMPORTSUITE.ErpFactory\\PANGEA.IMPORTSUITE.ErpFactory.csproj
+		SccProjectName5 = PANGEA.IMPORTSUITE.ErpFactory
+		SccLocalPath5 = PANGEA.IMPORTSUITE.ErpFactory
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,27 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+@{
+    Layout = null;
+}
+
+
+<div class="table-responsive" style="height:480px;overflow-y:auto;">
+    <table class="table table-bordered table-condensed table-striped table-hover" style="width: 100% !important;">
+        <tbody>
+            @{ int i = 1; }
+            @foreach (DataRow row in Model.Rows)
+            {
+                <tr>
+                    <td><font color="brown" size="12"><b>@row["ORIFILENAME"]</b></font>                        
+                        <br />
+                        <b>@row["CREATEDBY"]</b>, @row["CREATEDON"]
+                        <br />
+                        @row["STATUS_ID"]
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+</div>

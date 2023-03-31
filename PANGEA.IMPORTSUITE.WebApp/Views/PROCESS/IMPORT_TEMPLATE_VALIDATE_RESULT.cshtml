@@ -1,0 +1,106 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+@{
+    Layout = null;
+}
+
+<script>
+
+    function LOAD_IMPORT_TEMPLATE_RESULT(FILTER) {
+
+        window.open('/PROCESS/IMPORT_TEMPLATE_RESULT?ROWID_TEMPLATE=@(Request["ROWID_TEMPLATE"])&GUID=@(Request["GUID"])&FILTER=' + FILTER, '@(Request["ROWID_TEMPLATE"])-@(Request["GUID"])', "width=1100,height=660,scrollbars=YES,top=0,left=250");
+
+    }
+
+</script>
+
+<br />
+
+@*<div class="row">*@
+    <div class="col-sm-12">
+
+        <div class="card-box table-responsive">
+
+            @*<font color=brown>Click on description to see results.</font><br><br>*@
+
+            <table id="TblMenu" class="table table-striped table-bordered table-condensed">
+                <thead>
+                    <tr align="center">
+                        <th align="center">File</th>
+
+                        <th align="center">Errors</th>
+
+                        <th>&nbsp;</th>
+
+                        <th align="center">Valid</th>
+
+                        <th>&nbsp;</th>
+
+                        <th align="center">Processed</th>
+
+                        <th>&nbsp;</th>
+
+                        <th align="center">Total</th>
+
+                        <th align="center">Started On</th>
+
+                        <th align="center">Last Update</th>
+
+                        <th align="center">Elapsed Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 1; }
+                    @foreach (DataRow row in Model.Rows)
+                    {
+
+                        <tr>
+                            @*<td>@i</td>
+                            <td class="text-bold">
+                                <a href="javascript:LOAD_IMPORT_TEMPLATE_RESULT('@row["FILTER"]');">@row["LABEL"]</a>
+                            </td>
+                            <td>@row["VALUE"]</td>*@
+
+
+                            <td>@row["FILENAME"]</td>
+
+                            <td align="center"><b><font color=blue>@double.Parse(row["ERROR"].ToString()).ToString("N0")</font></b></td>
+
+                            <td align="center">+</td>
+
+                            <td align="center">@double.Parse(row["READY"].ToString()).ToString("N0")</td>
+
+                            <td align="center">+</td>
+
+                            <td align="center"><b><font color=blue>@double.Parse(row["SENT_ERP"].ToString()).ToString("N0")</font></b></td>
+
+                            <td align="center">=</td>
+
+                            <td align="center"><b>@double.Parse(row["TOTAL"].ToString()).ToString("N0")<b></td>
+
+                            <td align="center"><nobr>@row["STARTDATE"]</nobr></td>
+
+                            <td align="center"><nobr>@row["ENDDATE"]</nobr></td>
+
+                            <td align="center"><font color="red">@row["ELAPSED"]</font></td>
+
+                        </tr>
+
+
+
+                        i++;
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <br />
+
+        <button class="btn bg-warning" onclick="PROCESS_02_RUN_VALIDATION(true);"><i class="icon-check"></i>&nbsp;Validate</button>
+        
+        <button class="btn btn-primary" onclick="PROCESS_03_SENDERP();"><i class="icon-cloud-upload2"></i>&nbsp;Send to ERP</button>
+
+    </div>
+
+@*</div>*@

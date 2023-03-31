@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="160584b6-614a-47e2-86e2-65375fcf040c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://AX-DEV-AOS-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PANGEA_PTI_SERGROUP.wsdl" MetadataType="Wsdl" ID="94245f84-584c-4ccd-9f9b-614c85043b08" SourceId="1" SourceUrl="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP" />
+    <MetadataFile FileName="PANGEA_PTI_SERGROUP1.wsdl" MetadataType="Wsdl" ID="aa239ca6-7119-4b82-8bd1-5dbc3412bbe2" SourceId="1" SourceUrl="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?wsdl=wsdl0" />
+    <MetadataFile FileName="PANGEA_PTI_SERGROUP.xsd" MetadataType="Schema" ID="87b40b19-e97b-477e-9eda-5381eb118be5" SourceId="1" SourceUrl="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd4" />
+    <MetadataFile FileName="PANGEA_PTI_SERGROUP1.xsd" MetadataType="Schema" ID="0f0ba648-9222-4b0c-ad20-15d1b831df8c" SourceId="1" SourceUrl="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd5" />
+    <MetadataFile FileName="PANGEA_PTI_SERGROUP2.xsd" MetadataType="Schema" ID="453c0c8b-530b-4bad-91b5-1e769a15727d" SourceId="1" SourceUrl="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd2" />
+    <MetadataFile FileName="PANGEA_PTI_SERGROUP3.xsd" MetadataType="Schema" ID="79592b35-4d81-4cdb-9a04-43e75e8242f7" SourceId="1" SourceUrl="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd3" />
+    <MetadataFile FileName="PANGEA_PTI_SERGROUP4.xsd" MetadataType="Schema" ID="8acec3ab-084e-4854-b8db-8771d2a69e8e" SourceId="1" SourceUrl="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd0" />
+    <MetadataFile FileName="PANGEA_PTI_SERGROUP5.xsd" MetadataType="Schema" ID="e96579fd-28c6-4f7d-9bac-e5079984b04c" SourceId="1" SourceUrl="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

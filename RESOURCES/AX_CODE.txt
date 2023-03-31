@@ -1,0 +1,190 @@
+static void Job42(Args _args)
+{
+    PANGEA_VB_CLASS job;
+
+    job = new PANGEA_VB_CLASS();
+
+    job.BULK_UPLOAD_TEST();
+}
+
+
+
+
+
+
+public void BULK_UPLOAD_TEST()
+{
+    Filename    filename = @'C:\Temp\GL_DS_90K-1.txt';
+    System.Data.DataTableCollection dataTableCollection;
+    System.Data.DataTable dataTable;
+    System.Data.DataRowCollection dataRowCollectionLines;
+    System.Data.DataColumnCollection dataColumnCollectionLines;
+    System.Data.DataRow dataRow;
+    System.Data.DataSet             theDataSet;
+    Str                             text;
+    //LedgerJournalTrans trans;
+    AxLedgerJournalTable journalTable;
+    LedgerJournalTable ledgerJournalTable;
+    AxLedgerJournalTrans journalTrans;
+    int i, j;
+    int lines, columns, dr ;
+    str value;
+    utcdatetime  dateIni, dateFin;
+    real amount;
+
+
+    LedgerJournalTrans trans;
+    Voucher currentVoucher;
+
+
+    // This collection will store the records that must be inserted into the database
+    RecordInsertList transToBeInserted = new RecordInsertList(tableNum(LedgerJournalTrans));
+
+    ;
+
+
+
+    theDataSet = new System.Data.DataSet();
+    theDataSet.ReadXml(filename);
+
+    dataTableCollection = theDataSet.get_Tables();
+
+    dataTable = dataTableCollection.get_Item(0);
+    dataColumnCollectionLines = dataTable.get_Columns();
+    columns = dataColumnCollectionLines.get_Count();
+    dataRowCollectionLines = dataTable.get_Rows();
+    lines = dataRowCollectionLines.get_Count();
+
+    journalTable = new AxLedgerJournalTable();
+    journalTable.parmJournalName("GLUPL");
+    journalTable.parmName("Description");
+    journalTable.save();
+
+    ledgerJournalTable = journalTable.ledgerJournalTable();
+
+    /*
+    for(i=0; i < lines; i++)
+    {
+        dataRow = dataRowCollectionLines.get_Item(i);
+
+        journalTrans = new AxLedgerJournalTrans();
+        journalTrans.parmJournalNum(ledgerJournalTable.JournalNum);
+        journalTrans.parmTransDate(dataRow.get_Item("DATE"));
+        //..
+        journalTrans.save();
+
+    }
+
+
+  <DT>
+    <DATE>2016/12/01</DATE>
+    <DEBIT>0.00</DEBIT>
+    <LINEDESC>Dep Exp Entity Reclass</LINEDESC>
+    <ENTITY>VBAM</ENTITY>
+    <FULLDIM>7312-US-AK-USAK1001</FULLDIM>
+    <MAINACCT>7312</MAINACCT>
+    <COUNTRY>US</COUNTRY>
+    <STATE>AK</STATE>
+    <SITE>USAK1001</SITE>
+    <CREDIT>84.94</CREDIT>
+    <POSTINGDATE>2016/12/01</POSTINGDATE>
+    <REVENTRY>N</REVENTRY>
+    <LINEKEY>1</LINEKEY>
+    <FULLNAME>ACCOUNT-COUNTRY-STATE-SITE</FULLNAME>
+    <GLTYPE>LEDGER</GLTYPE>
+  </DT>
+
+    */
+
+            dateIni = DateTimeUtil::getSystemDateTime();
+
+
+                //JOURNAL LINES
+            for (dr = 0; dr < lines; dr++)
+            {
+
+                dataRow = dataRowCollectionLines.get_Item(dr);
+
+                trans.clear();
+
+                trans.initValue();
+
+                trans.JournalNum = journalTable.ledgerJournalTable().JournalNum;
+
+                if (dr == 0)  //Usa siempre el primer voucher
+                    currentVoucher = this.generateVoucherNum(trans.JournalNum);
+
+                trans.Voucher = currentVoucher;
+
+                value = dataRow.get_Item("DATE");
+
+                trans.TransDate = str2Date(value, 321);
+
+                trans.DocumentDate = str2Date(value, 321);
+
+                amount = dataRow.get_Item("DEBIT");
+
+                trans.AmountCurDebit = amount;
+
+                amount = dataRow.get_Item("CREDIT");
+
+                trans.AmountCurCredit = amount;
+
+                trans.Txt = dataRow.get_Item("LINEDESC");
+
+                trans.Company = dataRow.get_Item("ENTITY");
+
+                trans.AccountType = LedgerJournalACType::Ledger;
+
+                trans.LedgerDimension = DimensionStorage::getDefaultAccountForMainAccountNum(dataRow.get_Item("MAINACCT"));
+
+                transToBeInserted.add(trans);
+
+
+            }
+
+            dateFin = DateTimeUtil::getSystemDateTime();
+
+            transToBeInserted.insertDatabase();
+
+
+    /*
+            //JOURNAL LINES - CLASE AX
+            for (dr = 0; dr < lines; dr++)
+            {
+                dataRow = dataRowCollectionLines.get_Item(dr);
+
+                journalTrans = new AxLedgerJournalTrans();
+
+                journalTrans.parmJournalNum(ledgerJournalTable.JournalNum);
+
+                value = dataRow.get_Item("DATE");
+
+                journalTrans.parmTransDate(str2Date(value, 321));
+
+                journalTrans.parmDocumentDate(str2Date(value, 321));
+
+                amount = dataRow.get_Item("DEBIT");
+
+                journalTrans.parmAmountCurDebit(amount);
+
+                amount = dataRow.get_Item("CREDIT");
+
+                journalTrans.parmAmountCurCredit(amount);
+
+                journalTrans.parmTxt(dataRow.get_Item("LINEDESC"));
+
+                journalTrans.parmCompany(dataRow.get_Item("ENTITY"));
+
+                journalTrans.parmAccountType(LedgerJournalACType::Ledger);
+
+                journalTrans.parmLedgerDimension(DimensionStorage::getDefaultAccountForMainAccountNum(dataRow.get_Item("MAINACCT")));
+
+                //trans.LedgerDimension = AxdDimensionUtil::getLedgerAccountId(ledgerDimensions);
+
+                journalTrans.save();
+
+            }
+    */
+
+}

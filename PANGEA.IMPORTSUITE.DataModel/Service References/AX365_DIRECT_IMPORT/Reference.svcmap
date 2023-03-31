@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3487c166-fc3f-414b-8e54-5c9499a06dbe" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PangeaGrpSvc.xsd" MetadataType="Schema" ID="94128a52-aa76-4479-969d-7bfdec58efbc" SourceId="1" SourceUrl="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc?xsd=xsd3" />
+    <MetadataFile FileName="PangeaGrpSvc1.xsd" MetadataType="Schema" ID="cedb2f0c-0a4c-4a5c-8efb-c942d92ffda8" SourceId="1" SourceUrl="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc?xsd=xsd2" />
+    <MetadataFile FileName="PangeaGrpSvc2.xsd" MetadataType="Schema" ID="be07ff58-327f-4037-ba40-f95c370e1782" SourceId="1" SourceUrl="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc?xsd=xsd1" />
+    <MetadataFile FileName="PangeaGrpSvc3.xsd" MetadataType="Schema" ID="1c03088f-ac43-4caa-830a-ede5f62c48f3" SourceId="1" SourceUrl="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc?xsd=xsd0" />
+    <MetadataFile FileName="PangeaGrpSvc.disco" MetadataType="Disco" ID="085fa2bc-1530-4aa0-9940-65a3aa24d570" SourceId="1" SourceUrl="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc?disco" />
+    <MetadataFile FileName="PangeaGrpSvc.wsdl" MetadataType="Wsdl" ID="d15c340a-4f9c-42d1-9a44-ec4fc391ac29" SourceId="1" SourceUrl="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc?wsdl=wsdl0" />
+    <MetadataFile FileName="PangeaGrpSvc1.wsdl" MetadataType="Wsdl" ID="dea0bac2-b1b7-46dc-97c8-c0f61a2d0d01" SourceId="1" SourceUrl="https://mtpsites-devdevaos.sandbox.ax.dynamics.com/soap/services/PangeaGrpSvc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

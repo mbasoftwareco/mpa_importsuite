@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd0" namespace="http://tempuri.org" />
+      <xsd:import schemaLocation="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd2" namespace="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" />
+      <xsd:import schemaLocation="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd4" namespace="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" />
+      <xsd:import schemaLocation="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://ax-dev-aos-01:8101/DynamicsAx/Services/PANGEA_PTI_SERGROUP?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.AX.Framework.Services" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="PANGEA_MPA_SERVICEPANGEA_importRequest">
+    <wsdl:part name="parameters" element="tns:PANGEA_MPA_SERVICEPANGEA_importRequest" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_MPA_SERVICEPANGEA_importRequest_Headers">
+    <wsdl:part xmlns:q1="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q1:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_MPA_SERVICEPANGEA_importResponse">
+    <wsdl:part name="parameters" element="tns:PANGEA_MPA_SERVICEPANGEA_importResponse" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_MPA_SERVICE_PANGEA_import_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q2:AifFault" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_MPA_SERVICEPANGEA_validateRequest">
+    <wsdl:part name="parameters" element="tns:PANGEA_MPA_SERVICEPANGEA_validateRequest" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_MPA_SERVICEPANGEA_validateRequest_Headers">
+    <wsdl:part xmlns:q3="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q3:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_MPA_SERVICEPANGEA_validateResponse">
+    <wsdl:part name="parameters" element="tns:PANGEA_MPA_SERVICEPANGEA_validateResponse" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_MPA_SERVICE_PANGEA_validate_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q4:AifFault" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_MPA_SERVICEPANGEA_processRequest">
+    <wsdl:part name="parameters" element="tns:PANGEA_MPA_SERVICEPANGEA_processRequest" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_MPA_SERVICEPANGEA_processRequest_Headers">
+    <wsdl:part xmlns:q5="http://schemas.microsoft.com/dynamics/2010/01/datacontracts" name="context" element="q5:CallContext" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_MPA_SERVICEPANGEA_processResponse">
+    <wsdl:part name="parameters" element="tns:PANGEA_MPA_SERVICEPANGEA_processResponse" />
+  </wsdl:message>
+  <wsdl:message name="PANGEA_MPA_SERVICE_PANGEA_process_AifFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.microsoft.com/dynamics/2008/01/documents/Fault" name="detail" element="q6:AifFault" />
+  </wsdl:message>
+  <wsdl:portType name="PANGEA_MPA_SERVICE">
+    <wsdl:operation name="PANGEA_import">
+      <wsdl:input wsaw:Action="http://tempuri.org/PANGEA_MPA_SERVICE/PANGEA_import" name="PANGEA_MPA_SERVICEPANGEA_importRequest" message="tns:PANGEA_MPA_SERVICEPANGEA_importRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PANGEA_MPA_SERVICE/PANGEA_importResponse" name="PANGEA_MPA_SERVICEPANGEA_importResponse" message="tns:PANGEA_MPA_SERVICEPANGEA_importResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/PANGEA_MPA_SERVICE/PANGEA_importAifFaultFault" name="AifFaultFault" message="tns:PANGEA_MPA_SERVICE_PANGEA_import_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PANGEA_validate">
+      <wsdl:input wsaw:Action="http://tempuri.org/PANGEA_MPA_SERVICE/PANGEA_validate" name="PANGEA_MPA_SERVICEPANGEA_validateRequest" message="tns:PANGEA_MPA_SERVICEPANGEA_validateRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PANGEA_MPA_SERVICE/PANGEA_validateResponse" name="PANGEA_MPA_SERVICEPANGEA_validateResponse" message="tns:PANGEA_MPA_SERVICEPANGEA_validateResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/PANGEA_MPA_SERVICE/PANGEA_validateAifFaultFault" name="AifFaultFault" message="tns:PANGEA_MPA_SERVICE_PANGEA_validate_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PANGEA_process">
+      <wsdl:input wsaw:Action="http://tempuri.org/PANGEA_MPA_SERVICE/PANGEA_process" name="PANGEA_MPA_SERVICEPANGEA_processRequest" message="tns:PANGEA_MPA_SERVICEPANGEA_processRequest" />
+      <wsdl:output wsaw:Action="http://tempuri.org/PANGEA_MPA_SERVICE/PANGEA_processResponse" name="PANGEA_MPA_SERVICEPANGEA_processResponse" message="tns:PANGEA_MPA_SERVICEPANGEA_processResponse" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/PANGEA_MPA_SERVICE/PANGEA_processAifFaultFault" name="AifFaultFault" message="tns:PANGEA_MPA_SERVICE_PANGEA_process_AifFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

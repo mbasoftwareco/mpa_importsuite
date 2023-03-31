@@ -1,0 +1,809 @@
+﻿@using System.Data;
+@using PANGEA.IMPORTSUITE.DataModel.Util;
+
+<script>
+
+    $(document).ready(function () {
+
+        window.onload = function () {
+            if ($("#TYPE_PROCESS").val() == 'POSTED') {
+
+                $("#DIV_PARAMETERS_1").show();
+                $("#DIV_PARAMETERS_2").show();
+                $("#BUTTON_SEARCH").show();
+                // changeTypeProcess();
+
+            }
+            };
+    });
+
+    function RECONCILE() {
+
+        if (confirm('Please confirm to continue.') == false)
+            return;
+
+        $('#RECON_result').html('');
+
+        $("#RECON_result").html('<p align=center><img src="/Imagenes/loading.gif" /></p>');
+
+        //ModalProcesandoShow();
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: '/MPA/BANKRECONCIL_RECONCILE',
+
+            data: $("#mainForm").serialize(),
+
+            //async: false,
+
+            success: function (r) {
+
+
+                if (r.success) {
+
+                    $("#btnRecon").attr("disabled", "disabled");
+
+                    //ModalProcesandoHiden();
+                    //$('#RECON_result').html(r.error);
+
+                    //Mensajes(r.error, 'success', '');
+                    alert(r.error);
+
+                    window.location.href = '/MPA/BANKRECONCIL_PROCESSPANEL';
+
+                }
+                else {
+
+                    $("#RECON_result").html(r.error);
+
+                    Mensajes(r.error, 'error', '');
+
+                }
+
+
+            }, error: function (result) {
+
+                //ModalProcesandoHiden();
+
+                Mensajes(result.statusText, 'error', '');
+
+                $('#RECON_result').html(result.statusText);
+
+                alert(result.statusText);
+
+                window.location.href = '/MPA/BANKRECONCIL_PROCESSPANEL';
+
+            },
+
+
+            timeout: 3600000, // sets timeout to 3 seconds
+
+        });
+
+    }
+
+
+    function SENDTOERP() {
+
+        if (confirm('Please confirm to continue.') == false)
+            return;
+
+        $('#ERP_result').html('');
+
+        $("#ERP_result").html('<p align=center><img src="/Imagenes/loading.gif" /></p>');
+
+        //ModalProcesandoShow();
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: '/MPA/BANKRECONCIL_SENDERP',
+
+            data: $("#mainForm").serialize(),
+
+            //async: false,
+
+            success: function (r) {
+
+
+                if (r.success) {
+
+                    $("#btnRecon").attr("disabled", "disabled");
+
+                    //ModalProcesandoHiden();
+
+                    Mensajes(r.error, 'success', '');
+
+                    $('#ERP_result').html(r);
+
+                    alert(r.error);
+
+                    window.location.href = '/MPA/BANKRECONCIL_PROCESSPANEL';
+                }
+                else {
+
+                    $("#ERP_result").html(r.error);
+
+                    Mensajes(r.error, 'error', '');
+
+                    alert(r.error);
+
+                    //window.location.href = '/MPA/BANKRECONCIL_PROCESSPANEL';
+
+                }
+
+
+            }, error: function (result) {
+
+                //ModalProcesandoHiden();
+
+                Mensajes(result.statusText, 'error', '');
+
+                $('#ERP_result').html(result.statusText);
+
+                alert(result.statusText);
+
+            },
+
+
+            timeout: 3600000, // sets timeout to 3 seconds
+
+        });
+
+    }
+
+
+    function SENDTOERP_NOTRECON() {
+
+        if (confirm('WARNING: This process will create Journals without Deposit. Please confirm to continue.') == false)
+            return;
+
+        $('#ERP_result').html('');
+
+        $("#ERP_result").html('<p align=center><img src="/Imagenes/loading.gif" /></p>');
+
+        //ModalProcesandoShow();
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: '/MPA/BANKRECONCIL_SENDERP?not_recon=1',
+
+            data: $("#mainForm").serialize(),
+
+            //async: false,
+
+            success: function (r) {
+
+
+                if (r.success) {
+
+                    $("#btnRecon").attr("disabled", "disabled");
+
+                    //ModalProcesandoHiden();
+
+                    Mensajes(r.error, 'success', '');
+
+                    $('#ERP_result').html(r);
+
+                    alert(r.error);
+
+                    window.location.href = '/MPA/BANKRECONCIL_PROCESSPANEL';
+                }
+                else {
+
+                    $("#ERP_result").html(r.error);
+
+                    Mensajes(r.error, 'error', '');
+
+                    alert(r.error);
+
+                    //window.location.href = '/MPA/BANKRECONCIL_PROCESSPANEL';
+
+                }
+
+
+            }, error: function (result) {
+
+                //ModalProcesandoHiden();
+
+                Mensajes(result.statusText, 'error', '');
+
+                $('#ERP_result').html(result.statusText);
+
+                alert(result.statusText);
+
+            },
+
+
+            timeout: 3600000, // sets timeout to 3 seconds
+
+        });
+
+    }
+
+
+</script>
+
+<style>
+    /*.panel-heading {
+        padding: 8px 20px;
+        background-color: whitesmoke;
+    }*/
+
+    .icons-list > li > a {
+        margin-left: 5px;
+    }
+
+    #PANEL_STEP_2 .heading-elements {
+        display: none;
+    }
+
+    .heading-elements {
+        top: 84%;
+        height: auto;
+        margin-top: -22px;
+    }
+
+    .icons-list > li > a > i {
+        top: -3px;
+    }
+</style>
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+
+
+
+                <div class="panel-group panel-group-control content-group-lg" id="accordion-control-right">
+
+                    <div class="panel" id="PANEL_STEP_1">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">
+                                <a class="text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#STEP_1" style="font-size:15px;">
+                                    Reconcile &amp; Send to ERP
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="STEP_1" class="panel-collapse collapse in">
+                            <div class="panel-body" style="overflow: auto !important">
+                                <div class="row"  style="padding-bottom:20px;">
+                                    <div class="col-lg-12">
+                                        <form class="form-inline" id="form-search-process">
+                                                <div class="form-group">
+                                                    <label class="text-bold">&nbsp;</label>
+                                                    <br />
+                                                    <select class="form-control" onchange="changeTypeProcess()" id="TYPE_PROCESS" name="TYPE_PROCESS">
+
+                                                        <option value="OPEN" @if (@ViewBag.TYPE_PROCESS == "OPEN") { <text> selected </text> }>OPEN RECORDS</option>
+
+                                                        <option value="POSTED" @if (@ViewBag.TYPE_PROCESS == "POSTED") { <text> selected </text> }>HISTORY / POSTED</option>
+
+                                                        @*<option value="NOTRECON" @if (@ViewBag.TYPE_PROCESS == "NOTRECON") { <text> selected </text>  }>NOT RECONCILED</option>*@
+
+                                                    </select>
+                                                </div>
+
+                                            <div class="form-group"><br />
+                                                <input type="text" name="batchNo" id="BATCHNO" class="form-control" value="@ViewBag.BATCHNO" placeholder="Filter by Batch #" />
+                                            </div>
+
+
+                                                <div class="form-group" id="DIV_PARAMETERS_1" style="display:none">
+                                                    <label class="text-bold">Start Date</label>
+                                                    <br />
+                                                    <input type="text" name="startDate" id="START_DATE" class="form-control" value="@ViewBag.START_DATE" placeholder="mm/dd/yyyy" />
+                                                </div>
+                                                <div class="form-group" id="DIV_PARAMETERS_2" style="display:none">
+                                                    <label class="text-bold">End Date</label>
+                                                    <br />
+                                                    <input type="text" name="endDate" id="END_DATE" class="form-control" value="@ViewBag.END_DATE" placeholder="mm/dd/yyyy" />
+                                                </div>
+
+                                                <div class="form-group" id="BUTTON_SEARCH" > <!-- style="display:none" -->
+                                                    <br />
+                                                    <button type="button" onclick="searchProcess()" class="btn btn-primary"><i class="icon-search4"></i>&nbsp;</button>
+                                                </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row" style="overflow: auto !important">
+
+                                    @if (Model != null && Model.Rows.Count > 0)
+                                    {
+
+                                        <table id="TblRegs"  style="overflow: auto !important" class="table table-bordered  table-condensed"> <!-- table-striped table-hover -->
+                                            <thead>
+                                                <tr>
+                                                    <th>File Information</th>
+                                                    <th>BatchNo</th>
+                                                    <th>Total<br />Regs</th>
+                                                    <th>Errors</th>
+                                                    <th>Pending<br />Reconcile</th>
+                                                    <th>Approve<br />Partial</th>
+                                                    <th>Pending<br />Send to ERP</th>
+                                                    @*<th>Status</th>*@
+                                                    <th><input type="checkbox" name="RECONALL" id="RECONALL" /> Reconcile</th>
+                                                    <th><input type="checkbox" name="ERPALL" id="ERPALL" /> To Erp</th>
+                                                    @*<th><input type="checkbox" name="ZALL" id="ZALL" /> To Erp<br />with Approval</th>*@
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <form method="GET" name="mainForm" id="mainForm">
+
+                                                    @{ int i = 1; int erp = 0; int recon = 0; int notRecon = 0; int curHeader = 0; int bg = 1; bool showHeader = false; }
+
+
+                                                     @foreach (DataRow row in Model.Rows)
+                                                     {
+                                                         showHeader = false;
+
+                                                         if (curHeader != int.Parse(row["ID"].ToString()))
+                                                         {
+                                                             curHeader = int.Parse(row["ID"].ToString());
+                                                             bg++;
+                                                             showHeader = true;
+
+                                                         }
+
+                                                        <tr bgcolor="#ffff00" @if (bg % 2 == 1) {
+                                                            <text>style="background-color:lavender !important;"</text>
+                                                        } >
+
+                                                            <td>   
+                                                                @if(showHeader) {
+
+                                                                    @row["ID"]
+
+                                                                    <text>&nbsp;</text>
+
+                                                                    <b><font color="brown">@row["FileType"]</font> - <font color="blue">@row["ReconStatus"]</font></b>
+
+
+
+                                                                    if (row["ReconStatus"].ToString() == "Pending" || row["sourceFile"].ToString().Contains("POS") || row["sourceFile"].ToString().Contains("WEB") || (row["FileType"].ToString() == "Transaction" && row["ValidRegs"].ToString() != "0") )
+                                                                    {
+                                                                        <a href="javascript:REMOVE_FILE(@row["ID"])" title="Remove File"><i class="icon-cancel-circle2" style="color:red;"></i></a>
+                                                                    }
+
+                                                                    <text>&nbsp;</text>@row["CratedOn"]
+                                                                    
+                                                                    <font color="green"><b>@row["sheet"]</b></font>
+
+                                                                    <br /><b>@Html.Raw(UtilTool.splitString(row["FileName"].ToString(),50,"<br>"))</b>
+
+                                                            }
+
+                                                            </td>
+
+                                                            <td><b style="color:blue">@row["batchnumber"]</b>
+                                                            
+                                                            
+                                                                @if ((string.IsNullOrEmpty(row["ErpJournal"].ToString()) || row["sourceFile"].ToString() == "FD-POS" || row["sourceFile"].ToString() == "FD-WEB" ) && row["batchnumber"].ToString() != "")
+                                                                {
+                                                                    <a href="javascript:REMOVE_BATCH(@row["ID"], '@row["batchnumber"]')" title="Remove Batch"><i class="icon-cancel-circle2" style="color:red;"></i></a>
+                                                                }
+                                                                <br />@row["ErpDate"]
+
+                                                                @Html.Raw(row["ReconMsg"].ToString())
+
+                                                            </td>
+
+                                                            <td>
+                                                                @if (row["TotalRegs"].ToString() != "0")
+                                                                {
+                                                                    <a style="text-decoration:underline;" href="javascript:PROCESS_SHOWREGS('@row["ID"]','@row["batchnumber"]','@ViewBag.TYPE_PROCESS', '@row["TotalRegs"]')">@row["TotalRegs"]</a>
+                                                                    <br />
+                                                                }
+                                                                else
+                                                                {
+                                                                    <text>0</text>
+                                                                }
+                                                            </td>
+
+                                                            <td>
+                                                                @if (row["Error"].ToString() != "0")
+                                                                {
+                                                                    <a style="text-decoration:underline;" href="javascript:PROCESS_SHOWREGS('@row["ID"]','@row["batchnumber"]','Z', '@row["TotalRegs"]')">@row["Error"]</a>
+                                                                    <font color="red">Please Check</font>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <text>0</text>
+                                                                }
+                                                            </td>
+
+                                                            <td>
+                                                                @if (row["ValidRegs"].ToString() != "0")
+                                                                {
+                                                
+                                                                    <text>&nbsp;</text><a style="text-decoration:underline;" href="javascript:PROCESS_SHOWREGS('@row["ID"]','@row["batchnumber"]','R')">@row["ValidRegs"]</a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <text>0</text>
+                                                                } 
+                                                                
+                                                            </td>
+
+                                                            <td>
+
+                                                                @if (row["ValidRegs"].ToString() != "0")
+                                                                {
+                                                                    <!-- Can Edit the Record Manually -->
+                                                                    if (row["FileType"].ToString().Trim() == "First Data" && (!row["sourceFile"].ToString().Trim().Contains("FD-WEB")) && (!row["sourceFile"].ToString().Trim().Contains("FD-POS"))  && ViewBag.AllowManual == true)
+                                                                    {
+                                                                        <a style="text-decoration:underline;" href="javascript:PROCESS_PENDING('@row["ID"]','@row["batchnumber"]')"><i class="icon-table" style="color:black;"></i></a>
+                                                                    }
+                                                                }                                                               
+
+                                                            </td>
+
+
+                                                            <td>
+                                                                @if (row["ERPStatus"].ToString() != "0")
+                                                                {
+                                                                    <a style="text-decoration:underline;" href="javascript:PROCESS_SHOWREGS('@row["ID"]','@row["batchnumber"]','E')">@row["ERPStatus"]</a>
+                                                                    <br />
+                                                                }
+                                                                else
+                                                                {
+                                                                    <text>0</text>
+                                                                }
+                                                            </td>
+
+
+                                                            <td>@if(row["Action"].ToString() == "NOTRECON")
+                                                            {
+
+                                                            }
+                                                            else if ((row["FileType"].ToString().Trim() == "First Data" && row["ValidRegs"].ToString() != "0") || ((row["Action"].ToString() == "RECON" || row["Action"].ToString() == "ERP") && row["ValidRegs"].ToString() != "0" && row["Error"].ToString() == "0"))
+                                                            {
+                                                                recon++;
+                                                                    <input type="checkbox" name="RECON" value="@row["ID"]-@row["batchnumber"]" class="checkRecon" />
+                                                          
+                                                                }
+                                                            </td>
+
+                                                            <td>
+                                                            @if ((row["Action"].ToString() == "RECON" || row["Action"].ToString() == "ERP") && row["ValidRegs"].ToString() == "0" && row["Error"].ToString() == "0")
+                                                            {
+                                                                erp++;
+                                                                    <nobr>
+                                                                    <input type="checkbox" name="ERP" value="@row["ID"]-@row["batchnumber"]" class="checkErp" />                   
+                                                                    <font color="brown">@(double.Parse(row["TotalErp"].ToString()).ToString("N2"))</font>
+                                                                    </nobr>
+
+                                                                if (row["ErpJournal"].ToString() != "" && row["ErpDeposit"].ToString() == "")
+                                                                {
+                                                                            <br /><font color="red">Deposit Pending</font><br />
+                                                                }
+                                                            }
+                                                                                                                               
+                                                             @row["ErpJournal"].ToString()
+                                                             <br />@row["ErpDeposit"].ToString()
+                                                        </td>
+                                                
+
+                                                        </tr>
+                                                        i++;
+                                                    }
+
+                                                </form>
+                                            </tbody>
+
+                                            <tfoot>
+                                                <tr>
+
+                                                    <th colspan="7" align="right" style="text-align:right;">&nbsp;</th>
+
+                                                    <th>
+                                                        @if (recon > 0)
+                                                        {
+                                                            <button id="btnRecon" class="btn btn-success" onclick="RECONCILE();"><i class="icon-sync"></i>&nbsp;Reconcile</button>
+                                                        }
+                                                        <div id="RECON_result"></div>
+                                                    </th>
+                                                    <th  align="left" style="text-align:left !important;">
+
+                                                        @if (Request["TYPE_PROCESS"] != "POSTED")
+                                                        {
+                                                            <button id="btnSendErp" class="btn btn-primary" onclick="SENDTOERP();"><i class="icon-cloud-upload2"></i>&nbsp;Send to ERP</button>
+                                                        }
+
+                                                        <div id="ERP_result"></div>
+                                                    </th>
+
+                                                </tr>
+                                            </tfoot>
+
+                                        </table>
+
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <text>No record found</text>
+                                                        }
+                                </div>
+
+                                </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $('#START_DATE').datepicker();
+
+    $('#END_DATE').datepicker();
+
+
+
+    function PROCESS_SHOWREGS(GUID, batchNo, RegType, TotalRegs) {
+
+        $.ajax({
+
+            type: 'POST',
+
+            url: '/MPA/EXPORT_IMPORT_04SHOWREGS',
+
+            data: {
+                GUID: GUID,
+                RegType: RegType,
+                batchNo: batchNo
+            },
+
+            success: function (r) {
+
+                window.open(r);
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+    }
+
+
+
+    function PROCESS_SHOWREGS_OLD(GUID, RegType, TotalRegs) {
+
+        $('#DivLoadingPage').html('');
+
+        ModalProcesandoShow();
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: '/MPA/BANKRECONCIL_04SHOWREGS',
+            //url: '/MPA/EXPORT_IMPORT_04SHOWREGS',
+
+            data: {
+
+                RegType: RegType,
+                GUID: GUID,
+                MPA: '1',
+                recordsTotal: TotalRegs
+
+            },
+
+            success: function (r) {
+
+                ModalProcesandoHiden();
+                $('#DivLoadingPage').html(r);
+
+            }, error: function (result) {
+
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+
+    }
+
+
+    function REMOVE_FILE(rid) {
+
+        if (!confirm("Are you sure about removing the file?"))
+            return;
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: '/MPA/REMOVE_FILE',
+
+            data: {
+                rid: rid
+            },
+
+            success: function (r) {
+                window.location.reload();
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+    }
+
+    function REMOVE_BATCH(rid, batchNo) {
+
+        if (!confirm("Are you sure about removing the batch?"))
+            return;
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: '/MPA/REMOVE_BATCH',
+
+            data: {
+                rid: rid,
+                batchNo: batchNo
+            },
+
+            success: function (r) {
+                window.location.reload();
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+    }
+
+    function PROCESS_PENDING(rid, batchNo) {
+
+        $('#DivLoadingPage').html('');
+
+        ModalProcesandoShow();
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: '/MPA/BANKRECONCIL_PROCESSPENDING',
+
+            data: {
+                rid: rid,
+                batchNo: batchNo
+            },
+
+            success: function (r) {
+                ModalProcesandoHiden();
+                $('#DivLoadingPage').html(r);
+
+            }, error: function (result) {
+
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+    }
+
+
+
+    $("#RECONALL").click(function (e) {
+        if (this.checked) {
+            $('.checkRecon').each(function () {
+                this.checked = true;
+            });
+        } else {
+            $('.checkRecon').each(function () {
+                this.checked = false;
+            });
+
+        }
+    });
+
+
+    $("#ERPALL").click(function (e) {
+        if (this.checked) {
+            $('.checkErp').each(function () {
+                this.checked = true;
+            });
+        } else {
+            $('.checkErp').each(function () {
+                this.checked = false;
+            });
+        }
+    });
+
+
+    $("#ZALL").click(function (e) {
+        if (this.checked) {
+            $('.checkZErp').each(function () {
+                this.checked = true;
+            });
+        } else {
+            $('.checkZErp').each(function () {
+                this.checked = false;
+            });
+        }
+    });
+
+
+    function searchProcess() {
+
+        var startD = $("#START_DATE").val();
+        //startD = $.datepicker.parseDate("mm/dd/yyyy", startD);
+        startD = Date.parse("mm/dd/yyyy", startD);
+
+        var endD = $("#END_DATE").val();
+        endD = Date.parse("mm/dd/yyyy", endD);
+
+
+        var TYPE_PROCESS = $("#TYPE_PROCESS").val();
+
+        var BATCHNO = $("#BATCHNO").val();
+
+        if (TYPE_PROCESS == 'POSTED') {
+
+            if ($("#START_DATE").val() == "") {
+                alert('Please enter a valid Start Date.');
+                return;
+            }
+
+            if ($("#END_DATE").val() == "") {
+                alert('Please enter a valid End Date.');
+                return;
+            }
+
+            //if ($("#END_DATE").val() < $("#START_DATE").val()) {
+            if (endD < startD) {
+                alert('Please enter valid dates.');
+                return;
+            }
+
+            var START_DATE = $("#START_DATE").val();
+
+            var END_DATE = $("#END_DATE").val();
+
+            if (startD > endD || (START_DATE == '' && END_DATE != '')) {
+                Mensajes('invalid dates', 'error', '');
+            }
+            else {
+                window.location.href = '/MPA/BANKRECONCIL_PROCESSPANEL?BATCHNO=' + BATCHNO + '&TYPE_PROCESS=' + TYPE_PROCESS + '&START_DATE=' + START_DATE + '&END_DATE=' + END_DATE;
+            }
+        }
+        else {
+
+            window.location.href = '/MPA/BANKRECONCIL_PROCESSPANEL?BATCHNO=' + BATCHNO + '&TYPE_PROCESS=' + TYPE_PROCESS;
+
+        }
+
+    }
+
+    function changeTypeProcess() {
+
+        var TYPE_PROCESS = $("#TYPE_PROCESS").val();
+
+        if (TYPE_PROCESS == 'POSTED') {
+
+            $("#DIV_PARAMETERS_1").show();
+            $("#DIV_PARAMETERS_2").show();
+            $("#BUTTON_SEARCH").show();
+
+            searchProcess();
+        }
+        else
+            window.location.href = '/MPA/BANKRECONCIL_PROCESSPANEL?TYPE_PROCESS=' + TYPE_PROCESS;
+
+    }
+
+</script>

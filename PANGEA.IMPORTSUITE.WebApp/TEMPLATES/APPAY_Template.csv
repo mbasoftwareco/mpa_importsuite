@@ -1,0 +1,2 @@
+JNL_SQ;TransDate;LEGALENTITY;AccountType;AccountNum;Dimensions[1];Invoice;Currency;Description;AmountCurDebit;AmountCurCredit;OFFSETLEGALENTITY;OffSetAccountType;OffSetAccountNum;OffsetDimensions[1];PaymMode;PaymId
+JNL SEQ;Date;Legal Entity;Account Type;Main Account;Business Unit;INVOICE NUMBER;Currency;Description (Max 60 characters);Debit;Credit;Offset company account;Offset Account Type;Offset Account;Business Unit2;Method of payment;Payment reference

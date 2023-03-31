@@ -1,0 +1,2 @@
+BudgetModelId;BudgetTransactionCode;YearValue;MainAccountId;Dimensions[1];JanuaryAmount;FebruaryAmount;MarchAmount;AprilAmount;MayAmount;JuneAmount;JulyAmount;AugustAmount;SeptemberAmount;OctoberAmount;NovemberAmount;DecemberAmount
+Budget Model;Budget Code;YEAR;Main Account;Business Unit;January;February;March;April;May;June;July;August;September;October;November;December

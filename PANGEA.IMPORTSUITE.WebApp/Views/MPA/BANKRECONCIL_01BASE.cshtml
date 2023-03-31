@@ -1,0 +1,467 @@
+﻿@using System.Data;
+@using PANGEA.IMPORTSUITE.DataModel.Util;
+
+<script>
+
+    $(document).ready(function () {
+
+    });
+
+
+    //function changeUptype() {
+
+    //    utype = $("#UPTYPE").val();
+
+    //    window.location.href = '/MPA/BANKRECONCIL_01BASE?UPTYPE=' + utype;
+    //}
+
+
+    function RECONCILE_PROCESS() {
+
+        window.location.href = '/MPA/BANKRECONCIL_PROCESSPANEL';
+    }
+
+
+    function PROCESS_01_UPLOAD_DATA() {
+
+        //if ($("#UPTYPE").val() == "") {
+        //    alert("Please select an Upload Type");
+        //    return;
+        //}
+
+        //if ($("#FITYPE").val() == "") {
+        //    alert("Please select a File Type");
+        //    return;
+        //}
+
+        if ($("#FILE").val() == "") {
+            alert("Please enter a file");
+            return;
+        }
+
+        //if (confirm('Please confirm to continue') == false)
+         //   return;
+
+        ModalProcesandoShow();
+
+        var form = $('#FORM_STEP_1')[0];
+
+        var dataString = new FormData(form);
+
+        $.ajax({
+
+            type: "post",
+
+            url: "/MPA/BANKRECONCIL_01BASE_FILE_BROWSE",
+
+            data: dataString,
+
+            success: function (response) {
+
+                ModalProcesandoHiden();
+
+                Mensajes('File uploaded successfully.', 'success', '');
+
+                PROCESS_02_RUN_VALIDATION(response.guid, false, false, response.extension);
+
+                //$("#xGUID").html('<br><b>' + response.guid + '</b>');
+
+            },
+
+            timeout: 3600000, // sets timeout to 3 seconds
+
+            error: function (result) {
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+                alert(result.statusText);
+            },
+
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+    }
+
+
+    function PROCESS_02_RUN_VALIDATION(zguid, reload, validate, extension) {
+
+        $('#PANEL_STEP_2').css("display", "block");
+
+        $('#STEP_1').removeClass('in');
+        $('#PANEL_STEP_1').addClass('panel-primary');
+        $('#STEP_2').toggleClass('in');
+
+        DisableForm('FORM_STEP_1');
+
+        $('#DATA_STEP_2').html('');
+
+        //LOADING ICON
+        ModalProcesandoShow();
+
+        var url = (extension == "csv") ? '/MPA/BANKRECONCIL_03RESULT' : '/MPA/BANKRECONCIL_02CONFIRM'
+
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: url,
+
+            async: false,
+
+            data: {
+                GUID: zguid,
+                validate: validate
+            },
+
+            success: function (r) {
+
+                ModalProcesandoHiden();
+
+                $("#PANEL_STEP_2 .heading-elements").show();
+                $('#DATA_STEP_2').html(r);
+
+                if (reload)
+                    $('#STEP_2').toggleClass('in');
+
+            }, error: function (result) {
+
+                ModalProcesandoHiden();
+
+                Mensajes(result.statusText, 'error', '');
+            },
+
+            timeout: 3600000 // sets timeout to 3 seconds
+        });
+
+    }
+
+
+    function PROCESS_03_SENDERP() {
+
+
+        if (confirm('Please confirm to continue.') == false)
+            return;
+
+        ModalProcesandoShow();
+
+        var form = $('#FORM_STEP_2')[0];
+
+        var dataString = new FormData(form);
+
+        $.ajax({
+
+            type: 'post',
+
+            url: '/MPA/BANKRECONCIL_03RESULT',
+
+            data: dataString,
+
+            success: function (r) {
+
+                $('#PANEL_STEP_3').css("display", "block");
+
+                $('#STEP_2').removeClass('in');
+
+                $('#PANEL_STEP_2').addClass('panel-primary');
+
+                $('#STEP_3').toggleClass('in');
+
+                $('#DATA_STEP_3').html('');
+
+
+                DisableForm('FORM_STEP_2');
+
+                ModalProcesandoHiden();
+
+                $("#PANEL_STEP_3 .heading-elements").show();
+
+                $('#DATA_STEP_3').html(r);
+
+                $("#btnSendErp").attr("disabled", "disabled");
+
+            }, error: function (result) {
+
+                ModalProcesandoHiden();
+
+                Mensajes(result.statusText, 'error', '');
+            },
+
+            cache: false,
+            contentType: false,
+            processData: false,
+            timeout: 3600000, // sets timeout to 3 seconds
+        });
+
+    }
+
+
+
+    function CANCEL_PROCESS(showConfirm) {
+
+        if (showConfirm && confirm("Are you sure about cancel this process?"))
+            window.location.reload();
+        else
+            window.location.reload();
+    }
+
+
+
+    function HISTORY_RUNTIME() {
+
+        $('#DIV_HISTORY').html('');
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: '/DIRECTAX/IMPORT_HISTORY_RUNTIME',
+
+            data: {
+                TPL: '@ViewBag.TPL'
+            },
+
+            success: function (r) {
+
+                $('#DIV_HISTORY').html(r);
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+    }
+
+
+    $(document).ready(function () {
+
+        $("#FORM_STEP_1").submit(function (e) {
+            e.preventDefault();
+        });
+
+        HISTORY_RUNTIME();
+
+    });
+
+
+    function PROCESS_SHOWREGS(GUID) {
+
+        $('#DivLoadingPage').html('');
+
+        ModalProcesandoShow();
+
+        $.ajax({
+
+            type: 'GET',
+
+            url: '/MPA/BANKRECONCIL_04SHOWREGS',
+
+            data: {
+
+                GUID: GUID
+            },
+
+            success: function (r) {
+
+                ModalProcesandoHiden();
+                $('#DivLoadingPage').html(r);
+
+            }, error: function (result) {
+
+                ModalProcesandoHiden();
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+
+    }
+
+</script>
+
+<style>
+    /*.panel-heading {
+        padding: 8px 20px;
+        background-color: whitesmoke;
+    }*/
+
+    .icons-list > li > a {
+        margin-left: 5px;
+    }
+
+    #PANEL_STEP_2 .heading-elements {
+        display: none;
+    }
+
+    .heading-elements {
+        top: 84%;
+        height: auto;
+        margin-top: -22px;
+    }
+
+    .icons-list > li > a > i {
+        top: -3px;
+    }
+</style>
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="panel-group panel-group-control content-group-lg" id="accordion-control-right">
+
+                    <div class="panel" id="PANEL_STEP_1">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">
+                                <a class="text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#STEP_1" style="font-size:15px;">
+                                    STEP # 1 | Select a file to upload in @Request["UPTYPE"] Reconcile
+                                </a>
+                             </h6>
+                        </div>
+                        <div id="STEP_1" class="panel-collapse collapse in">
+
+                            <div class="panel-body">
+
+                                <form id="FORM_STEP_1" action="/MPA/BANKRECONCIL_01BASE_FILE_BROWSE" method="post">
+
+                                    <input type="hidden" id="GUID" name="GUID" value="@ViewBag.GUID" /> 
+
+                                    <div class="row">
+
+                                        @*<div class="col-md-2">
+                                            <label for="UPTYPE" class="text-bold">Select an Upload Type</label>
+                                            <br />
+                                            <select class="form-control" id="UPTYPE" name="UPTYPE" required="required" onchange="changeUptype()">
+                                                <option value=""></option>
+                                                <option value="TRANSACTION" @if (ViewBag.UPTYPE == "TRANSACTION")
+                                                {
+                                                    <text>selected</text>
+                                                } 
+                                                >Transactions</option>
+                                                <option value="FIRSTDATA" @if (ViewBag.UPTYPE == "FIRSTDATA")
+                                                {
+                                                    <text>selected</text>
+                                                }>First Data</option>
+                                                <option value="HANDHELD"@if (ViewBag.UPTYPE == "HANDHELD")
+                                                {
+                                                    <text>selected</text>
+                                                }>HandHeld</option>
+                                            </select>
+                                        </div>*@
+
+                                         
+
+                                            @*<div class="col-md-2">
+                                                <label for="FITYPE" class="text-bold">Select a File Type</label>
+                                                <br />
+                                                <select class="form-control" id="FITYPE" name="FITYPE" required="required">
+                                                    <option value=""></option>
+                                                    @foreach (DataRow row in ((DataTable)ViewBag.FITYPE_LIST).Rows)
+                                                    {
+                                                    <option value="@row[0]">@row[1]</option>
+                                                    }
+                                                </select>
+                                            </div>*@
+
+
+                                            <div class="col-md-3">
+                                                <label for="FILE" class="text-bold">Browse the file</label>
+                                                <br />
+ 
+                                                <input type="file" class="file-styled file" id="FILE" name="FILE" accept=".xls,.xlsx,.cvs" title="Allowed: .xls, .xlsx, .cvs, .txt" placeholder="Browse a file to upload .xls, .xlsx, .cvs">
+                                 
+                                            </div>
+
+
+                                            <div class="col-md-2">
+                                                <label style="color:white;">.</label>
+                                                <br />
+                                                <button class="btn btn-primary" onclick="PROCESS_01_UPLOAD_DATA();"><i class="icon-cloud-upload2"></i>&nbsp;Continue</button>
+                                            </div>
+
+                                        
+
+                                        <div id="xGUID"></div>
+
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="panel" id="PANEL_STEP_2" style="display:none;">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">
+                                <a class="collapsed text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#STEP_2" style="font-size:15px;">STEP # 2 | Select the files Sheet to Process </a>
+                            </h6>
+
+                            <div class="heading-elements">
+                                <ul class="icons-list">
+                                 </ul>
+                            </div>
+                        </div>
+                        <div id="STEP_2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="DATA_STEP_2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel" id="PANEL_STEP_3" style="display:none;">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">
+                                <a class="collapsed text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#STEP_3" style="font-size:15px;">STEP # 3 | Process Result</a>
+                            </h6>
+
+                            <div class="heading-elements">
+                                <ul class="icons-list"></ul>
+                            </div>
+                        </div>
+
+                        <div id="STEP_3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="DATA_STEP_3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel" id="PANEL_HISTORY">
+                    <div class="panel-heading">
+                        <h6 class="panel-title">
+                            <a class="text-bold" data-toggle="collapse" data-parent="#accordion-control-right" href="#PANEL_HISTORY" style="font-size:15px;">History runtime for @Request.Params["nm"]</a>
+                        </h6>
+                        <div class="heading-elements">
+                            <ul class="icons-list">
+                                <li>
+                                    <a href="javascript:HISTORY_RUNTIME();">
+                                        <i class="icon icon-reload-alt"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-collapse collapse in">
+                        <div class="panel-body" id="DIV_HISTORY">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

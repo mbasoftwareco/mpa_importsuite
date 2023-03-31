@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org" elementFormDefault="qualified" targetNamespace="http://tempuri.org" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PANGEA_import">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="_parmCompany" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmFileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmModule" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmSeparator" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmURLFileCSV" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PANGEA_importResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PANGEA_validate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="_parmCompany" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmModule" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PANGEA_validateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PANGEA_process">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="_parmCompany" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmJournal" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmModule" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmUserId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PANGEA_processResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PANGEA_showrecords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="_parmCompany" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmGUID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmModule" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="_parmRegType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PANGEA_showrecordsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

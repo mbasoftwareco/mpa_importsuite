@@ -1,0 +1,55 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+@{
+    Layout = null;
+}
+
+@if(Model.Rows.Count > 0) { 
+<div class="col-sm-12">
+
+    <div class="table-responsive" > <!-- style="height:480px;overflow-y:auto;" -->
+
+        <table id="TblRegs" class="table table-bordered table-condensed table-striped table-hover">
+            <thead>
+                <tr>
+
+                    <th>&nbsp;</th>
+
+                    @foreach (DataColumn column in Model.Columns)
+                    {
+                        <th>@column.ColumnName</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @{ int i = 1; }
+
+
+                @foreach (DataRow row in Model.Rows)
+                {
+                    <tr>
+                        <td align="center">@(i.ToString())</td>
+
+                        @foreach (DataColumn rCol in Model.Columns)
+                        {
+                            if (rCol.ColumnName.ToUpper() == "ERRORMSG")
+                            {
+                                <td style="color:red; font-weight:bold;">@row[rCol.ColumnName]</td>
+                            }
+                            else
+                            {
+                                <td>@row[rCol.ColumnName]</td>
+                            }
+                        }
+
+                    </tr>
+                    i++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+}
+
+

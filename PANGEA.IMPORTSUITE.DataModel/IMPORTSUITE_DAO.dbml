@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MPA_ImportSuite" Class="IMPORTSUITE_DAODataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=AX-TEST-SQL-01;Initial Catalog=MPA_ImportSuite;User ID=sa" SettingsObjectName="PANGEA.IMPORTSUITE.DataModel.Properties.Settings" SettingsPropertyName="MPA_ImportSuiteConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.M_METAMASTER" Member="M_METAMASTERs">
+    <Type Name="M_METAMASTER">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CLASS_CODE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CODE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ACTIVE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NOTES" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ROWID_LIST" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MODIFIEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MODIFIEDON" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.S_MENU_ROL" Member="S_MENU_ROLs">
+    <Type Name="S_MENU_ROL">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ROWID_MENU" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ROWID_ROL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="M_ROL_S_MENU_ROL" Member="M_ROL" ThisKey="ROWID_ROL" OtherKey="ROWID" Type="M_ROL" IsForeignKey="true" />
+      <Association Name="S_MENU_S_MENU_ROL" Member="S_MENU" ThisKey="ROWID_MENU" OtherKey="ROWID" Type="S_MENU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.S_USER" Member="S_USERs">
+    <Type Name="S_USER">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USERNAME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROWID_ROL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ACTIVE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MODIFIEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MODIFIEDON" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="M_ROL_S_USER" Member="M_ROL" ThisKey="ROWID_ROL" OtherKey="ROWID" Type="M_ROL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_EQUIVALENCE" Member="T_EQUIVALENCEs">
+    <Type Name="T_EQUIVALENCE">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EQ_CODE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SOURCE_VALUE" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="DESTINATION_VALUE" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="DESTINATION_FUNCTION" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="T_EQUIVALENCE_T_TEMPLATE_FIELD" Member="T_TEMPLATE_FIELDs" ThisKey="ROWID" OtherKey="ROWID_EQ" Type="T_TEMPLATE_FIELD" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_TEMPLATE_FIELD" Member="T_TEMPLATE_FIELDs">
+    <Type Name="T_TEMPLATE_FIELD">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ROWID_TEMPLATE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FILED_TYPE" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="FIELD_SOURCE_NAME" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="COLUMN_TYPE" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="FIELD_DEST_NAME" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="VALIDATIONS" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="APPLY_FUNCTION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ROWID_EQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SEQUENCE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ACTIVE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MODIFIEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MODIFIEDON" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="T_EQUIVALENCE_T_TEMPLATE_FIELD" Member="T_EQUIVALENCE" ThisKey="ROWID_EQ" OtherKey="ROWID" Type="T_EQUIVALENCE" IsForeignKey="true" />
+      <Association Name="T_TEMPLATE_T_TEMPLATE_FIELD" Member="T_TEMPLATE" ThisKey="ROWID_TEMPLATE" OtherKey="ROWID" Type="T_TEMPLATE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_TEMPLATE_RUNTIME_ROW" Member="T_TEMPLATE_RUNTIME_ROWs">
+    <Type Name="T_TEMPLATE_RUNTIME_ROW">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ROWID_TEMPLATE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GUID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DATAROW" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PROCESS_RESULT" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_TMP_UPLOAD_RECORDS" Member="T_TMP_UPLOAD_RECORDs">
+    <Type Name="T_TMP_UPLOAD_RECORD">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ROWID_TEMPLATE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GUID" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="FILENAME" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MESSAGE" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ERP_RESPONSE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PROCESS_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="C1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C11" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C12" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C13" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C14" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C15" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C16" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C17" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C18" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C19" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C20" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C21" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C22" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C23" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C24" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C25" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C26" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C27" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C28" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C29" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C30" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C31" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C32" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C33" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C34" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C35" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C36" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C37" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C38" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C39" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C40" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C41" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C42" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C43" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C44" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C45" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C46" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C47" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C48" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C49" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="C50" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="T_TEMPLATE_T_TMP_UPLOAD_RECORD" Member="T_TEMPLATE" ThisKey="ROWID_TEMPLATE" OtherKey="ROWID" Type="T_TEMPLATE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Z_LOG" Member="Z_LOGs">
+    <Type Name="Z_LOG">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ENTITY" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MESSAGE" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Z_MAIL_SEND" Member="Z_MAIL_SENDs">
+    <Type Name="Z_MAIL_SEND">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MTO" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MFROM" Type="System.String" DbType="VarChar(1500)" CanBeNull="true" />
+      <Column Name="SUBJECT" Type="System.String" DbType="VarChar(1500)" CanBeNull="true" />
+      <Column Name="MESSAGE" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SENT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USE_BCC" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="SENTDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NOTE" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ATTACHMENT" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.M_ROL" Member="M_ROLs">
+    <Type Name="M_ROL">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ACTIVE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FULL_CONTROL" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DEFAULT_PAGE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MODIFIEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MODIFIEDON" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="M_ROL_S_MENU_ROL" Member="S_MENU_ROLs" ThisKey="ROWID" OtherKey="ROWID_ROL" Type="S_MENU_ROL" />
+      <Association Name="M_ROL_S_USER" Member="S_USERs" ThisKey="ROWID" OtherKey="ROWID_ROL" Type="S_USER" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_AX_COLUMN_EQUIVALENCE" Member="T_AX_COLUMN_EQUIVALENCEs">
+    <Type Name="T_AX_COLUMN_EQUIVALENCE">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TABLENAME" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FILECOLUMN" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AXCOLUMN" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.S_MENU" Member="S_MENUs">
+    <Type Name="S_MENU">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PARENTOPTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ICON" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SEQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ACTIVE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MODIFIEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MODIFIEDON" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ERPPERMITOPTION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="S_MENU_S_MENU_ROL" Member="S_MENU_ROLs" ThisKey="ROWID" OtherKey="ROWID_MENU" Type="S_MENU_ROL" />
+      <Association Name="S_MENU_S_MENU" Member="S_MENUs" ThisKey="ROWID" OtherKey="PARENTOPTION" Type="S_MENU" />
+      <Association Name="S_MENU_CFG_07_AX_USERPROFILE" Member="CFG_07_AX_USERPROFILEs" ThisKey="ROWID" OtherKey="MENUOPTION" Type="CFG_07_AX_USERPROFILE" />
+      <Association Name="S_MENU_S_MENU" Member="S_MENU1" ThisKey="PARENTOPTION" OtherKey="ROWID" Type="S_MENU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_TEMPLATE_RUNTIME" Member="T_TEMPLATE_RUNTIMEs">
+    <Type Name="T_TEMPLATE_RUNTIME">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ROWID_TEMPLATE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ENTITY" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="MODULE" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="GUID" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="FILENAME" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="STATUS_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CUR_STEP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MESSAGE" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="COLUMNS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ORIFILENAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="T_TEMPLATE_T_TEMPLATE_RUNTIME" Member="T_TEMPLATE" ThisKey="ROWID_TEMPLATE" OtherKey="ROWID" Type="T_TEMPLATE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_AX_CustomerInvoices" Member="vw_AX_CustomerInvoices">
+    <Type Name="vw_AX_CustomerInvoice">
+      <Column Name="INVOICEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="INVOICEACCOUNT" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="INVOICEID" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CURRENCYCODE" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(20,2)" CanBeNull="true" />
+      <Column Name="Customer" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="lease" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Site" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="RECID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ImportKey" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="CreDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InvFormType" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntity" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="ADQUISITION" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_AX_CustomerInvoices_Contact" Member="vw_AX_CustomerInvoices_Contacts">
+    <Type Name="vw_AX_CustomerInvoices_Contact">
+      <Column Name="TYPE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATIONNAME" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="LOCATOR" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="TypeName" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="ACCOUNTNUM" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ISPRIMARY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_TMailPool_Invoices" Member="vw_TMailPool_Invoices">
+    <Type Name="vw_TMailPool_Invoice">
+      <Column Name="INVOICEID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RowID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MTo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Attachment" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="INVOICEDATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="INVOICEACCOUNT" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(20,2)" CanBeNull="true" />
+      <Column Name="CURRENCYCODE" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Customer" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="lease" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="LegalEntity" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Sent" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MFrom" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Site" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="InvDetail" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_SYNC_Execution_Control" Member="T_SYNC_Execution_Controls">
+    <Type Name="T_SYNC_Execution_Control">
+      <Column Name="RowID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProcessCode" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_MailPool" Member="T_MailPools">
+    <Type Name="T_MailPool">
+      <Column Name="RowID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MTo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MFrom" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CreatedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Sent" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UseBCC" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="SentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Attachment" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MailType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RefNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="xGUID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_PrinterPool" Member="T_PrinterPools">
+    <Type Name="T_PrinterPool">
+      <Column Name="RowID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RegDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PrintUser" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DocType" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DocNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Printer" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ProcessDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ErrorMsg" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LockSession" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="xGUID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_DocEmail_Sent" Member="T_DocEmail_Sents">
+    <Type Name="T_DocEmail_Sent">
+      <Column Name="RowID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DocType" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DocNumber" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="SentDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="xGUID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.T_TEMPLATE" Member="T_TEMPLATEs">
+    <Type Name="T_TEMPLATE">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HEADER_FIRSTROW" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NUMBER_FIELDS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VALIDATIONS" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ACTIVE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PANGEA_TEMPLATE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FOLDER" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="CUSTOM_VALIDATIONS" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MODIFIEDBY" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MODIFIEDON" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LASTFILE" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="LASTDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LASTUSER" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="BASE_TEMPLATE" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="AX_TEMP_TABLE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="JOURNALNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AUTOPOST" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="T_TEMPLATE_T_TEMPLATE_FIELD" Member="T_TEMPLATE_FIELDs" ThisKey="ROWID" OtherKey="ROWID_TEMPLATE" Type="T_TEMPLATE_FIELD" />
+      <Association Name="T_TEMPLATE_T_TMP_UPLOAD_RECORD" Member="T_TMP_UPLOAD_RECORDs" ThisKey="ROWID" OtherKey="ROWID_TEMPLATE" Type="T_TMP_UPLOAD_RECORD" />
+      <Association Name="T_TEMPLATE_T_TEMPLATE_RUNTIME" Member="T_TEMPLATE_RUNTIMEs" ThisKey="ROWID" OtherKey="ROWID_TEMPLATE" Type="T_TEMPLATE_RUNTIME" />
+    </Type>
+  </Table>
+  <Table Name="dbo.S_PARAMETERS" Member="S_PARAMETERs">
+    <Type Name="S_PARAMETER">
+      <Column Name="ROWID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="VALUE" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="EDIT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LABEL" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SEQUENCE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDON" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CREATEDBY" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CFG_07_AX_USERPROFILE" Member="CFG_07_AX_USERPROFILEs">
+    <Type Name="CFG_07_AX_USERPROFILE">
+      <Column Name="USERID" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PROFILEID" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="COMPANY" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MENUOPTION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="S_MENU_CFG_07_AX_USERPROFILE" Member="S_MENU" ThisKey="MENUOPTION" OtherKey="ROWID" Type="S_MENU" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

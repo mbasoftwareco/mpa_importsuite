@@ -1,0 +1,99 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="FORM_SEARCH" method="get">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="SEARCH" class="text-bold">Search</label>
+                                    <br />
+                                    <div class="input-group">
+                                        <input type="text" class="form-control " id="SEARCH" name="SEARCH" value="@ViewBag.SEARCH" />
+                                        <input type="hidden" class="form-control " id="OPTION" name="OPTION" value="@ViewBag.OPTION" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary" type="submit"><i class="icon-search4"></i></button>
+                                            @if (Model.Rows.Count > 0)
+                                            {
+                                                <button class="btn btn-success" type="button" onclick="EXPORT()"><i class="icon-file-excel"></i></button>
+                                            }
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <br />
+                @*<button type="button" onclick="EXPORT()"><i class="icon-file-excel"></i></button>*@
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table id="TblRegs" class="table table-bordered table-condensed table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        @foreach (DataColumn column in Model.Columns)
+                                        {
+                                            <th>@column.ColumnName</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int i = 1; }
+                                    @foreach (DataRow row in Model.Rows)
+                                    {
+                                        <tr>
+                                            @foreach (DataColumn rCol in Model.Columns)
+                                            {
+                                                <td>@row[rCol.ColumnName]</td>
+                                            }
+                                        </tr>
+                                        i++;
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function EXPORT() {
+
+        $.ajax({
+
+            type: 'POST',
+
+            url: '/DIRECTAX/EXPORT_IMPORT_05SHOWDS',
+
+        //    data: //$("#FORM_SEARCH").serialize(),
+
+            success: function (r) {
+
+                window.open(r);
+
+            }, error: function (result) {
+                Mensajes(result.statusText, 'error', '');
+            }
+        });
+
+    }
+
+
+
+</script>

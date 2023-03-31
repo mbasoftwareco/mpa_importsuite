@@ -1,0 +1,87 @@
+﻿@model System.Data.DataTable
+@using System.Data
+
+@{
+    Layout = null;
+}
+ 
+<div class="col-sm-12">
+
+
+        <div class="card-box table-responsive">
+
+            <form id="FORM_STEP_2" method="post">
+
+                <input type="hidden" id="GUID" name="GUID" value="@Request["GUID"]" />
+
+                <table id="TblMenu" class="table table-bordered table-condensed table-striped">
+                    <!--   -->
+                    <thead>
+                        <tr>
+                            <th align="center">Sheet on File</th>
+
+                            <th align="center"><input type="checkbox" name="SHEETALL" id="SHEETALL" /> Mark to Process</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int i = 1; }
+                        @foreach (DataRow row in Model.Rows)
+                    {
+                        if (row["TABLE_NAME"].ToString().Contains("#_"))
+                        {
+                            continue;
+
+                        }
+
+                        <tr>
+
+                            <td><nobr>@row["TABLE_NAME"].ToString().Replace("$", "").Replace("'","")</nobr></td>
+
+                            <td>
+                                @*<input type="radio" name="SHEET" value="@row["TABLE_NAME"].ToString().Replace("$", "")" />*@
+                                <input type="checkbox" name="SHEET" value="@row["TABLE_NAME"].ToString().Replace("$", "")"  class="checkRecon" />
+                            </td>
+
+                        </tr>
+
+                        i++;
+                    }
+                    </tbody>
+                </table>
+
+            </form>
+
+</div>
+
+        <br />
+
+        <button class="btn bg-danger" onclick="CANCEL_PROCESS(true)"><i class="icon-cancel-circle2"></i>&nbsp;Start Over</button>
+
+        <button class="btn btn-primary" id="btnSendErp" onclick="PROCESS_03_SENDERP();"><i class="icon-cloud-upload2"></i>&nbsp;Confirm Process </button>
+
+        @*<label>@Request["GUID"]</label>*@
+
+        <div id="p2_error" style="color:red"></div>
+
+
+
+</div>
+
+ 
+<script>
+
+    $("#SHEETALL").click(function (e) {
+        if (this.checked) {
+            $('.checkRecon').each(function () {
+                this.checked = true;
+            });
+        } else {
+            $('.checkRecon').each(function () {
+                this.checked = false;
+            });
+
+        }
+    });
+
+</script>
